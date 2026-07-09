@@ -1,0 +1,97 @@
+---
+import { Mail, Phone, MapPin } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const contactPoints = [
+  { icon: Mail, label: "อีเมล", value: "hello@cboom.io" },
+  { icon: Phone, label: "โทรศัพท์", value: "+66 2 000 1234" },
+  { icon: MapPin, label: "ที่ตั้งสำนักงาน", value: "กรุงเทพมหานคร ประเทศไทย" },
+];
+---
+
+<Layout
+  title="ติดต่อฝ่ายขาย — CBoom"
+  description="ติดต่อทีม CBoom เพื่อจองเดโมหรือพูดคุยกับฝ่ายขาย"
+>
+  <Navbar />
+  <main>
+    <section class="py-20 sm:py-28">
+      <div class="container-page grid grid-cols-1 gap-16 lg:grid-cols-2">
+        <div class="reveal">
+          <span class="section-eyebrow">ติดต่อเรา</span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">มาคุยเรื่องธุรกิจของคุณกัน</h1>
+          <p class="mt-6 text-lg leading-relaxed text-ink/60 dark:text-white/60">
+            บอกเราเกี่ยวกับธุรกิจของคุณ แล้วทีม CBoom จะช่วยแนะนำแพ็กเกจที่เหมาะสมที่สุด
+          </p>
+
+          <div class="mt-10 space-y-5">
+            {
+              contactPoints.map((point) => (
+                <div class="flex items-center gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <point.icon class="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p class="text-xs font-medium text-ink/50 dark:text-white/50">{point.label}</p>
+                    <p class="font-semibold">{point.value}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="reveal rounded-card border border-border/70 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
+          <form class="space-y-5" method="post" action="mailto:hello@cboom.io">
+            <div>
+              <label for="name" class="mb-1.5 block text-sm font-medium">ชื่อ-นามสกุล</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5"
+                placeholder="สมชาย ใจดี"
+              />
+            </div>
+            <div>
+              <label for="email" class="mb-1.5 block text-sm font-medium">อีเมลที่ทำงาน</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5"
+                placeholder="somchai@company.com"
+              />
+            </div>
+            <div>
+              <label for="company" class="mb-1.5 block text-sm font-medium">ชื่อบริษัท</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5"
+                placeholder="บริษัท ตัวอย่าง จำกัด"
+              />
+            </div>
+            <div>
+              <label for="message" class="mb-1.5 block text-sm font-medium">ข้อความ</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5"
+                placeholder="เล่าเกี่ยวกับธุรกิจของคุณให้เราฟังได้เลย..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full">ส่งข้อความ</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

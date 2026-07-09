@@ -1,0 +1,62 @@
+---
+import { Clock, Plug, TrendingUp, Database, LayoutDashboard, HeartHandshake } from "@lucide/astro";
+
+const columns = [
+  {
+    icon: Clock,
+    title: "ลดเวลาการทำงานซ้ำ",
+    description: "อัตโนมัติงานที่ทำซ้ำทุกวัน ให้ทีมของคุณโฟกัสกับลูกค้าได้มากขึ้น",
+  },
+  {
+    icon: Plug,
+    title: "เชื่อมต่อระบบได้ง่าย",
+    description: "เชื่อมกับ Marketplace และระบบเดิมของธุรกิจได้ในไม่กี่ขั้นตอน",
+  },
+  {
+    icon: TrendingUp,
+    title: "รองรับการเติบโตของธุรกิจ",
+    description: "ขยายทีมขาย เพิ่มสาขา หรือเปิดช่องทางใหม่ได้โดยไม่ต้องเปลี่ยนระบบ",
+  },
+  {
+    icon: Database,
+    title: "ข้อมูลรวมไว้ที่เดียว",
+    description: "ลูกค้า ออเดอร์ และสต๊อกอยู่ในระบบเดียว ไม่ต้องสลับแอปให้เสียเวลา",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Dashboard แบบ Real-time",
+    description: "เห็นภาพรวมธุรกิจได้ทันที ตัดสินใจได้เร็วกว่าเดิม",
+  },
+  {
+    icon: HeartHandshake,
+    title: "ทีมงานคนไทยพร้อมดูแล",
+    description: "ทีมซัพพอร์ตคนไทยพร้อมช่วยเหลือและให้คำปรึกษาตลอดการใช้งาน",
+  },
+];
+---
+
+<section class="bg-white py-24 sm:py-32 dark:bg-white/[0.02]">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ทำไมต้อง CBoom</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ทำไมธุรกิจจึงเลือก CBoom</h2>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        columns.map((col, i) => (
+          <div
+            class="reveal rounded-card border border-border/70 bg-background p-8 dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 80}ms`}
+          >
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <col.icon class="h-7 w-7" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{col.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{col.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

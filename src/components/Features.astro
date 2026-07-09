@@ -1,0 +1,51 @@
+---
+import {
+  LayoutDashboard,
+  Users2,
+  Store,
+  Workflow,
+  BarChart3,
+  Package,
+  Bot,
+  FileBarChart,
+} from "@lucide/astro";
+
+const features = [
+  { icon: LayoutDashboard, title: "Dashboard แบบ Real-time", description: "ดูยอดขาย ออเดอร์ และ KPI อัปเดตสดทุกช่วงเวลา" },
+  { icon: Users2, title: "จัดการลูกค้า", description: "บริหารข้อมูลลูกค้า ลีด และ Pipeline ในที่เดียว" },
+  { icon: Store, title: "เชื่อม Marketplace", description: "ขายบน Shopee, TikTok Shop และ Lazada จากหน้าจอเดียว" },
+  { icon: Workflow, title: "AI Automation", description: "ให้ระบบทำงานซ้ำซากแทนทีมของคุณโดยไม่ต้องเขียนโค้ด" },
+  { icon: BarChart3, title: "ติดตามยอดขาย", description: "แปลงข้อมูลดิบเป็นการตัดสินใจด้วยรายงานที่เข้าใจง่าย" },
+  { icon: Package, title: "Inventory", description: "ติดตามสต๊อกสินค้าทุกคลังและทุกช่องทางแบบเรียลไทม์" },
+  { icon: FileBarChart, title: "รายงาน", description: "สร้างรายงานธุรกิจและ ESG ได้ในคลิกเดียว" },
+  { icon: Bot, title: "API Integration", description: "เชื่อมต่อ CBoom กับระบบเดิมของธุรกิจคุณได้อย่างยืดหยุ่น" },
+];
+---
+
+<section id="features" class="bg-white py-24 sm:py-32 dark:bg-white/[0.02]">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ฟีเจอร์</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ทุกเครื่องมือที่ธุรกิจต้องการ</h2>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        features.map((feature, i) => (
+          <div
+            class="reveal group rounded-card border border-border/70 bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-lg hover:shadow-primary/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+            style={`transition-delay:${i * 60}ms`}
+          >
+            <span
+              class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white"
+            >
+              <feature.icon class="h-5 w-5" />
+            </span>
+            <h3 class="mt-4 font-bold">{feature.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{feature.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

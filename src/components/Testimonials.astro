@@ -1,0 +1,59 @@
+---
+import { Quote } from "@lucide/astro";
+
+const testimonials = [
+  {
+    company: "ร้านสยามแฟชั่นช็อป",
+    role: "หัวหน้าฝ่ายปฏิบัติการ",
+    name: "คุณสุชาดา วงศ์ประเสริฐ",
+    quote:
+      "ช่วยลดเวลาคีย์ออเดอร์ได้เยอะมาก ทีมงานสามารถเห็นข้อมูลทุก Marketplace ในหน้าจอเดียว ไม่ต้องสลับแอปให้เสียเวลาอีกแล้ว",
+  },
+  {
+    company: "บริษัท กรีนโลจิสติกส์ จำกัด",
+    role: "ผู้ก่อตั้งและกรรมการผู้จัดการ",
+    name: "คุณธนกร ศรีสมบูรณ์",
+    quote:
+      "โมดูล ESG ทำให้การจัดทำรายงานความยั่งยืนที่เคยใช้เวลาเป็นสัปดาห์ เหลือแค่ไม่กี่ชั่วโมง ทีมผู้บริหารพอใจมาก",
+  },
+  {
+    company: "บริษัท ทีเอชเซลส์ โซลูชัน จำกัด",
+    role: "ผู้จัดการฝ่ายขาย",
+    name: "คุณปิยะพร จันทร์แก้ว",
+    quote:
+      "ทีมขายมี CRM ที่ใช้งานง่ายจริง ๆ เห็น Pipeline ชัดเจน ทำให้พยากรณ์ยอดขายได้แม่นยำกว่าเดิมมาก",
+  },
+];
+---
+
+<section id="testimonials" class="bg-white py-24 sm:py-32 dark:bg-white/[0.02]">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ลูกค้าของเรา</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ธุรกิจที่ไว้วางใจ CBoom</h2>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <div
+            class="reveal flex flex-col rounded-card border border-border/70 bg-background p-8 dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 100}ms`}
+          >
+            <Quote class="h-8 w-8 text-primary/40" />
+            <p class="mt-4 flex-1 text-sm leading-relaxed text-ink/70 dark:text-white/70">"{t.quote}"</p>
+            <div class="mt-6 flex items-center gap-3 border-t border-border/60 pt-5 dark:border-white/10">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white">
+                {t.name.charAt(0)}
+              </span>
+              <div>
+                <p class="text-sm font-semibold">{t.name}</p>
+                <p class="text-xs text-ink/50 dark:text-white/50">{t.role} · {t.company}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

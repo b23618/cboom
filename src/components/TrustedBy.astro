@@ -1,0 +1,20 @@
+---
+const companies = ["บริษัท เอ จำกัด", "บริษัท บี จำกัด", "บริษัท ซี จำกัด", "บริษัท ดี จำกัด", "บริษัท อี จำกัด"];
+---
+
+<section class="py-12">
+  <div class="container-page reveal">
+    <p class="text-center text-sm font-medium uppercase tracking-widest text-ink/40 dark:text-white/40">
+      ได้รับความไว้วางใจจากธุรกิจชั้นนำในไทย
+    </p>
+    <div class="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-5">
+      {
+        companies.map((name) => (
+          <div class="flex items-center justify-center rounded-2xl border border-border/60 bg-white/50 px-4 py-5 text-sm font-semibold text-ink/40 grayscale transition hover:grayscale-0 hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-white/30">
+            {name}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

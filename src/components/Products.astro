@@ -1,0 +1,84 @@
+---
+import { Users2, Store, Sparkles, Leaf, ArrowRight } from "@lucide/astro";
+
+const products = [
+  {
+    icon: Users2,
+    name: "CBoom CRM",
+    description: "ปิดการขายได้เร็วขึ้น ด้วยระบบบริหารลูกค้าที่ทีมขายใช้งานได้จริง",
+    features: ["จัดการข้อมูลลูกค้า", "Pipeline งานขาย", "ติดตามลูกค้า", "บันทึกการติดต่อ", "Dashboard"],
+    href: "/crm/",
+  },
+  {
+    icon: Store,
+    name: "CBoom Marketplace",
+    description: "รวมทุกออเดอร์จากทุกช่องทางไว้ในหน้าจอเดียว ไม่ต้องสลับแอปให้เสียเวลา",
+    features: ["เชื่อมต่อ Shopee", "TikTok Shop", "Lazada", "ดึงออเดอร์อัตโนมัติ", "พิมพ์ใบปะหน้า", "อัปเดตสถานะขนส่ง", "จัดการสต๊อก"],
+    href: "/marketplace/",
+  },
+  {
+    icon: Sparkles,
+    name: "CBoom AI",
+    description: "ผู้ช่วยอัจฉริยะที่ช่วยสรุป วิเคราะห์ และแนะนำการขายให้ทีมของคุณ",
+    features: ["AI ช่วยสรุปยอดขาย", "AI วิเคราะห์ลูกค้า", "AI แนะนำการขาย", "AI Automation"],
+    href: "/ai/",
+  },
+  {
+    icon: Leaf,
+    name: "CBoom ESG",
+    description: "จัดทำรายงานความยั่งยืนและติดตามการปล่อยคาร์บอนได้ง่ายในที่เดียว",
+    features: ["จัดการข้อมูล Carbon", "คำนวณการปล่อยคาร์บอน", "จัดทำรายงาน ESG", "Dashboard"],
+    href: "/esg/",
+  },
+];
+---
+
+<section id="products" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ผลิตภัณฑ์</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">หนึ่งแพลตฟอร์ม ครบทุกความสามารถ</h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        ทุกโมดูลถูกออกแบบให้ทำงานร่วมกัน ข้อมูลของคุณจะไหลลื่นตั้งแต่การขายครั้งแรกจนถึงจัดส่งสำเร็จ
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        products.map((product, i) => (
+          <div
+            class="reveal group flex flex-col rounded-card border border-border/70 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 80}ms`}
+          >
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-primary/25"
+            >
+              <product.icon class="h-6 w-6" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{product.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{product.description}</p>
+
+            <ul class="mt-5 flex-1 space-y-2">
+              {
+                product.features.map((feature) => (
+                  <li class="flex items-center gap-2 text-sm text-ink/70 dark:text-white/70">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {feature}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <a
+              href={product.href}
+              class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-transform group-hover:gap-2.5"
+            >
+              ดูรายละเอียด
+              <ArrowRight class="h-4 w-4" />
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

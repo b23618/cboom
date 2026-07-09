@@ -1,0 +1,78 @@
+---
+import { ShoppingBag, Boxes, Building2, Truck, Warehouse } from "@lucide/astro";
+
+const supported = ["Shopee", "TikTok Shop", "Lazada"];
+const future = ["WooCommerce", "Shopify", "Magento"];
+
+const flow = [
+  { label: "Marketplace", icon: ShoppingBag },
+  { label: "CBoom", icon: Boxes },
+  { label: "ERP", icon: Building2 },
+  { label: "คลังสินค้า", icon: Warehouse },
+  { label: "ขนส่ง", icon: Truck },
+];
+---
+
+<section class="py-24 sm:py-32">
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+    <div class="reveal order-2 lg:order-1">
+      <div class="glass rounded-card p-6 shadow-xl">
+        <div class="flex flex-col items-center gap-0">
+          {
+            flow.map((step, i) => (
+              <>
+                <div class="flex w-full items-center gap-4 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <step.icon class="h-5 w-5" />
+                  </span>
+                  <span class="font-semibold">{step.label}</span>
+                </div>
+                {i < flow.length - 1 && (
+                  <div class="my-1 h-6 w-px bg-gradient-to-b from-primary/60 to-secondary/30" />
+                )}
+              </>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal order-1 lg:order-2">
+      <span class="section-eyebrow">เชื่อมต่อ Marketplace</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        เชื่อมต่อ Marketplace
+        <br />ในไม่กี่ขั้นตอน
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink/60 dark:text-white/60">
+        รองรับการเชื่อมต่อกับ Shopee, TikTok Shop และ Lazada ช่วยลดการทำงานซ้ำ
+        รวมข้อมูลออเดอร์ไว้ที่เดียว และลดความผิดพลาดจากการทำงานแบบ Manual
+      </p>
+
+      <div class="mt-8">
+        <p class="text-sm font-semibold uppercase tracking-wide text-ink/40 dark:text-white/40">รองรับแล้ววันนี้</p>
+        <div class="mt-3 flex flex-wrap gap-3">
+          {
+            supported.map((name) => (
+              <span class="rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+                {name}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <p class="text-sm font-semibold uppercase tracking-wide text-ink/40 dark:text-white/40">เร็ว ๆ นี้</p>
+        <div class="mt-3 flex flex-wrap gap-3">
+          {
+            future.map((name) => (
+              <span class="rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-ink/50 dark:border-white/10 dark:bg-white/5 dark:text-white/40">
+                {name}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

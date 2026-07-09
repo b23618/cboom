@@ -1,0 +1,109 @@
+---
+import { Check, Star } from "@lucide/astro";
+
+const plans = [
+  {
+    name: "CRM",
+    price: "25,000",
+    period: "บาท",
+    description: "เริ่มต้นสำหรับทีมขาย",
+    popular: false,
+    features: [
+      "จัดการข้อมูลลูกค้า",
+      "Pipeline งานขาย",
+      "บันทึกการติดต่อ",
+      "Sales Dashboard",
+      "รายงานพื้นฐาน",
+    ],
+  },
+  {
+    name: "Marketplace",
+    price: "35,000",
+    period: "บาท",
+    description: "สำหรับร้านค้าออนไลน์",
+    popular: true,
+    features: [
+      "รวมทุกฟีเจอร์ในแพ็กเกจ CRM",
+      "เชื่อมต่อ Shopee / TikTok Shop / Lazada",
+      "ดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
+      "พิมพ์ใบปะหน้าและอัปเดตขนส่ง",
+      "AI ช่วยวิเคราะห์การขาย",
+    ],
+  },
+  {
+    name: "Enterprise",
+    price: "ราคาพิเศษ",
+    period: "ออกแบบตามความต้องการ",
+    description: "สำหรับองค์กรที่ต้องการเชื่อมหลายระบบ",
+    popular: false,
+    features: [
+      "รวมทุกฟีเจอร์ในแพ็กเกจ Marketplace",
+      "CBoom ESG และรายงานความยั่งยืน",
+      "ทีมดูแลลูกค้าเฉพาะองค์กร",
+      "เชื่อมต่อระบบ ERP และ API เฉพาะทาง",
+      "SLA และการซัพพอร์ตระดับสูง",
+    ],
+  },
+];
+---
+
+<section id="pricing" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ราคา</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        แพ็กเกจราคาที่เติบโตไปพร้อมธุรกิจคุณ
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        เริ่มต้นด้วยโมดูลเดียว แล้วเพิ่มเติมได้ตามการเติบโตของธุรกิจ
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {
+        plans.map((plan, i) => (
+          <div
+            class={`reveal relative flex flex-col rounded-card border p-8 transition-all duration-300 hover:-translate-y-1.5 ${
+              plan.popular
+                ? "border-primary/40 bg-gradient-to-b from-primary/5 to-transparent shadow-xl shadow-primary/15"
+                : "border-border/70 bg-white dark:border-white/10 dark:bg-white/5"
+            }`}
+            style={`transition-delay:${i * 100}ms`}
+          >
+            {plan.popular && (
+              <span class="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-primary px-4 py-1 text-xs font-bold text-white shadow-md">
+                <Star class="h-3 w-3" /> ยอดนิยม
+              </span>
+            )}
+            <h3 class="text-lg font-bold">{plan.name}</h3>
+            <p class="mt-2 text-sm text-ink/60 dark:text-white/60">
+              {plan.description}
+            </p>
+            <div class="mt-6 flex items-baseline gap-1">
+              <span class="text-4xl font-extrabold">
+                {plan.price === "ราคาพิเศษ" ? plan.price : `฿${plan.price}`}
+              </span>
+            </div>
+            <p class="text-sm text-ink/50 dark:text-white/50">{plan.period}</p>
+
+            <ul class="mt-6 flex-1 space-y-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2.5 text-sm text-ink/70 dark:text-white/70">
+                  <Check class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="/#contact"
+              class={`mt-8 ${plan.popular ? "btn-primary" : "btn-secondary"} w-full`}
+            >
+              {plan.price === "ราคาพิเศษ" ? "ติดต่อฝ่ายขาย" : "ทดลองใช้ฟรี"}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

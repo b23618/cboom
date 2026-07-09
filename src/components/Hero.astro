@@ -1,0 +1,64 @@
+---
+import { ArrowRight, PlayCircle } from "@lucide/astro";
+import DashboardPreview from "./DashboardPreview.astro";
+---
+
+<section class="relative overflow-hidden pt-20 pb-24 sm:pt-28 sm:pb-32">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-background to-secondary/5 dark:from-primary/15 dark:via-[#0a0f0d] dark:to-secondary/5"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute left-1/2 top-[-10%] -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl animate-glow"
+  >
+  </div>
+
+  <div class="container-page grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+    <div class="reveal">
+      <span class="section-eyebrow">
+        <span class="h-2 w-2 rounded-full bg-primary"></span>
+        Business Automation Platform
+      </span>
+
+      <h1 class="mt-6 text-4xl font-extrabold leading-[1.2] tracking-tight sm:text-5xl lg:text-6xl">
+        เปลี่ยนธุรกิจของคุณ
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          ให้ทำงานอัตโนมัติ
+        </span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/60 dark:text-white/60">
+        CBoom คือแพลตฟอร์มสำหรับบริหารธุรกิจยุคใหม่ ช่วยจัดการลูกค้า ออเดอร์ Marketplace
+        งานขาย ระบบอัตโนมัติ และ AI ทั้งหมดในระบบเดียว
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="https://lin.ee/QVWxues" class="btn-primary">
+          ทดลองใช้ฟรี
+          <ArrowRight class="h-4 w-4" />
+        </a>
+        <a href="https://lin.ee/QVWxues" class="btn-secondary">
+          <PlayCircle class="h-4 w-4" />
+          นัดหมายเพื่อสาธิตระบบ
+        </a>
+      </div>
+
+      <div class="mt-12 flex items-center gap-6 text-sm text-ink/50 dark:text-white/50">
+        <div class="flex -space-x-2">
+          {
+            [1, 2, 3, 4].map((i) => (
+              <span
+                class="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-primary/40 to-secondary/40 dark:border-[#0a0f0d]"
+              />
+            ))
+          }
+        </div>
+        <p>ธุรกิจกว่า 2,000+ แห่งไว้วางใจ CBoom</p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <DashboardPreview />
+    </div>
+  </div>
+</section>

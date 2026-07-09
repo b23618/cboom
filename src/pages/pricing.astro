@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Pricing from "../components/Pricing.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+---
+
+<Layout
+  title="ราคา — CBoom | แพ็กเกจ CRM มาร์เก็ตเพลส และ Enterprise"
+  description="ราคาแพ็กเกจที่โปร่งใสสำหรับ CBoom CRM มาร์เก็ตเพลส และแพ็กเกจ Enterprise"
+>
+  <Navbar />
+  <main>
+    <div class="pt-16 sm:pt-24">
+      <div class="container-page reveal mx-auto max-w-2xl text-center">
+        <span class="section-eyebrow">ราคา</span>
+        <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">แพ็กเกจที่เติบโตไปพร้อมธุรกิจคุณ</h1>
+        <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+          เริ่มต้นด้วยโมดูลเดียว แล้วเพิ่ม CRM, Marketplace, AI หรือ ESG ได้ตามการเติบโตของธุรกิจ
+        </p>
+      </div>
+    </div>
+    <Pricing />
+    <FAQ />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

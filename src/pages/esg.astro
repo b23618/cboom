@@ -1,0 +1,34 @@
+---
+import { Leaf, Zap, FileBarChart, ShieldCheck } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: Leaf, title: "จัดการข้อมูล Carbon", description: "รวบรวมและจัดการข้อมูลการปล่อยคาร์บอนขององค์กรไว้ในที่เดียว" },
+  { icon: Zap, title: "คำนวณการปล่อยคาร์บอน", description: "คำนวณปริมาณการปล่อยคาร์บอนจากการใช้ไฟฟ้าและกิจกรรมต่าง ๆ โดยอัตโนมัติ" },
+  { icon: FileBarChart, title: "จัดทำรายงาน ESG", description: "สร้างรายงานความยั่งยืนที่พร้อมนำเสนอนักลงทุนและหน่วยงานกำกับดูแล" },
+  { icon: ShieldCheck, title: "Dashboard", description: "ติดตามความคืบหน้าด้าน ESG ขององค์กรแบบเรียลไทม์" },
+];
+---
+
+<Layout
+  title="CBoom ESG — รายงานความยั่งยืนและคาร์บอนฟุตพริ้นท์"
+  description="ติดตามคาร์บอนฟุตพริ้นท์ การใช้ไฟฟ้า และออกรายงาน ESG เพื่อความยั่งยืนขององค์กร"
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Leaf}
+      eyebrow="CBoom ESG"
+      title="จัดทำรายงานความยั่งยืนได้ง่ายกว่าที่คิด"
+      description="ติดตามคาร์บอนฟุตพริ้นท์และการใช้ไฟฟ้า แล้วสร้างรายงาน ESG ที่พร้อมใช้งานได้ในไม่กี่นาที"
+    />
+    <FeatureList items={features} />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

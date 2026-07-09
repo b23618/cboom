@@ -1,0 +1,35 @@
+---
+import { Users2, UserPlus, Database, GitBranch, ListChecks, LineChart } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: UserPlus, title: "จัดการข้อมูลลูกค้า", description: "เก็บข้อมูลลูกค้าและโอกาสใหม่ไว้ในที่เดียว เห็นภาพรวมชัดเจน" },
+  { icon: Database, title: "Pipeline งานขาย", description: "ติดตามสถานะการขายทุกขั้นตอน ตั้งแต่ติดต่อครั้งแรกจนปิดการขาย" },
+  { icon: GitBranch, title: "ติดตามลูกค้า", description: "เตือนการติดต่อลูกค้าอีกครั้ง ไม่พลาดเสียโอกาสการขาย" },
+  { icon: ListChecks, title: "บันทึกการติดต่อ", description: "บันทึกประวัติการสนทนากับลูกค้าไว้ในที่เดียวสำหรับทั้งทีม" },
+  { icon: LineChart, title: "Sales Dashboard", description: "ติดตามเป้าขายและผลงานทีมขายแบบเรียลไทม์" },
+];
+---
+
+<Layout
+  title="CBoom CRM — ระบบลูกค้าสัมพันธ์สำหรับทีมขาย"
+  description="ระบบ CRM สำหรับทีมขาย จัดการลูกค้า Pipeline และงานติดต่อได้ในที่เดียว"
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Users2}
+      eyebrow="CBoom CRM"
+      title="ระบบ CRM ที่ทีมขายใช้งานได้จริง"
+      description="จัดการลีด ลูกค้า และดีลใน Pipeline เดียว ช่วยให้ทีมขายทำงานสอดคล้องกันมากขึ้น"
+    />
+    <FeatureList items={features} />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

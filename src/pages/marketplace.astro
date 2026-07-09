@@ -1,0 +1,36 @@
+---
+import { Store, ShoppingBag, RefreshCw, Truck, Boxes } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import Marketplace from "../components/Marketplace.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: ShoppingBag, title: "เชื่อมต่อ Shopee, TikTok Shop, Lazada", description: "จัดการทุกออเดอร์จากทุกช่องทางในหน้าจอเดียว" },
+  { icon: RefreshCw, title: "ดึงออเดอร์อัตโนมัติ", description: "ออเดอร์ถูกดึงเข้าระบบทันทีที่ลูกค้าชำระเงิน ไม่ต้องคีย์ซ้ำ" },
+  { icon: Truck, title: "พิมพ์ใบปะหน้า", description: "สร้างและพิมพ์ใบปะหน้าขนส่งได้ทีละหลายรายการในไม่กี่วินาที" },
+  { icon: Boxes, title: "จัดการสต๊อก", description: "อัปเดตจำนวนสต๊อกทุกช่องทางให้ตรงกันโดยอัตโนมัติ" },
+];
+---
+
+<Layout
+  title="CBoom Marketplace — ระบบเชื่อมมาร์เก็ตเพลส Shopee TikTok Shop Lazada"
+  description="เชื่อมต่อ Shopee, TikTok Shop และ Lazada ดึงออเดอร์และซิงค์สต๊อกอัตโนมัติในที่เดียว"
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Store}
+      eyebrow="CBoom Marketplace"
+      title="ขายทุกช่องทาง จัดการจากที่เดียว"
+      description="เชื่อมต่อ Shopee, TikTok Shop และ Lazada เพื่อซิงค์ออเดอร์ สต๊อก และการจัดส่งโดยอัตโนมัติ"
+    />
+    <FeatureList items={features} />
+    <Marketplace />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

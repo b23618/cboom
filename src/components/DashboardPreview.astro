@@ -1,0 +1,117 @@
+---
+import {
+  TrendingUp,
+  ShoppingCart,
+  Users,
+  Package,
+  Sparkles,
+  Bell,
+  ArrowUpRight,
+  ArrowDownRight,
+} from "@lucide/astro";
+
+const stats = [
+  { label: "ยอดขาย", value: "฿482,920", change: "+18.2%", up: true, icon: TrendingUp },
+  { label: "ออเดอร์", value: "12,384", change: "+9.4%", up: true, icon: ShoppingCart },
+  { label: "ลูกค้าใหม่ (CRM)", value: "3,102", change: "+4.1%", up: true, icon: Users },
+  { label: "สต๊อกสินค้า", value: "98.2%", change: "-1.2%", up: false, icon: Package },
+];
+
+const activity = [
+  { title: "มีออเดอร์ใหม่จาก Shopee", time: "2 นาทีที่แล้ว" },
+  { title: "AI อัปเดตคาดการณ์ยอดขายไตรมาส 3", time: "18 นาทีที่แล้ว" },
+  { title: "ลูกค้าย้ายสถานะเป็น เจรจาต่อรอง", time: "42 นาทีที่แล้ว" },
+  { title: "สร้างรายงาน ESG เรียบร้อย", time: "1 ชั่วโมงที่แล้ว" },
+];
+
+const bars = [40, 65, 45, 80, 60, 95, 70];
+---
+
+<div class="relative w-full animate-float">
+  <div
+    class="absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-primary/30 via-secondary/20 to-transparent blur-2xl"
+  >
+  </div>
+
+  <div class="glass relative rounded-card shadow-2xl shadow-primary/10 overflow-hidden">
+    <div class="flex items-center justify-between border-b border-border/60 px-5 py-4 dark:border-white/10">
+      <div class="flex items-center gap-2">
+        <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+        <span class="ml-3 text-xs font-medium text-ink/50 dark:text-white/50">CBoom · ภาพรวม</span>
+      </div>
+      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <Bell class="h-4 w-4" />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 p-5">
+      {
+        stats.map((stat) => (
+          <div class="rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+            <div class="flex items-center justify-between">
+              <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <stat.icon class="h-4 w-4" />
+              </span>
+              <span
+                class={`flex items-center gap-0.5 text-xs font-semibold ${
+                  stat.up ? "text-primary" : "text-red-500"
+                }`}
+              >
+                {stat.up ? <ArrowUpRight class="h-3 w-3" /> : <ArrowDownRight class="h-3 w-3" />}
+                {stat.change}
+              </span>
+            </div>
+            <p class="mt-3 text-xs text-ink/50 dark:text-white/50">{stat.label}</p>
+            <p class="text-lg font-bold">{stat.value}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+      <div class="flex items-center justify-between">
+        <p class="text-sm font-semibold">ยอดขาย Marketplace &amp; AI Insights</p>
+        <span class="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+          <Sparkles class="h-3 w-3" /> เรียลไทม์
+        </span>
+      </div>
+      <div class="mt-4 flex h-24 items-end gap-2">
+        {
+          bars.map((h, i) => (
+            <div class="flex-1 rounded-t-md bg-gradient-to-t from-primary to-secondary/70" style={`height:${h}%`} data-bar={i} />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+      <p class="mb-3 text-sm font-semibold">กิจกรรมล่าสุด</p>
+      <ul class="space-y-3">
+        {
+          activity.map((item) => (
+            <li class="flex items-center justify-between text-xs">
+              <span class="text-ink/70 dark:text-white/70">{item.title}</span>
+              <span class="text-ink/40 dark:text-white/40">{item.time}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="glass absolute -left-6 -bottom-6 hidden w-52 rounded-2xl p-4 shadow-xl sm:block animate-[float_7s_ease-in-out_infinite]"
+  >
+    <p class="text-xs font-medium text-ink/50 dark:text-white/50">คำแนะนำจาก AI</p>
+    <p class="mt-1 text-sm font-semibold">ควรเติมสต๊อก "SKU-2291" ก่อนวันศุกร์</p>
+  </div>
+
+  <div
+    class="glass absolute -right-4 -top-6 hidden w-44 rounded-2xl p-3 shadow-xl sm:block"
+  >
+    <p class="text-xs font-medium text-ink/50 dark:text-white/50">การแจ้งเตือน</p>
+    <p class="mt-1 text-sm font-semibold text-primary">+248 ออเดอร์ใหม่วันนี้</p>
+  </div>
+</div>

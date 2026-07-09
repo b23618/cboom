@@ -1,0 +1,39 @@
+---
+import { Plug, RefreshCw, Workflow, Rocket } from "@lucide/astro";
+
+const steps = [
+  { icon: Plug, title: "Connect Marketplace", description: "Link Shopee, TikTok Shop, and Lazada in a few clicks." },
+  { icon: RefreshCw, title: "Sync Data", description: "Orders, products, and customers sync automatically in real time." },
+  { icon: Workflow, title: "Automate Workflow", description: "Let CBoom AI handle repetitive sales and ops tasks for you." },
+  { icon: Rocket, title: "Grow Business", description: "Focus on strategy while CBoom runs your daily operations." },
+];
+---
+
+<section class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">How It Works</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">From setup to scale in four steps</h2>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        steps.map((step, i) => (
+          <div class="reveal relative" style={`transition-delay:${i * 100}ms`}>
+            <div class="rounded-card border border-border/70 bg-white p-7 dark:border-white/10 dark:bg-white/5">
+              <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary font-bold">
+                <step.icon class="h-6 w-6" />
+              </span>
+              <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">Step {i + 1}</p>
+              <h3 class="mt-1 text-lg font-bold">{step.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{step.description}</p>
+            </div>
+            {i < steps.length - 1 && (
+              <div class="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-primary/50 lg:block">→</div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

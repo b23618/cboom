@@ -1,0 +1,83 @@
+---
+import { ChevronDown } from "@lucide/astro";
+
+const faqs = [
+  {
+    question: "ระบบรองรับ Marketplace อะไรบ้าง",
+    answer:
+      "CBoom รองรับการเชื่อมต่อกับ Shopee, TikTok Shop และ Lazada ในปัจจุบัน และกำลังพัฒนารองรับ WooCommerce, Shopify และ Magento เพิ่มเติมในเร็ว ๆ นี้",
+  },
+  {
+    question: "ใช้เวลาติดตั้งกี่วัน",
+    answer:
+      "โดยเฉลี่ยใช้เวลาติดตั้งและเชื่อมต่อระบบประมาณ 3-7 วันทำการ ขึ้นอยู่กับจำนวนช่องทางและความซับซ้อนของข้อมูลที่ต้องเชื่อมต่อ",
+  },
+  {
+    question: "สามารถเชื่อม ERP เดิมได้หรือไม่",
+    answer:
+      "CBoom มี API และทีมงานที่พร้อมช่วยเชื่อมต่อกับระบบ ERP หรือระบบบัญชีที่ธุรกิจของคุณใช้งานอยู่แล้ว",
+  },
+  {
+    question: "มี API หรือไม่",
+    answer:
+      "CBoom มี API สำหรับเชื่อมต่อกับระบบภายนอก พร้อมคู่มือการใช้งานสำหรับทีมพัฒนาของคุณ",
+  },
+  {
+    question: "รองรับการใช้งานบนมือถือหรือไม่",
+    answer:
+      "CBoom รองรับการใช้งานผ่านมือถือ ออกแบบให้ใช้งานได้ดีทั้งบนคอมพิวเตอร์และมือถือ ทำให้ติดตามธุรกิจได้ทุกที่ทุกเวลา",
+  },
+];
+---
+
+<section id="faq" class="py-24 sm:py-32">
+  <div class="container-page mx-auto max-w-3xl">
+    <div class="reveal text-center">
+      <span class="section-eyebrow">คำถามที่พบบ่อย</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">คำถามที่พบบ่อย</h2>
+    </div>
+
+    <div class="mt-12 space-y-3">
+      {
+        faqs.map((faq, i) => (
+          <div
+            class="reveal faq-item overflow-hidden rounded-2xl border border-border/70 bg-white dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 60}ms`}
+          >
+            <button
+              class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-semibold"
+              aria-expanded="false"
+            >
+              <span>{faq.question}</span>
+              <ChevronDown class="faq-icon h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300" />
+            </button>
+            <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300">
+              <p class="px-6 pb-5 text-sm leading-relaxed text-ink/60 dark:text-white/60">{faq.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll(".faq-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const panel = item?.querySelector(".faq-panel");
+      const icon = btn.querySelector(".faq-icon");
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      document.querySelectorAll(".faq-panel").forEach((p) => (p.style.maxHeight = "0px"));
+      document.querySelectorAll(".faq-trigger").forEach((b) => b.setAttribute("aria-expanded", "false"));
+      document.querySelectorAll(".faq-icon").forEach((i) => i.classList.remove("rotate-180"));
+
+      if (!isOpen && panel) {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        btn.setAttribute("aria-expanded", "true");
+        icon?.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
