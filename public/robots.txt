@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Block demo from being indexed to avoid duplicate content
+Disallow: /demo/
+
 Sitemap: https://cboom.up.railway.app/sitemap-index.xml

@@ -1,0 +1,37 @@
+---
+import { Boxes, RefreshCw, AlertTriangle, Warehouse, Package, ArrowRight } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: Boxes, title: "จัดการสต๊อกหลายคลัง", description: "ติดตามสต๊อกสินค้าทุกคลังพร้อมกัน ซิงค์เรียลไทม์" },
+  { icon: RefreshCw, title: "ซิงค์สต๊อกอัตโนมัติ", description: "ลดสต๊อกอัตโนมัติเมื่อมีออเดอร์ อัปเดตทุกช่องทางพร้อมกัน" },
+  { icon: AlertTriangle, title: "แจ้งเตือนสต๊อกต่ำ", description: "แจ้งเตือนเมื่อสต๊อกใกล้หมด พร้อมคำแนะนำการเติมสต๊อก" },
+  { icon: Warehouse, title: "ติดตามการเคลื่อนย้าย", description: "บันทึกการรับเข้า-ส่งออกสินค้า ตรวจสอบย้อนหลังได้" },
+  { icon: Package, title: "จัดการ SKU", description: "จัดการข้อมูลสินค้า ราคา และหน่วยนับในที่เดียว" },
+];
+---
+
+<Layout
+  title="CBoom Inventory — ระบบจัดการคลังสินค้าและสต๊อกอัตโนมัติ"
+  description="ระบบจัดการคลังสินค้า ซิงค์สต๊อกทุกช่องทาง แจ้งเตือนสต๊อกต่ำ และติดตามการเคลื่อนย้ายสินค้า"
+  keywords="CBoom Inventory, ระบบคลังสินค้า, จัดการสต๊อก, ซิงค์สต๊อก, แจ้งเตือนสต๊อกต่ำ, จัดการ SKU"
+  breadcrumb={[{ name: "Inventory", path: "/inventory/" }]}
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Boxes}
+      eyebrow="CBoom Inventory"
+      title="จัดการสต๊อกทุกคลังในที่เดียว"
+      description="ซิงค์สต๊อกทุกช่องทาง แจ้งเตือนสต๊อกต่ำ และติดตามการเคลื่อนย้ายสินค้า อัตโนมัติ"
+    />
+    <FeatureList items={features} />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

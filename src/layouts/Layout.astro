@@ -1,87 +1,44 @@
 ---
 import "../styles/global.css";
+import SEO from "../components/SEO.astro";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   keywords?: string;
+  noindex?: boolean;
+  breadcrumb?: { name: string; path: string }[];
+  faq?: { question: string; answer: string }[];
 }
 
 const {
   title = "CBoom — แพลตฟอร์มบริหารธุรกิจอัตโนมัติ",
-  description = "CBoom คือแพลตฟอร์มบริหารธุรกิจยุคใหม่ ช่วยจัดการลูกค้า ออเดอร์ Marketplace งานขาย ระบบอัตโนมัติ และ AI ทั้งหมดในระบบเดียว",
-  image = "/logo.png",
-  keywords = "CBoom, ระบบ CRM, ระบบบริหารธุรกิจอัตโนมัติ, เชื่อมต่อมาร์เก็ตเพลส, Shopee, TikTok Shop, Lazada, ระบบคลังสินค้า, AI อัตโนมัติ, รายงาน ESG",
+  description = "CBoom คือแพลตฟอร์มบริหารธุรกิจแบบครบวงจร ที่รวม CRM, Marketplace, AI, Dashboard และระบบอัตโนมัติ ไว้ในระบบเดียว เชื่อมต่อทุกช่องทางการขาย ลดงาน Manual และช่วยให้ทีมทำงานได้เร็วขึ้น",
+  image,
+  keywords,
+  noindex = false,
+  breadcrumb = [],
+  faq = [
+    {
+      question: "CBoom รองรับ Marketplace ช่องไหนบ้าง",
+      answer: "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
+    },
+    {
+      question: "มีทดลองใช้งานฟรีไหม",
+      answer: "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
+    },
+    {
+      question: "ข้อมูลของฉันปลอดภัยไหม",
+      answer: "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
+    },
+  ],
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL(image, Astro.site);
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "CBoom",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  description,
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "0",
-    highPrice: "50000",
-    priceCurrency: "THB",
-    offerCount: "6",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "2000",
-  },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "CBoom รองรับ Marketplace ช่องไหนบ้าง",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "มีทดลองใช้งานฟรีไหม",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "ข้อมูลของฉันปลอดภัยไหม",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
-      },
-    },
-  ],
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "หน้าแรก",
-      item: canonicalURL.href,
-    },
-  ],
-};
+const fullBreadcrumb = [
+  { name: "หน้าแรก", path: "/" },
+  ...breadcrumb,
+];
 ---
 
 <!doctype html>
@@ -91,31 +48,21 @@ const breadcrumbSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={canonicalURL} />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    <meta name="theme-color" content="#16A34A" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageURL} />
-    <meta property="og:site_name" content="CBoom" />
-    <meta property="og:locale" content="th_TH" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageURL} />
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      keywords={keywords}
+      noindex={noindex}
+      breadcrumb={fullBreadcrumb}
+      faq={faq}
+    />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="CBoom Blog" href="/rss.xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -123,10 +70,6 @@ const breadcrumbSchema = {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
     <script is:inline>
       const stored = localStorage.getItem("cboom-theme");

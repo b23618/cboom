@@ -1,0 +1,37 @@
+---
+import { Users, Clock, Calendar, FileText, Briefcase, ArrowRight } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: Users, title: "จัดการพนักงาน", description: "เก็บข้อมูลพนักงาน ประวัติการทำงาน และเอกสารไว้ในที่เดียว" },
+  { icon: Clock, title: "บันทึกเวลาทำงาน", description: "บันทึกเวลาเข้า-ออกงาน คำนวณชั่วโมงทำงานอัตโนมัติ" },
+  { icon: Calendar, title: "จัดการวันลา", description: "ยื่นใบลาและอนุมัติออนไลน์ ติดตามวันลาคงเหลือได้" },
+  { icon: FileText, title: "เงินเดือนอัตโนมัติ", description: "คำนวณเงินเดือน โบนัส และ OT พร้อมสร้างสลิปเงินเดือน" },
+  { icon: Briefcase, title: "ประเมินผลงาน", description: "ตั้งเป้าหมายและประเมินผลงานพนักงานแบบ KPI" },
+];
+---
+
+<Layout
+  title="CBoom HR — ระบบบริหารทรัพยากรบุคคลสำหรับธุรกิจ"
+  description="ระบบ HR จัดการพนักงาน เวลาทำงาน วันลา เงินเดือน และประเมินผลงาน ในระบบเดียว"
+  keywords="CBoom HR, ระบบ HR, ระบบเงินเดือน, จัดการพนักงาน, บันทึกเวลาทำงาน, วันลาออนไลน์"
+  breadcrumb={[{ name: "HR", path: "/hr/" }]}
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Users}
+      eyebrow="CBoom HR"
+      title="ระบบ HR ที่ลดงาน Manual ให้ทีมบุคคล"
+      description="จัดการพนักงาน เวลาทำงาน วันลา เงินเดือน และประเมินผลงาน ทุกอย่างในระบบเดียว"
+    />
+    <FeatureList items={features} />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

@@ -1,53 +1,15 @@
 ---
 import DashboardApp from "../react/DashboardApp.tsx";
+import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-
-const title = "CBoom Demo — ทดลองใช้งาน Dashboard จริง";
-const description = "ทดลองใช้งาน CBoom Dashboard แบบ Interactive โดยไม่ต้อง Login ครบทุกโมดูล: CRM, Marketplace, AI, Dashboard และ Reports";
-const canonicalURL = new URL("/demo/", Astro.site);
 ---
 
-<!doctype html>
-<html lang="th" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="canonical" href={canonicalURL} />
-
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#16A34A" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="CBoom" />
-    <meta property="og:locale" content="th_TH" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <script is:inline>
-      const stored = localStorage.getItem("cboom-theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (stored === "dark" || (!stored && prefersDark)) {
-        document.documentElement.classList.add("dark");
-      }
-    </script>
-  </head>
-  <body class="bg-gray-50 text-gray-900 antialiased dark:bg-[#0a0f0d] dark:text-white">
-    <DashboardApp client:only="react" />
-  </body>
-</html>
+<Layout
+  title="CBoom Demo — ทดลองใช้งาน Dashboard จริง"
+  description="ทดลองใช้งาน CBoom Dashboard แบบ Interactive โดยไม่ต้อง Login ครบทุกโมดูล: CRM, Marketplace, AI, Dashboard และ Reports"
+  keywords="CBoom Demo, ทดลองใช้งาน, Dashboard, Interactive Demo, CRM Demo, Marketplace Demo"
+  noindex={true}
+  breadcrumb={[{ name: "Demo", path: "/demo/" }]}
+>
+  <DashboardApp client:only="react" />
+</Layout>

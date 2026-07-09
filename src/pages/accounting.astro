@@ -1,0 +1,37 @@
+---
+import { Calculator, Receipt, TrendingUp, FileText, Banknote, ArrowRight } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ProductHero from "../components/ProductHero.astro";
+import FeatureList from "../components/FeatureList.astro";
+import CTA from "../components/CTA.astro";
+
+const features = [
+  { icon: Receipt, title: "ออกใบเสร็จอัตโนมัติ", description: "สร้างใบเสร็จรับเงินและใบกำกับภาษีอัตโนมัติจากออเดอร์" },
+  { icon: Banknote, title: "ติดตามการชำระเงิน", description: "ติดตามสถานะการชำระเงินและยอดค้างชำระจากทุกช่องทาง" },
+  { icon: TrendingUp, title: "รายงานกำไร-ขาดทุน", description: "ดูกำไรและขาดทุนแบบเรียลไทม์ พร้อมภาพรวมธุรกิจ" },
+  { icon: FileText, title: "รายงานภาษี", description: "สร้างรายงานภาษีซื้อ-ภาษีขาย พร้อมส่ง ภพ.30 ได้" },
+  { icon: Calculator, title: "บัญชีทั่วไป", description: "บันทึกรายรับ-รายจ่าย แยกประเภทบัญชีอัตโนมัติ" },
+];
+---
+
+<Layout
+  title="CBoom Accounting — ระบบบัญชีอัตโนมัติสำหรับธุรกิจ"
+  description="ระบบบัญชีอัตโนมัติ ออกใบเสร็จ ติดตามการชำระเงิน และรายงานภาษี สำหรับธุรกิจที่ต้องการความแม่นยำ"
+  keywords="CBoom Accounting, ระบบบัญชี, ใบเสร็จอัตโนมัติ, รายงานภาษี, ภพ.30, บัญชีออนไลน์"
+  breadcrumb={[{ name: "Accounting", path: "/accounting/" }]}
+>
+  <Navbar />
+  <main>
+    <ProductHero
+      icon={Calculator}
+      eyebrow="CBoom Accounting"
+      title="ระบบบัญชีที่ทำงานอัตโนมัติ"
+      description="ออกใบเสร็จ ติดตามการชำระเงิน และสร้างรายงานภาษี ทุกอย่างเชื่อมต่อกับออเดอร์และ CRM อัตโนมัติ"
+    />
+    <FeatureList items={features} />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
