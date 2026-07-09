@@ -1,22 +1,19 @@
 ---
-import { ShoppingBag, Video, Box, Truck, CreditCard, Phone, Mail, Database, Cloud, Plug } from "@lucide/astro";
+import { ShoppingBag, Video, Box, Truck, CreditCard, Phone, Mail, Database, Cloud, Plug, Code, Webhook } from "@lucide/astro";
 
 const supported = [
   { name: "Shopee", icon: ShoppingBag },
   { name: "TikTok Shop", icon: Video },
   { name: "Lazada", icon: ShoppingBag },
-  { name: "Flash Express", icon: Truck },
-  { name: "Kerry Express", icon: Truck },
-  { name: "SCB Pay", icon: CreditCard },
-  { name: "PromptPay", icon: CreditCard },
   { name: "LINE OA", icon: Phone },
+  { name: "REST API", icon: Code },
+  { name: "Webhook", icon: Webhook },
 ];
 
 const comingSoon = [
-  { name: "TrueMoney", icon: CreditCard },
-  { name: "ShopeePay", icon: CreditCard },
-  { name: "DHL Express", icon: Truck },
-  { name: "J&T Express", icon: Truck },
+  { name: "Shopify", icon: ShoppingBag },
+  { name: "WooCommerce", icon: ShoppingBag },
+  { name: "Magento", icon: ShoppingBag },
 ];
 
 const connections = [
@@ -42,7 +39,7 @@ const connections = [
     <!-- Supported integrations -->
     <div class="reveal mt-14">
       <p class="mb-4 text-center text-sm font-semibold text-ink/50 dark:text-white/50">เชื่อมต่อแล้ววันนี้</p>
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         {
           supported.map((item) => (
             <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border/60 bg-white/60 px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
@@ -57,7 +54,7 @@ const connections = [
     <!-- Coming soon -->
     <div class="reveal mt-8">
       <p class="mb-4 text-center text-sm font-semibold text-ink/50 dark:text-white/50">เร็ว ๆ นี้</p>
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 mx-auto max-w-2xl">
+      <div class="grid grid-cols-3 gap-4 mx-auto max-w-xl">
         {
           comingSoon.map((item) => (
             <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border/60 bg-white/30 px-3 py-5 text-center dark:border-white/10 dark:bg-white/[0.02]">

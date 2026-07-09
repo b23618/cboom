@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cboom.up.railway.app/sitemap-index.xml

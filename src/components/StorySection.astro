@@ -1,0 +1,118 @@
+---
+import {
+  ShoppingCart,
+  Download,
+  Boxes,
+  Truck,
+  UserPlus,
+  Brain,
+  LayoutDashboard,
+} from "@lucide/astro";
+
+const steps = [
+  {
+    icon: ShoppingCart,
+    title: "ลูกค้าสั่งซื้อจาก Shopee",
+    description: "ออเดอร์เข้าระบบอัตโนมัติ ไม่ต้องคีย์มือ",
+    color: "bg-orange-500",
+  },
+  {
+    icon: Download,
+    title: "CBoom รับออเดอร์อัตโนมัติ",
+    description: "ดึงออเดอร์จากทุกช่องทางเข้าสู่ระบบกลาง",
+    color: "bg-primary",
+  },
+  {
+    icon: Boxes,
+    title: "อัปเดตสต๊อกทันที",
+    description: "ลดสต๊อกอัตโนมัติ ซิงค์ทุกช่องทางพร้อมกัน",
+    color: "bg-blue-500",
+  },
+  {
+    icon: Truck,
+    title: "สร้างใบปะหน้า",
+    description: "พิมพ์ใบปะหน้าและอัปเดตขนส่งอัตโนมัติ",
+    color: "bg-purple-500",
+  },
+  {
+    icon: UserPlus,
+    title: "บันทึกลูกค้าเข้า CRM",
+    description: "ข้อมูลลูกค้าเข้าระบบ CRM พร้อมประวัติการซื้อ",
+    color: "bg-cyan-500",
+  },
+  {
+    icon: Brain,
+    title: "AI วิเคราะห์ยอดขาย",
+    description: "AI พยากรณ์เทรนด์ แนะนำการเติมสต๊อกและการตลาด",
+    color: "bg-primary",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Executive Dashboard อัปเดต",
+    description: "ผู้บริหารเห็นภาพรวมแบบเรียลไทม์ ตัดสินใจได้ทันที",
+    color: "bg-amber-500",
+  },
+];
+---
+
+<section id="story" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">วิธีการทำงาน</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        จากออเดอร์ถึง Dashboard
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          อัตโนมัติ
+        </span>
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        CBoom ทำงานทุกขั้นตอนให้อัตโนมัติ ลดงาน Manual และช่วยให้ธุรกิจทำงานได้เร็วขึ้น
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="reveal mt-16 mx-auto max-w-3xl">
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent dark:from-primary/30 dark:via-primary/10"></div>
+
+        <div class="space-y-8">
+          {
+            steps.map((step, i) => (
+              <div
+                class="reveal relative flex items-start gap-6"
+                style={`transition-delay:${i * 80}ms`}
+              >
+                <!-- Icon node -->
+                <div class={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${step.color} text-white shadow-lg`}>
+                  <step.icon class="h-5 w-5" />
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1 rounded-card border border-border/60 bg-white/60 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
+                  <div class="flex items-center gap-3">
+                    <h3 class="text-sm font-bold">{step.title}</h3>
+                    {i < steps.length - 1 && (
+                      <span class="text-ink/30 dark:text-white/30">↓</span>
+                    )}
+                  </div>
+                  <p class="mt-1.5 text-sm leading-relaxed text-ink/60 dark:text-white/60">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal mt-12 text-center">
+        <a href="/demo/" class="btn-primary">
+          ลองดูด้วยตัวเอง
+          <LayoutDashboard class="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
