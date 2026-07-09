@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, PlayCircle } from "@lucide/astro";
+import { ArrowRight, PlayCircle, Check } from "@lucide/astro";
 import DashboardPreview from "./DashboardPreview.astro";
 ---
 
@@ -28,8 +28,8 @@ import DashboardPreview from "./DashboardPreview.astro";
       </h1>
 
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/60 dark:text-white/60">
-        CBoom คือแพลตฟอร์มสำหรับบริหารธุรกิจยุคใหม่ ช่วยจัดการลูกค้า ออเดอร์ Marketplace
-        งานขาย ระบบอัตโนมัติ และ AI ทั้งหมดในระบบเดียว
+        CBoom คือแพลตฟอร์มบริหารธุรกิจที่รวม CRM, Marketplace, AI, Dashboard และ Automation ไว้ในระบบเดียว
+        ช่วยลดงาน Manual เชื่อมต่อทุกช่องทางการขาย และเพิ่มประสิทธิภาพให้ทีมของคุณ
       </p>
 
       <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -37,23 +37,25 @@ import DashboardPreview from "./DashboardPreview.astro";
           ทดลองใช้ฟรี
           <ArrowRight class="h-4 w-4" />
         </a>
-        <a href="https://lin.ee/QVWxues" class="btn-secondary">
+        <a href="/demo/" class="btn-secondary">
           <PlayCircle class="h-4 w-4" />
-          นัดหมายเพื่อสาธิตระบบ
+          ดู Live Demo
         </a>
       </div>
 
-      <div class="mt-12 flex items-center gap-6 text-sm text-ink/50 dark:text-white/50">
-        <div class="flex -space-x-2">
-          {
-            [1, 2, 3, 4].map((i) => (
-              <span
-                class="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-primary/40 to-secondary/40 dark:border-[#0a0f0d]"
-              />
-            ))
-          }
-        </div>
-        <p>ธุรกิจกว่า 2,000+ แห่งไว้วางใจ CBoom</p>
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/50 dark:text-white/50">
+        <span class="flex items-center gap-1.5">
+          <Check class="h-4 w-4 text-primary" />
+          ไม่ต้องใช้บัตรเครดิต
+        </span>
+        <span class="flex items-center gap-1.5">
+          <Check class="h-4 w-4 text-primary" />
+          เริ่มใช้งานภายใน 5 นาที
+        </span>
+        <span class="flex items-center gap-1.5">
+          <Check class="h-4 w-4 text-primary" />
+          ทีมงานคนไทยดูแล
+        </span>
       </div>
     </div>
 

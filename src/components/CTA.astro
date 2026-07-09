@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Mail } from "@lucide/astro";
+import { ArrowRight, Calendar, Sparkles } from "@lucide/astro";
 ---
 
 <section id="contact" class="py-24 sm:py-32">
@@ -10,28 +10,43 @@ import { ArrowRight, Mail } from "@lucide/astro";
       <div class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
       <div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
 
-      <h2 class="relative text-3xl font-extrabold tracking-tight sm:text-4xl">
-        พร้อมเริ่มต้นหรือยัง
-      </h2>
-      <p class="relative mx-auto mt-4 max-w-xl text-lg text-white/85">
-        ให้ CBoom ช่วยลดเวลาการทำงาน และเพิ่มประสิทธิภาพให้ธุรกิจของคุณ
-      </p>
+      <div class="relative">
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+          <Sparkles class="h-3.5 w-3.5" />
+          เริ่มต้นใช้งานฟรีวันนี้
+        </span>
 
-      <div class="relative mt-10 flex flex-wrap items-center justify-center gap-4">
-        <a
-          href="https://lin.ee/QVWxues"
-          class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-primary shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-        >
-          ทดลองใช้ฟรี
-          <ArrowRight class="h-4 w-4" />
-        </a>
-        <a
-          href="https://lin.ee/QVWxues"
-          class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
-        >
-          <Mail class="h-4 w-4" />
-          ติดต่อฝ่ายขาย
-        </a>
+        <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+          พร้อมยกระดับธุรกิจของคุณหรือยัง
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">
+          เริ่มทดลองใช้ CBoom ฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต หรือนัดหมายเพื่อสาธิตระบบกับทีมงานของเรา
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://lin.ee/QVWxues"
+            class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-primary shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            ทดลองใช้ฟรี 14 วัน
+            <ArrowRight class="h-4 w-4" />
+          </a>
+          <a
+            href="https://lin.ee/QVWxues"
+            class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
+          >
+            <Calendar class="h-4 w-4" />
+            นัดหมายสาธิตระบบ
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+          <span>ไม่ต้องใช้บัตรเครดิต</span>
+          <span class="hidden sm:inline">·</span>
+          <span>ยกเลิกได้ทุกเมื่อ</span>
+          <span class="hidden sm:inline">·</span>
+          <span>ทีมงานคนไทยดูแล</span>
+        </div>
       </div>
     </div>
   </div>

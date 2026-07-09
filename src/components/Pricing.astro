@@ -1,47 +1,88 @@
 ---
-import { Check, Star } from "@lucide/astro";
+import { Check, Star, Cloud, Wrench } from "@lucide/astro";
 
-const plans = [
+const saasPlans = [
   {
-    name: "CRM",
-    price: "25,000",
-    period: "บาท",
-    description: "เริ่มต้นสำหรับทีมขาย",
+    name: "Starter",
+    price: "990",
+    period: "บาท/เดือน",
+    description: "เริ่มต้นสำหรับร้านค้าขนาดเล็ก",
     popular: false,
     features: [
-      "จัดการข้อมูลลูกค้า",
-      "Pipeline งานขาย",
-      "บันทึกการติดต่อ",
-      "Sales Dashboard",
-      "รายงานพื้นฐาน",
+      "CRM สำหรับ 3 ผู้ใช้",
+      "เชื่อมต่อ 1 ช่องทาง Marketplace",
+      "Dashboard พื้นฐาน",
+      "รายงานยอดขายรายเดือน",
+      "ซัพพอร์ตทาง LINE OA",
     ],
   },
   {
-    name: "Marketplace",
-    price: "35,000",
-    period: "บาท",
-    description: "สำหรับร้านค้าออนไลน์",
+    name: "Growth",
+    price: "2,900",
+    period: "บาท/เดือน",
+    description: "สำหรับธุรกิจที่กำลังเติบโต",
     popular: true,
     features: [
-      "รวมทุกฟีเจอร์ในแพ็กเกจ CRM",
+      "CRM สำหรับ 10 ผู้ใช้",
       "เชื่อมต่อ Shopee / TikTok Shop / Lazada",
-      "ดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
-      "พิมพ์ใบปะหน้าและอัปเดตขนส่ง",
-      "AI ช่วยวิเคราะห์การขาย",
+      "AI Insights & Sales Forecast",
+      "ซิงค์สต๊อกและออเดอร์อัตโนมัติ",
+      "รายงานแบบกำหนดเอง",
+      "ซัพพอร์ต Priority",
     ],
   },
   {
     name: "Enterprise",
     price: "ราคาพิเศษ",
     period: "ออกแบบตามความต้องการ",
-    description: "สำหรับองค์กรที่ต้องการเชื่อมหลายระบบ",
+    description: "สำหรับองค์กรขนาดใหญ่",
     popular: false,
     features: [
-      "รวมทุกฟีเจอร์ในแพ็กเกจ Marketplace",
+      "ผู้ใช้ไม่จำกัด",
+      "เชื่อมต่อทุกช่องทาง + API",
       "CBoom ESG และรายงานความยั่งยืน",
       "ทีมดูแลลูกค้าเฉพาะองค์กร",
-      "เชื่อมต่อระบบ ERP และ API เฉพาะทาง",
-      "SLA และการซัพพอร์ตระดับสูง",
+      "SLA 99.9% Uptime",
+      "On-premise / Private Cloud",
+    ],
+  },
+];
+
+const proServices = [
+  {
+    name: "Onboarding & Setup",
+    price: "15,000",
+    period: "บาท / ครั้ง",
+    description: "ตั้งค่าระบบเริ่มต้น นำเข้าข้อมูล อบรมทีม",
+    features: [
+      "ตั้งค่า CRM และ Marketplace",
+      "นำเข้าข้อมูลลูกค้าและสินค้า",
+      "อบรมทีมขาย 2 ชั่วโมง",
+      "ปรับแต่ง Dashboard",
+    ],
+  },
+  {
+    name: "Custom Integration",
+    price: "50,000",
+    period: "บาท / โปรเจกต์",
+    description: "เชื่อมต่อระบบเดิมเข้ากับ CBoom",
+    features: [
+      "เชื่อมต่อ ERP / Accounting",
+      "พัฒนา API เฉพาะทาง",
+      "ตั้งค่า Webhook และ Automation",
+      "ทดสอบและส่งมอบ 30 วัน",
+    ],
+  },
+  {
+    name: "Dedicated Support",
+    price: "10,000",
+    period: "บาท / เดือน",
+    description: "ทีมงานดูแลเฉพาะทีม",
+    features: [
+      "Account Manager เฉพาะทาง",
+      "ตอบกลับภายใน 2 ชั่วโมง",
+      "ตรวจสอบระบบรายสัปดาห์",
+      "ปรับปรุงและอัปเดตตามต้องการ",
     ],
   },
 ];
@@ -55,13 +96,22 @@ const plans = [
         แพ็กเกจราคาที่เติบโตไปพร้อมธุรกิจคุณ
       </h2>
       <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
-        เริ่มต้นด้วยโมดูลเดียว แล้วเพิ่มเติมได้ตามการเติบโตของธุรกิจ
+        เลือกแพ็กเกจ Cloud SaaS หรือเพิ่ม Professional Services ตามความต้องการ
       </p>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <!-- Cloud SaaS -->
+    <div class="reveal mt-12">
+      <div class="flex items-center justify-center gap-2">
+        <Cloud class="h-5 w-5 text-primary" />
+        <h3 class="text-xl font-bold">Cloud SaaS</h3>
+      </div>
+      <p class="mt-2 text-center text-sm text-ink/50 dark:text-white/50">สมัครใช้งานออนไลน์ เริ่มต้นภายใน 5 นาที</p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
       {
-        plans.map((plan, i) => (
+        saasPlans.map((plan, i) => (
           <div
             class={`reveal relative flex flex-col rounded-card border p-8 transition-all duration-300 hover:-translate-y-1.5 ${
               plan.popular
@@ -75,7 +125,7 @@ const plans = [
                 <Star class="h-3 w-3" /> ยอดนิยม
               </span>
             )}
-            <h3 class="text-lg font-bold">{plan.name}</h3>
+            <h4 class="text-lg font-bold">{plan.name}</h4>
             <p class="mt-2 text-sm text-ink/60 dark:text-white/60">
               {plan.description}
             </p>
@@ -96,10 +146,55 @@ const plans = [
             </ul>
 
             <a
-              href="/#contact"
+              href="https://lin.ee/QVWxues"
               class={`mt-8 ${plan.popular ? "btn-primary" : "btn-secondary"} w-full`}
             >
               {plan.price === "ราคาพิเศษ" ? "ติดต่อฝ่ายขาย" : "ทดลองใช้ฟรี"}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Professional Services -->
+    <div class="reveal mt-20">
+      <div class="flex items-center justify-center gap-2">
+        <Wrench class="h-5 w-5 text-primary" />
+        <h3 class="text-xl font-bold">Professional Services</h3>
+      </div>
+      <p class="mt-2 text-center text-sm text-ink/50 dark:text-white/50">บริการโดยทีมงานผู้เชี่ยวชาญของ CBoom</p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {
+        proServices.map((service, i) => (
+          <div
+            class="reveal relative flex flex-col rounded-card border border-border/70 bg-white p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 100}ms`}
+          >
+            <h4 class="text-lg font-bold">{service.name}</h4>
+            <p class="mt-2 text-sm text-ink/60 dark:text-white/60">
+              {service.description}
+            </p>
+            <div class="mt-6 flex items-baseline gap-1">
+              <span class="text-3xl font-extrabold">฿{service.price}</span>
+            </div>
+            <p class="text-sm text-ink/50 dark:text-white/50">{service.period}</p>
+
+            <ul class="mt-6 flex-1 space-y-3">
+              {service.features.map((feature) => (
+                <li class="flex items-start gap-2.5 text-sm text-ink/70 dark:text-white/70">
+                  <Check class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="https://lin.ee/QVWxues"
+              class="btn-secondary mt-8 w-full"
+            >
+              ขอใบเสนอราคา
             </a>
           </div>
         ))

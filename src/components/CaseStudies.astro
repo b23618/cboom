@@ -1,0 +1,97 @@
+---
+import { TrendingUp, Package, Users, ArrowRight } from "@lucide/astro";
+
+const cases = [
+  {
+    type: "ร้านค้าออนไลน์",
+    company: "แม่ค้าออนไลน์ ไทยแลนด์",
+    icon: TrendingUp,
+    headline: "เพิ่มยอดขาย 3 เท่า ใน 6 เดือน",
+    description: "เชื่อมต่อ Shopee, TikTok Shop และ Lazada เข้ากับ CBoom รวมออเดอร์ทุกช่องทาง ลดงาน Manual 80%",
+    metrics: [
+      { label: "ยอดขายเพิ่มขึ้น", value: "3x" },
+      { label: "ลดเวลาทำงาน", value: "80%" },
+      { label: "ออเดอร์/เดือน", value: "15,000+" },
+    ],
+  },
+  {
+    type: "ผู้กระจายสินค้า",
+    company: "บจก. สยามเทรดดิ้ง",
+    icon: Package,
+    headline: "จัดการสต๊อก 5 คลังพร้อมกัน",
+    description: "ใช้ CBoom บริหารสต๊อก 5 คลังสินค้า ซิงค์เรียลไทม์ ลดสินค้าค้างสต๊อก 45% และเพิ่มออเดอร์รับส่ง",
+    metrics: [
+      { label: "ลดสต๊อกค้าง", value: "45%" },
+      { label: "คลังสินค้า", value: "5 คลัง" },
+      { label: "ออเดอร์/วัน", value: "2,500+" },
+    ],
+  },
+  {
+    type: "SME อุตสาหกรรม",
+    company: "โรงงาน ไทยพรีเมียม",
+    icon: Users,
+    headline: "เชื่อม ERP เข้าระบบ CRM สำเร็จ",
+    description: "เชื่อมต่อระบบ ERP เดิมเข้ากับ CBoom CRM และ AI ทำให้ทีมขายเห็นข้อมูลลูกค้าแบบเรียลไทม์ ปิดการขายเร็วขึ้น 35%",
+    metrics: [
+      { label: "ปิดการขายเร็วขึ้น", value: "35%" },
+      { label: "ทีมขาย", value: "120 คน" },
+      { label: "Pipeline", value: "฿85M" },
+    ],
+  },
+];
+---
+
+<section id="case-studies" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">เคสสตัดอย่าง</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        ธุรกิจที่เติบโตกับ CBoom
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        ผลลัพธ์จริงจากลูกค้าที่ใช้ CBoom บริหารธุรกิจ
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {
+        cases.map((item, i) => (
+          <div
+            class="reveal group relative flex flex-col rounded-card border border-border/70 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 100}ms`}
+          >
+            <div class="flex items-center justify-between">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <item.icon class="h-5 w-5" />
+              </span>
+              <span class="rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">{item.type}</span>
+            </div>
+
+            <p class="mt-5 text-sm font-medium text-ink/50 dark:text-white/50">{item.company}</p>
+            <h3 class="mt-2 text-lg font-bold leading-snug">{item.headline}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink/60 dark:text-white/60">
+              {item.description}
+            </p>
+
+            <div class="mt-6 grid grid-cols-3 gap-3 border-t border-border/60 pt-6 dark:border-white/10">
+              {item.metrics.map((metric) => (
+                <div class="text-center">
+                  <p class="text-xl font-extrabold text-primary">{metric.value}</p>
+                  <p class="mt-1 text-[10px] leading-tight text-ink/50 dark:text-white/50">{metric.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="https://lin.ee/QVWxues"
+              class="mt-6 flex items-center gap-1 text-sm font-semibold text-primary transition-all group-hover:gap-2"
+            >
+              อ่านเพิ่มเติม
+              <ArrowRight class="h-4 w-4" />
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

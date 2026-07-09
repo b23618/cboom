@@ -3,28 +3,43 @@ import {
   TrendingUp,
   ShoppingCart,
   Users,
-  Package,
+  Clock,
   Sparkles,
   Bell,
   ArrowUpRight,
   ArrowDownRight,
+  Brain,
+  Target,
 } from "@lucide/astro";
 
 const stats = [
-  { label: "ยอดขาย", value: "฿482,920", change: "+18.2%", up: true, icon: TrendingUp },
-  { label: "ออเดอร์", value: "12,384", change: "+9.4%", up: true, icon: ShoppingCart },
-  { label: "ลูกค้าใหม่ (CRM)", value: "3,102", change: "+4.1%", up: true, icon: Users },
-  { label: "สต๊อกสินค้า", value: "98.2%", change: "-1.2%", up: false, icon: Package },
+  { label: "ยอดขายวันนี้", value: "฿128,450", change: "+18.2%", up: true, icon: TrendingUp, id: "stat-revenue" },
+  { label: "ออเดอร์วันนี้", value: "342", change: "+9.4%", up: true, icon: ShoppingCart, id: "stat-orders" },
+  { label: "ลูกค้าใหม่", value: "87", change: "+4.1%", up: true, icon: Users, id: "stat-customers" },
+  { label: "ออเดอร์รอดำเนินการ", value: "23", change: "-12%", up: false, icon: Clock, id: "stat-pending" },
+];
+
+const channels = [
+  { name: "Shopee", orders: 156, pct: 46, color: "bg-orange-500" },
+  { name: "TikTok Shop", orders: 112, pct: 33, color: "bg-pink-500" },
+  { name: "Lazada", orders: 74, pct: 21, color: "bg-blue-500" },
+];
+
+const bars = [35, 52, 48, 72, 58, 88, 65, 92, 70, 85, 60, 78];
+
+const pipeline = [
+  { stage: "ลีดใหม่", count: 142, pct: 100 },
+  { stage: "ติดต่อแล้ว", count: 98, pct: 69 },
+  { stage: "เสนอราคา", count: 54, pct: 38 },
+  { stage: "ปิดการขาย", count: 31, pct: 22 },
 ];
 
 const activity = [
-  { title: "มีออเดอร์ใหม่จาก Shopee", time: "2 นาทีที่แล้ว" },
-  { title: "AI อัปเดตคาดการณ์ยอดขายไตรมาส 3", time: "18 นาทีที่แล้ว" },
-  { title: "ลูกค้าย้ายสถานะเป็น เจรจาต่อรอง", time: "42 นาทีที่แล้ว" },
-  { title: "สร้างรายงาน ESG เรียบร้อย", time: "1 ชั่วโมงที่แล้ว" },
+  { title: "ออเดอร์ใหม่จาก Shopee #SH-8821", time: "1 นาทีที่แล้ว", dot: "bg-orange-500" },
+  { title: "AI แนะนำเติมสต๊อก SKU-2291", time: "8 นาทีที่แล้ว", dot: "bg-primary" },
+  { title: "ออเดอร์ TikTok Shop #TT-4521 จัดส่งแล้ว", time: "15 นาทีที่แล้ว", dot: "bg-pink-500" },
+  { title: "ลูกค้าใหม่: บจก. สยามเทรดดิ้ง", time: "32 นาทีที่แล้ว", dot: "bg-blue-500" },
 ];
-
-const bars = [40, 65, 45, 80, 60, 95, 70];
 ---
 
 <div class="relative w-full animate-float">
@@ -34,18 +49,26 @@ const bars = [40, 65, 45, 80, 60, 95, 70];
   </div>
 
   <div class="glass relative rounded-card shadow-2xl shadow-primary/10 overflow-hidden">
+    <!-- Browser bar -->
     <div class="flex items-center justify-between border-b border-border/60 px-5 py-4 dark:border-white/10">
       <div class="flex items-center gap-2">
         <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
         <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
-        <span class="ml-3 text-xs font-medium text-ink/50 dark:text-white/50">CBoom · ภาพรวม</span>
+        <span class="ml-3 text-xs font-medium text-ink/50 dark:text-white/50">CBoom Dashboard</span>
       </div>
-      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-        <Bell class="h-4 w-4" />
+      <div class="flex items-center gap-2">
+        <span class="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-primary"></span>
+          Live
+        </span>
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Bell class="h-4 w-4" />
+        </div>
       </div>
     </div>
 
+    <!-- KPI Cards -->
     <div class="grid grid-cols-2 gap-3 p-5">
       {
         stats.map((stat) => (
@@ -64,35 +87,97 @@ const bars = [40, 65, 45, 80, 60, 95, 70];
               </span>
             </div>
             <p class="mt-3 text-xs text-ink/50 dark:text-white/50">{stat.label}</p>
-            <p class="text-lg font-bold">{stat.value}</p>
+            <p class="text-lg font-bold" data-counter={stat.id}>{stat.value}</p>
           </div>
         ))
       }
     </div>
 
+    <!-- Sales Chart -->
     <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
       <div class="flex items-center justify-between">
-        <p class="text-sm font-semibold">ยอดขาย Marketplace &amp; AI Insights</p>
+        <p class="text-sm font-semibold">ยอดขาย 12 วัน</p>
         <span class="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-          <Sparkles class="h-3 w-3" /> เรียลไทม์
+          <Sparkles class="h-3 w-3" /> AI Forecast
         </span>
       </div>
-      <div class="mt-4 flex h-24 items-end gap-2">
+      <div class="mt-4 flex h-24 items-end gap-1.5" data-chart>
         {
           bars.map((h, i) => (
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-primary to-secondary/70" style={`height:${h}%`} data-bar={i} />
+            <div
+              class="flex-1 rounded-t-md bg-gradient-to-t from-primary to-secondary/70 transition-all duration-700"
+              style={`height:${h}%;transition-delay:${i * 50}ms`}
+              data-bar={i}
+            />
+          ))
+        }
+      </div>
+      <div class="mt-2 flex justify-between text-[10px] text-ink/40 dark:text-white/40">
+        <span>1 ม.ค.</span>
+        <span>12 ม.ค.</span>
+      </div>
+    </div>
+
+    <!-- Marketplace Channels -->
+    <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+      <p class="mb-3 text-sm font-semibold">ออเดอร์แยกตามช่องทาง</p>
+      <div class="space-y-3">
+        {
+          channels.map((ch) => (
+            <div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-medium text-ink/70 dark:text-white/70">{ch.name}</span>
+                <span class="text-ink/50 dark:text-white/50">{ch.orders} ออเดอร์</span>
+              </div>
+              <div class="mt-1.5 h-2 overflow-hidden rounded-full bg-border/60 dark:bg-white/10">
+                <div class={`h-full rounded-full ${ch.color} transition-all duration-1000`} style={`width:${ch.pct}%`} />
+              </div>
+            </div>
           ))
         }
       </div>
     </div>
 
+    <!-- AI Insight + Pipeline -->
+    <div class="mx-5 mb-5 grid grid-cols-2 gap-3">
+      <div class="rounded-2xl border border-primary/30 bg-primary/5 p-4">
+        <div class="flex items-center gap-2">
+          <Brain class="h-4 w-4 text-primary" />
+          <p class="text-xs font-semibold text-primary">AI Insight</p>
+        </div>
+        <p class="mt-2 text-xs leading-relaxed text-ink/70 dark:text-white/70">
+          ยอดขายคาดว่าจะเพิ่ม 22% ในสัปดาห์หน้า แนะนำเติมสต๊อกสินค้า 5 รายการ
+        </p>
+      </div>
+      <div class="rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+        <div class="flex items-center gap-2">
+          <Target class="h-4 w-4 text-primary" />
+          <p class="text-xs font-semibold">Pipeline</p>
+        </div>
+        <div class="mt-2 space-y-1.5">
+          {
+            pipeline.map((stage) => (
+              <div class="flex items-center justify-between text-[10px]">
+                <span class="text-ink/60 dark:text-white/60">{stage.stage}</span>
+                <span class="font-semibold">{stage.count}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Feed -->
     <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
       <p class="mb-3 text-sm font-semibold">กิจกรรมล่าสุด</p>
-      <ul class="space-y-3">
+      <ul class="space-y-2.5" data-activity>
         {
           activity.map((item) => (
             <li class="flex items-center justify-between text-xs">
-              <span class="text-ink/70 dark:text-white/70">{item.title}</span>
+              <span class="flex items-center gap-2 text-ink/70 dark:text-white/70">
+                <span class={`h-1.5 w-1.5 rounded-full ${item.dot}`} />
+                {item.title}
+              </span>
               <span class="text-ink/40 dark:text-white/40">{item.time}</span>
             </li>
           ))
@@ -101,13 +186,18 @@ const bars = [40, 65, 45, 80, 60, 95, 70];
     </div>
   </div>
 
+  <!-- Floating AI card -->
   <div
     class="glass absolute -left-6 -bottom-6 hidden w-52 rounded-2xl p-4 shadow-xl sm:block animate-[float_7s_ease-in-out_infinite]"
   >
-    <p class="text-xs font-medium text-ink/50 dark:text-white/50">คำแนะนำจาก AI</p>
+    <div class="flex items-center gap-2">
+      <Brain class="h-4 w-4 text-primary" />
+      <p class="text-xs font-medium text-ink/50 dark:text-white/50">คำแนะนำจาก AI</p>
+    </div>
     <p class="mt-1 text-sm font-semibold">ควรเติมสต๊อก "SKU-2291" ก่อนวันศุกร์</p>
   </div>
 
+  <!-- Floating notification card -->
   <div
     class="glass absolute -right-4 -top-6 hidden w-44 rounded-2xl p-3 shadow-xl sm:block"
   >
@@ -115,3 +205,31 @@ const bars = [40, 65, 45, 80, 60, 95, 70];
     <p class="mt-1 text-sm font-semibold text-primary">+248 ออเดอร์ใหม่วันนี้</p>
   </div>
 </div>
+
+<script is:inline>
+  // Realtime bar chart animation
+  (function () {
+    const chart = document.querySelector('[data-chart]');
+    if (!chart) return;
+    const bars = chart.querySelectorAll('[data-bar]');
+    setInterval(() => {
+      bars.forEach((bar) => {
+        const h = 30 + Math.random() * 65;
+        bar.style.height = h + '%';
+      });
+    }, 3000);
+  })();
+
+  // Activity feed rotation
+  (function () {
+    const feed = document.querySelector('[data-activity]');
+    if (!feed) return;
+    const items = feed.querySelectorAll('li');
+    let idx = 0;
+    setInterval(() => {
+      items.forEach((li) => (li.style.opacity = '0.5'));
+      items[idx].style.opacity = '1';
+      idx = (idx + 1) % items.length;
+    }, 2500);
+  })();
+</script>

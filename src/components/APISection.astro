@@ -1,0 +1,102 @@
+---
+import { Code, Terminal, Webhook, BookOpen, GitBranch, Zap } from "@lucide/astro";
+
+const features = [
+  { icon: Code, title: "REST API", description: "API แบบ RESTful ครบทุก Endpoint สำหรับจัดการออเดอร์ ลูกค้า และสต๊อก" },
+  { icon: Webhook, title: "Webhook", description: "รับ Event แบบเรียลไทม์เมื่อมีออเดอร์ใหม่ สต๊อกเปลี่ยน หรือสถานะอัปเดต" },
+  { icon: Terminal, title: "SDK หลายภาษา", description: "พร้อม SDK สำหรับ JavaScript, Python และ PHP ใช้งานได้ทันที" },
+  { icon: Zap, title: "Rate Limit สูง", description: "รองรับการเรียก API สูงสุด 10,000 ครั้ง/นาที เหมาะกับธุรกิจขนาดใหญ่" },
+  { icon: BookOpen, title: "Documentation", description: "คู่มือ API ครบถ้วน พร้อมตัวอย่างโค้ดและ Postman Collection" },
+  { icon: GitBranch, title: "Versioning", description: "API เวอร์ชันเสถียร ไม่กระทบระบบเดิมเมื่อมีการอัปเดต" },
+];
+---
+
+<section id="api" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <!-- Left: API features -->
+      <div class="reveal">
+        <span class="section-eyebrow">
+          <Code class="h-3.5 w-3.5" />
+          Developer API
+        </span>
+        <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+          สร้างและเชื่อมต่อได้ด้วย API
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink/60 dark:text-white/60">
+          CBoom API ช่วยให้นักพัฒนาเชื่อมต่อระบบเดิม สร้าง Workflow ใหม่ และขยายฟังก์ชันการทำงานได้อย่างยืดหยุ่น
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {
+            features.map((feature) => (
+              <div class="flex gap-3">
+                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <feature.icon class="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold">{feature.title}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-ink/60 dark:text-white/60">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="https://lin.ee/QVWxues" class="btn-primary">
+            อ่าน API Docs
+            <BookOpen class="h-4 w-4" />
+          </a>
+          <a href="https://lin.ee/QVWxues" class="btn-secondary">
+            <Code class="h-4 w-4" />
+            ติดต่อทีม Developer
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Code snippet -->
+      <div class="reveal">
+        <div class="relative w-full">
+          <div class="absolute -inset-4 -z-10 rounded-[28px] bg-gradient-to-br from-primary/20 to-secondary/10 blur-2xl"></div>
+          <div class="glass overflow-hidden rounded-card shadow-2xl shadow-primary/10">
+            <div class="flex items-center justify-between border-b border-border/60 px-5 py-3 dark:border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+                <span class="ml-3 text-xs font-medium text-ink/50 dark:text-white/50">create-order.js</span>
+              </div>
+              <span class="rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">POST</span>
+            </div>
+            <pre class="overflow-x-auto p-5 text-xs leading-relaxed"><code><span class="text-primary">const</span> response = <span class="text-primary">await</span> fetch(
+  <span class="text-secondary">"https://api.cboom.io/v1/orders"</span>,
+  &#123;
+    method: <span class="text-secondary">"POST"</span>,
+    headers: &#123;
+      <span class="text-secondary">"Authorization"</span>: <span class="text-secondary">"Bearer cb_sk_..."</span>,
+      <span class="text-secondary">"Content-Type"</span>: <span class="text-secondary">"application/json"</span>,
+    &#125;,
+    body: JSON.stringify(&#123;
+      channel: <span class="text-secondary">"shopee"</span>,
+      customer: &#123;
+        name: <span class="text-secondary">"คุณสมชาย"</span>,
+        phone: <span class="text-secondary">"0812345678"</span>,
+      &#125;,
+      items: [
+        &#123; sku: <span class="text-secondary">"SKU-2291"</span>, qty: <span class="text-primary">2</span> &#125;,
+      ],
+    &#125;),
+  &#125;
+);
+
+<span class="text-primary">const</span> order = <span class="text-primary">await</span> response.json();
+console.log(order.id); <span class="text-ink/40 dark:text-white/40">// "ord_8x2k1m"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

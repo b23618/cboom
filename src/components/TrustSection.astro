@@ -1,0 +1,60 @@
+---
+import { Building2, ShoppingCart, Factory, Store, TrendingUp, Users, Clock, Zap } from "@lucide/astro";
+
+const logos = [
+  { name: "บจก. สยามเทรดดิ้ง", icon: Building2 },
+  { name: "ร้าน ก้าวหน้า คอมเมิร์ซ", icon: Store },
+  { name: "โรงงาน ไทยพรีเมียม", icon: Factory },
+  { name: "Smart Retail Co.", icon: ShoppingCart },
+  { name: "บริษัท เอเจนซี่ พลัส", icon: Building2 },
+  { name: "แม่ค้าออนไลน์ ไทยแลนด์", icon: Store },
+];
+
+const stats = [
+  { value: "2,000+", label: "ธุรกิจที่ใช้งาน", icon: Users },
+  { value: "50M+", label: "ออเดอร์ประมวลผล", icon: TrendingUp },
+  { value: "99.9%", label: "Uptime SLA", icon: Clock },
+  { value: "< 5 นาที", label: "เวลาตั้งค่าเริ่มต้น", icon: Zap },
+];
+---
+
+<section id="trust" class="py-20 sm:py-28">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">ความไว้วางใจ</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        ธุรกิจชั้นนำเลือกใช้ CBoom
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        จากร้านค้าออนไลน์ ผู้กระจายสินค้า ไปจนถึงโรงงานอุตสาหกรรม — ทุกขนาดธุรกิจเติบโตได้กับ CBoom
+      </p>
+    </div>
+
+    <!-- Logo grid -->
+    <div class="reveal mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      {
+        logos.map((logo) => (
+          <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border/60 bg-white/60 px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
+            <logo.icon class="h-7 w-7 text-ink/40 dark:text-white/40" />
+            <span class="text-xs font-medium text-ink/60 dark:text-white/60">{logo.name}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Stats -->
+    <div class="reveal mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <stat.icon class="h-6 w-6" />
+            </div>
+            <p class="mt-4 text-3xl font-extrabold tracking-tight text-primary" data-counter>{stat.value}</p>
+            <p class="mt-1 text-sm text-ink/60 dark:text-white/60">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

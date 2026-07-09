@@ -1,0 +1,100 @@
+---
+import { ShoppingBag, Video, Box, Truck, CreditCard, Phone, Mail, Database, Cloud, Plug } from "@lucide/astro";
+
+const supported = [
+  { name: "Shopee", icon: ShoppingBag },
+  { name: "TikTok Shop", icon: Video },
+  { name: "Lazada", icon: ShoppingBag },
+  { name: "Flash Express", icon: Truck },
+  { name: "Kerry Express", icon: Truck },
+  { name: "SCB Pay", icon: CreditCard },
+  { name: "PromptPay", icon: CreditCard },
+  { name: "LINE OA", icon: Phone },
+];
+
+const comingSoon = [
+  { name: "TrueMoney", icon: CreditCard },
+  { name: "ShopeePay", icon: CreditCard },
+  { name: "DHL Express", icon: Truck },
+  { name: "J&T Express", icon: Truck },
+];
+
+const connections = [
+  { name: "ERP", icon: Database },
+  { name: "Accounting", icon: Box },
+  { name: "Email", icon: Mail },
+  { name: "Cloud Storage", icon: Cloud },
+];
+---
+
+<section id="integrations" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">เชื่อมต่อระบบ</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        เชื่อมต่อทุกช่องทางที่ธุรกิจคุณใช้
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        ซิงค์ออเดอร์ สต๊อก และการชำระเงินอัตโนมัติ รวมทุกแพลตฟอร์มไว้ใน CBoom ที่เดียว
+      </p>
+    </div>
+
+    <!-- Supported integrations -->
+    <div class="reveal mt-14">
+      <p class="mb-4 text-center text-sm font-semibold text-ink/50 dark:text-white/50">เชื่อมต่อแล้ววันนี้</p>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+        {
+          supported.map((item) => (
+            <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border/60 bg-white/60 px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
+              <item.icon class="h-6 w-6 text-primary" />
+              <span class="text-xs font-medium text-ink/70 dark:text-white/70">{item.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Coming soon -->
+    <div class="reveal mt-8">
+      <p class="mb-4 text-center text-sm font-semibold text-ink/50 dark:text-white/50">เร็ว ๆ นี้</p>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 mx-auto max-w-2xl">
+        {
+          comingSoon.map((item) => (
+            <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border/60 bg-white/30 px-3 py-5 text-center dark:border-white/10 dark:bg-white/[0.02]">
+              <item.icon class="h-6 w-6 text-ink/30 dark:text-white/30" />
+              <span class="text-xs font-medium text-ink/40 dark:text-white/40">{item.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Connection diagram -->
+    <div class="reveal mt-16">
+      <div class="relative mx-auto max-w-3xl rounded-card border border-border/60 bg-white/60 p-8 dark:border-white/10 dark:bg-white/5">
+        <!-- Center: CBoom -->
+        <div class="flex flex-col items-center">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30">
+            <Plug class="h-8 w-8" />
+          </div>
+          <p class="mt-3 text-sm font-bold">CBoom</p>
+        </div>
+
+        <!-- Lines + outer nodes -->
+        <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {
+            connections.map((conn) => (
+              <div class="flex flex-col items-center">
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+                <div class="mt-4 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/5 text-primary">
+                  <conn.icon class="h-5 w-5" />
+                </div>
+                <p class="mt-2 text-xs font-medium text-ink/60 dark:text-white/60">{conn.name}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

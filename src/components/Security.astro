@@ -1,0 +1,72 @@
+---
+import { ShieldCheck, Lock, FileCheck, Server, Eye, KeyRound } from "@lucide/astro";
+
+const features = [
+  {
+    icon: Lock,
+    title: "เข้ารหัสข้อมูล End-to-End",
+    description: "ข้อมูลทุกรายการเข้ารหัสด้วย AES-256 ทั้งตอนจัดเก็บและตอนส่งผ่านเครือข่าย",
+  },
+  {
+    icon: ShieldCheck,
+    title: "ISO 27001 Ready",
+    description: "ระบบออกแบบตามมาตรฐานสากล ISO/IEC 27001 สำหรับการจัดการความปลอดภัยของข้อมูล",
+  },
+  {
+    icon: KeyRound,
+    title: "2FA & SSO",
+    description: "รองรับการยืนยันตัวตนสองชั้นและ Single Sign-On เชื่อมต่อกับ Google, Microsoft และ LINE",
+  },
+  {
+    icon: Server,
+    title: "เซิร์ฟเวอร์ในประเทศไทย",
+    description: "ข้อมูลจัดเก็บใน Data Center ประเทศไทย ครอบคลุม TIS และ PDPA Compliance",
+  },
+  {
+    icon: FileCheck,
+    title: "Audit Log ครบถ้วน",
+    description: "บันทึกทุกการกระทำในระบบ สามารถตรวจสอบย้อนหลังได้ พร้อม Export รายงานตามต้องการ",
+  },
+  {
+    icon: Eye,
+    title: "ตรวจสอบ 24/7",
+    description: "ระบบตรวจจับความผิดปกติอัตโนมัติ แจ้งเตือนทีม Security ทันทีเมื่อพบเหตุการณ์ผิดปกติ",
+  },
+];
+---
+
+<section id="security" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">
+        <ShieldCheck class="h-3.5 w-3.5" />
+        ความปลอดภัย
+      </span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        ข้อมูลของคุณปลอดภัยกับ CBoom
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        ระบบรักษาความปลอดภัยระดับองค์กร ปฏิบัติตาม PDPA และมาตรฐานสากล
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((feature, i) => (
+          <div
+            class="reveal group rounded-card border border-border/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 80}ms`}
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
+              <feature.icon class="h-6 w-6" />
+            </div>
+            <h3 class="mt-5 text-base font-bold">{feature.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

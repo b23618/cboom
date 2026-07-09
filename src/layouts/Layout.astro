@@ -28,8 +28,59 @@ const structuredData = {
   offers: {
     "@type": "AggregateOffer",
     lowPrice: "0",
+    highPrice: "50000",
     priceCurrency: "THB",
+    offerCount: "6",
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "2000",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "CBoom รองรับ Marketplace ช่องไหนบ้าง",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "มีทดลองใช้งานฟรีไหม",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "ข้อมูลของฉันปลอดภัยไหม",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "หน้าแรก",
+      item: canonicalURL.href,
+    },
+  ],
 };
 ---
 
@@ -74,6 +125,8 @@ const structuredData = {
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
     <script is:inline>
       const stored = localStorage.getItem("cboom-theme");
@@ -100,6 +153,43 @@ const structuredData = {
         { threshold: 0.15 }
       );
       revealEls.forEach((el) => observer.observe(el));
+
+      // Number counter animation
+      const counters = document.querySelectorAll("[data-counter]");
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const text = el.textContent || "";
+            const match = text.match(/[\d,.]+/);
+            if (!match) { counterObserver.unobserve(el); return; }
+            const rawNum = match[0].replace(/,/g, "");
+            const target = parseFloat(rawNum);
+            if (isNaN(target)) { counterObserver.unobserve(el); return; }
+            const suffix = text.slice(match.index + match[0].length);
+            const prefix = text.slice(0, match.index);
+            const duration = 1500;
+            const start = performance.now();
+            const hasDecimal = rawNum.includes(".");
+            function tick(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = target * eased;
+              const formatted = hasDecimal
+                ? current.toFixed(1)
+                : Math.floor(current).toLocaleString("en-US");
+              el.textContent = prefix + formatted + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+              else el.textContent = prefix + match[0] + suffix;
+            }
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
+          });
+        },
+        { threshold: 0.5 }
+      );
+      counters.forEach((el) => counterObserver.observe(el));
     </script>
   </body>
 </html>
