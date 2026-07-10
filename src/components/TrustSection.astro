@@ -1,17 +1,13 @@
 ---
-import { Building2, ShoppingCart, Factory, Store, TrendingUp, Users, Clock, Zap } from "@lucide/astro";
+import { TrendingUp, Users, Clock, Zap } from "@lucide/astro";
 
 const logos = [
-  { name: "บจก. สยามเทรดดิ้ง", icon: Building2 },
-  { name: "ร้าน ก้าวหน้า คอมเมิร์ซ", icon: Store },
-  { name: "โรงงาน ไทยพรีเมียม", icon: Factory },
-  { name: "Smart Retail Co.", icon: ShoppingCart },
-  { name: "บริษัท เอเจนซี่ พลัส", icon: Building2 },
-  { name: "แม่ค้าออนไลน์ ไทยแลนด์", icon: Store },
+  { name: "บริษัท รักรวย จำกัด", image: "/customer/rukruay.png" },
+  { name: "ห้างหุ้นส่วนจำกัด ทีเอ็นที ออโต้พาร์ท", image: "/customer/tntautoshop.png" },
 ];
 
 const stats = [
-  { value: "500+", label: "ธุรกิจ", icon: Users },
+  { value: "2+", label: "ธุรกิจ", icon: Users },
   { value: "50,000+", label: "Orders synced", icon: TrendingUp },
   { value: "99.9%", label: "System uptime", icon: Clock },
   { value: "24/7", label: "Support", icon: Zap },
@@ -31,11 +27,11 @@ const stats = [
     </div>
 
     <!-- Logo grid -->
-    <div class="reveal mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="reveal mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
       {
         logos.map((logo) => (
-          <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border/60 bg-white/60 px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
-            <logo.icon class="h-7 w-7 text-ink/40 dark:text-white/40" />
+          <div class="flex flex-col items-center justify-center gap-3 rounded-2xl border border-border/60 bg-white/60 px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
+            <img src={logo.image} alt={logo.name} class="h-12 w-auto object-contain" width="120" height="48" />
             <span class="text-xs font-medium text-ink/60 dark:text-white/60">{logo.name}</span>
           </div>
         ))

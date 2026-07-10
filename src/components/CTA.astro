@@ -7,11 +7,19 @@ import { ArrowRight, Calendar, Sparkles } from "@lucide/astro";
     <div
       class="reveal relative overflow-hidden rounded-card bg-gradient-to-br from-primary to-secondary px-8 py-16 text-center text-white shadow-2xl shadow-primary/30 sm:px-16"
     >
-      <div class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
-      <div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+      >
+      </div>
+      <div
+        class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+      >
+      </div>
 
       <div class="relative">
-        <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+        <span
+          class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
+        >
           <Sparkles class="h-3.5 w-3.5" />
           เริ่มต้นใช้งานฟรีวันนี้
         </span>
@@ -20,7 +28,7 @@ import { ArrowRight, Calendar, Sparkles } from "@lucide/astro";
           พร้อมยกระดับธุรกิจของคุณหรือยัง
         </h2>
         <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">
-          เริ่มทดลองใช้ CBoom ฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต หรือนัดหมายเพื่อสาธิตระบบกับทีมงานของเรา
+          นัดหมายเพื่อสาธิตระบบกับทีมงานของเรา
         </p>
 
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -28,23 +36,14 @@ import { ArrowRight, Calendar, Sparkles } from "@lucide/astro";
             href="https://lin.ee/QVWxues"
             class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-primary shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
           >
-            ทดลองใช้ฟรี 14 วัน
-            <ArrowRight class="h-4 w-4" />
-          </a>
-          <a
-            href="https://lin.ee/QVWxues"
-            class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
-          >
             <Calendar class="h-4 w-4" />
             นัดหมายสาธิตระบบ
           </a>
         </div>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
-          <span>ไม่ต้องใช้บัตรเครดิต</span>
-          <span class="hidden sm:inline">·</span>
-          <span>ยกเลิกได้ทุกเมื่อ</span>
-          <span class="hidden sm:inline">·</span>
+        <div
+          class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70"
+        >
           <span>ทีมงานคนไทยดูแล</span>
         </div>
       </div>
