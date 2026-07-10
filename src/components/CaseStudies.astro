@@ -1,27 +1,51 @@
 ---
-import { TrendingUp, Package, Users, ArrowRight } from "@lucide/astro";
+import { TrendingUp, Package, Boxes, Users, ArrowRight } from "@lucide/astro";
 
 const cases = [
   {
-    type: "ร้านค้าออนไลน์",
-    company: "บริษัท รักรวย จำกัด",
+    type: "Retail",
+    company: "ร้านค้าออนไลน์",
     icon: TrendingUp,
-    headline: "ลดเวลาคีย์ออเดอร์ 95%",
-    description: "เชื่อมต่อ Shopee, TikTok Shop และ Lazada เข้ากับ CBoom รวมออเดอร์ทุกช่องทาง ลดงาน Manual 95% ทีมเอาเวลาไปทำการตลาดแทน",
+    headline: "ลดเวลาคีย์ออเดอร์ 80%",
+    description: "เชื่อมต่อ Shopee, TikTok Shop และ Lazada เข้ากับ CBoom รวมออเดอร์ทุกช่องทาง ลดงาน Manual 80% ทีมเอาเวลาไปทำการตลาดแทน",
     metrics: [
       { label: "ลดเวลาคีย์ออเดอร์", value: "80%" },
       { label: "ออเดอร์/เดือน", value: "15,000+" },
-      { label: "ช่องทางเชื่อมต่อ", value: "3" },
+      { label: "ช่องทาง", value: "3" },
     ],
   },
   {
-    type: "ร้านค้าออนไลน์",
-    company: "ห้างหุ้นส่วนจำกัด ทีเอ็นที ออโต้พาร์ท",
-    icon: Users,
-    headline: "ยอดขายเพิ่ม 45%",
-    description: "เชื่อมต่อระบบ ERP เข้ากับ CBoom CRM และ AI ทำให้ทีมขายเห็นข้อมูลลูกค้าแบบเรียลไทม์ ปิดการขายเร็วขึ้น ยอดขายเพิ่ม 45%",
+    type: "Distributor",
+    company: "ผู้กระจายสินค้า",
+    icon: Package,
+    headline: "รวม Marketplace 3 ช่องทาง",
+    description: "กระจายสินค้าผ่าน Shopee, TikTok Shop และ Lazada ใช้ CBoom จัดการออเดอร์และสต๊อกจากหน้าจอเดียว ลดความผิดพลาดจากการคีย์มือ",
     metrics: [
-      { label: "ยอดขายเพิ่ม", value: "45%" },
+      { label: "ช่องทางเชื่อมต่อ", value: "3" },
+      { label: "ออเดอร์/เดือน", value: "8,500+" },
+      { label: "ลดความผิดพลาด", value: "90%" },
+    ],
+  },
+  {
+    type: "Factory",
+    company: "โรงงานอุตสาหกรรม",
+    icon: Boxes,
+    headline: "Inventory Real-time",
+    description: "ใช้ CBoom Warehouse ติดตามสต๊อกวัตถุดิบและสินค้าสำเร็จรูปแบบเรียลไทม์ ลดการสต๊อกขาดและการผลิดที่ไม่จำเป็น",
+    metrics: [
+      { label: "ความแม่นยำสต๊อก", value: "99.5%" },
+      { label: "ลดสต๊อกค้าง", value: "35%" },
+      { label: "คลังสินค้า", value: "5" },
+    ],
+  },
+  {
+    type: "SME",
+    company: "ธุรกิจขนาดกลาง",
+    icon: Users,
+    headline: "ยอดขายเพิ่ม 35%",
+    description: "ใช้ CBoom CRM และ AI ช่วยทีมขายติดตามลูกค้าและพยากรณ์ยอดขาย ทำให้ปิดการขายได้เร็วขึ้น ยอดขายเพิ่ม 35% ใน 6 เดือน",
+    metrics: [
+      { label: "ยอดขายเพิ่ม", value: "35%" },
       { label: "ทีมขาย", value: "25 คน" },
       { label: "Pipeline", value: "฿1M" },
     ],
@@ -32,7 +56,7 @@ const cases = [
 <section id="case-studies" class="py-24 sm:py-32">
   <div class="container-page">
     <div class="reveal mx-auto max-w-2xl text-center">
-      <span class="section-eyebrow">เคสสตัดอย่าง</span>
+      <span class="section-eyebrow">เคสตัวอย่าง</span>
       <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
         ธุรกิจที่เติบโตกับ CBoom
       </h2>
@@ -41,7 +65,7 @@ const cases = [
       </p>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         cases.map((item, i) => (
           <div

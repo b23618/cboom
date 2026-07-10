@@ -1,0 +1,54 @@
+---
+import {
+  Wrench,
+  Plug,
+  Store,
+  Truck,
+  GraduationCap,
+  LayoutDashboard,
+  Code,
+  Workflow,
+} from "@lucide/astro";
+
+const services = [
+  { icon: Wrench, title: "Implementation", description: "ติดตั้งและตั้งค่า CBoom ให้พร้อมใช้งาน" },
+  { icon: Plug, title: "ERP Integration", description: "เชื่อม CBoom เข้ากับ ERP หรือระบบเดิมขององค์กร" },
+  { icon: Store, title: "Marketplace Integration", description: "เชื่อม Shopee, TikTok Shop และ Lazada" },
+  { icon: Truck, title: "Migration", description: "ย้ายข้อมูลจากระบบเดิมสู่ CBoom อย่างปลอดภัย" },
+  { icon: GraduationCap, title: "Training", description: "อบรมทีมงานให้ใช้งาน CBoom ได้อย่างมีประสิทธิภาพ" },
+  { icon: LayoutDashboard, title: "Custom Dashboard", description: "ออกแบบ Dashboard ตามความต้องการของธุรกิจ" },
+  { icon: Code, title: "API Development", description: "พัฒนา API เพิ่มเติมสำหรับเชื่อมต่อระบบเฉพาะ" },
+  { icon: Workflow, title: "Automation", description: "ออกแบบและตั้งค่า Workflow อัตโนมัติตามกระบวนการธุรกิจ" },
+];
+---
+
+<section id="services" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">Professional Services</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        บริการโดยทีมงานผู้เชี่ยวชาญของ CBoom
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        มากกว่าแค่ซอฟต์แวร์ — ทีมงานของเราพร้อมช่วยให้ธุรกิจของคุณใช้งาน CBoom ได้เต็มประสิทธิภาพ
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        services.map((service, i) => (
+          <div
+            class="reveal group rounded-card border border-border/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:border-white/10 dark:bg-white/5"
+            style={`transition-delay:${i * 60}ms`}
+          >
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
+              <service.icon class="h-6 w-6" />
+            </span>
+            <h3 class="mt-5 font-bold">{service.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

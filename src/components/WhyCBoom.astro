@@ -1,5 +1,5 @@
 ---
-import { Clock, Plug, TrendingUp, Database, LayoutDashboard, HeartHandshake } from "@lucide/astro";
+import { Clock, Plug, AlertCircle, Activity, TrendingUp, Code } from "@lucide/astro";
 
 const columns = [
   {
@@ -9,28 +9,28 @@ const columns = [
   },
   {
     icon: Plug,
-    title: "เชื่อมต่อระบบได้ง่าย",
-    description: "เชื่อมกับ Marketplace และระบบเดิมของธุรกิจได้ในไม่กี่ขั้นตอน",
+    title: "เชื่อมทุกระบบ",
+    description: "เชื่อม Marketplace, ERP, Accounting และระบบเดิมของธุรกิจได้ในไม่กี่ขั้นตอน",
+  },
+  {
+    icon: AlertCircle,
+    title: "ลดความผิดพลาด",
+    description: "ข้อมูลไหลอัตโนมัติระหว่างระบบ ลดการกรอกข้อมือและความผิดพลาดจาก Human Error",
+  },
+  {
+    icon: Activity,
+    title: "ข้อมูลแบบ Real-time",
+    description: "เห็นภาพรวมธุรกิจได้ทันที ตัดสินใจได้เร็วกว่าเดิมด้วย Dashboard แบบเรียลไทม์",
   },
   {
     icon: TrendingUp,
-    title: "รองรับการเติบโตของธุรกิจ",
+    title: "ขยายระบบได้ในอนาคต",
     description: "ขยายทีมขาย เพิ่มสาขา หรือเปิดช่องทางใหม่ได้โดยไม่ต้องเปลี่ยนระบบ",
   },
   {
-    icon: Database,
-    title: "ข้อมูลรวมไว้ที่เดียว",
-    description: "ลูกค้า ออเดอร์ และสต๊อกอยู่ในระบบเดียว ไม่ต้องสลับแอปให้เสียเวลา",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Dashboard แบบ Real-time",
-    description: "เห็นภาพรวมธุรกิจได้ทันที ตัดสินใจได้เร็วกว่าเดิม",
-  },
-  {
-    icon: HeartHandshake,
-    title: "ทีมงานคนไทยพร้อมดูแล",
-    description: "ทีมซัพพอร์ตคนไทยพร้อมช่วยเหลือและให้คำปรึกษาตลอดการใช้งาน",
+    icon: Code,
+    title: "API พร้อมเชื่อมต่อ",
+    description: "REST API และ Webhook พร้อมใช้งาน เชื่อมต่อกับระบบภายนอกได้อย่างยืดหยุ่น",
   },
 ];
 ---
@@ -39,7 +39,7 @@ const columns = [
   <div class="container-page">
     <div class="reveal mx-auto max-w-2xl text-center">
       <span class="section-eyebrow">ทำไมต้อง CBoom</span>
-      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ทำไมธุรกิจจึงเลือก CBoom</h2>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ทุกสิ่งที่ธุรกิจต้องการ ในแพลตฟอร์มเดียว</h2>
     </div>
 
     <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

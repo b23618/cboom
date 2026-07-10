@@ -1,33 +1,47 @@
 ---
-import { Users2, Store, Sparkles, Leaf, ArrowRight } from "@lucide/astro";
+import { Users2, Store, Warehouse, ScanLine, Sparkles, Leaf, ArrowRight } from "@lucide/astro";
 
 const products = [
   {
     icon: Users2,
     name: "CBoom CRM",
-    description: "ปิดการขายได้เร็วขึ้น ด้วยระบบบริหารลูกค้าที่ทีมขายใช้งานได้จริง",
-    features: ["จัดการข้อมูลลูกค้า", "Pipeline งานขาย", "ติดตามลูกค้า", "บันทึกการติดต่อ", "Dashboard"],
+    description: "บริหารลูกค้าและทีมขายในระบบเดียว ปิดการขายได้เร็วขึ้น",
+    features: ["Lead Management", "Sales Pipeline", "Task Management", "Sales Dashboard"],
     href: "/crm/",
   },
   {
     icon: Store,
     name: "CBoom Marketplace",
-    description: "รวมทุกออเดอร์จากทุกช่องทางไว้ในหน้าจอเดียว ไม่ต้องสลับแอปให้เสียเวลา",
-    features: ["เชื่อมต่อ Shopee", "TikTok Shop", "Lazada", "ดึงออเดอร์อัตโนมัติ", "พิมพ์ใบปะหน้า", "อัปเดตสถานะขนส่ง", "จัดการสต๊อก"],
+    description: "รวมออเดอร์จากทุกช่องทางไว้ในหน้าจอเดียว ซิงค์อัตโนมัติ",
+    features: ["Shopee", "TikTok Shop", "Lazada", "Order Sync", "Shipping", "Inventory Sync"],
     href: "/marketplace/",
+  },
+  {
+    icon: Warehouse,
+    name: "CBoom Warehouse",
+    description: "จัดการคลังสินค้าหลายสาขา ติดตามสต๊อกแบบเรียลไทม์",
+    features: ["Multi Warehouse", "Stock Movement", "Receiving", "Picking", "Packing", "Barcode"],
+    href: "/inventory/",
+  },
+  {
+    icon: ScanLine,
+    name: "CBoom POS",
+    description: "จุดขายหน้าร้านเชื่อมต่อสต๊อกและ CRM ได้ทันที",
+    features: ["Point of Sale", "Cashier", "QR Payment", "Receipt", "Member", "Realtime Inventory"],
+    href: "#products",
   },
   {
     icon: Sparkles,
     name: "CBoom AI",
-    description: "ผู้ช่วยอัจฉริยะที่ช่วยสรุป วิเคราะห์ และแนะนำการขายให้ทีมของคุณ",
-    features: ["AI ช่วยสรุปยอดขาย", "AI วิเคราะห์ลูกค้า", "AI แนะนำการขาย", "AI Automation"],
+    description: "ผู้ช่วยอัจฉริยะที่สรุป วิเคราะห์ และแนะนำการขาย",
+    features: ["Sales Assistant", "AI Summary", "Forecast", "Recommendation", "Automation"],
     href: "/ai/",
   },
   {
     icon: Leaf,
     name: "CBoom ESG",
-    description: "จัดทำรายงานความยั่งยืนและติดตามการปล่อยคาร์บอนได้ง่ายในที่เดียว",
-    features: ["จัดการข้อมูล Carbon", "คำนวณการปล่อยคาร์บอน", "จัดทำรายงาน ESG", "Dashboard"],
+    description: "จัดทำรายงานความยั่งยืนและติดตามการปล่อยคาร์บอน",
+    features: ["Carbon", "Electricity", "Reports", "Dashboard", "Compliance"],
     href: "/esg/",
   },
 ];
@@ -37,13 +51,13 @@ const products = [
   <div class="container-page">
     <div class="reveal mx-auto max-w-2xl text-center">
       <span class="section-eyebrow">ผลิตภัณฑ์</span>
-      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">หนึ่งแพลตฟอร์ม ครบทุกความสามารถ</h2>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">One Platform — Unlimited Possibilities</h2>
       <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
-        ทุกโมดูลถูกออกแบบให้ทำงานร่วมกัน ข้อมูลของคุณจะไหลลื่นตั้งแต่การขายครั้งแรกจนถึงจัดส่งสำเร็จ
+        ทุกโมดูลถูกออกแบบให้ทำงานร่วมกัน ข้อมูลไหลลื่นตั้งแต่ออเดอร์แรกจนถึง Dashboard ผู้บริหาร
       </p>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         products.map((product, i) => (
           <div
@@ -73,7 +87,7 @@ const products = [
               href={product.href}
               class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-transform group-hover:gap-2.5"
             >
-              ดูรายละเอียด
+              Learn More
               <ArrowRight class="h-4 w-4" />
             </a>
           </div>

@@ -5,41 +5,44 @@ import logo from "../assets/logo.png";
 
 const columns = [
   {
-    title: "ผลิตภัณฑ์",
+    title: "Products",
     links: [
       { label: "CRM", href: "/crm/" },
       { label: "Marketplace", href: "/marketplace/" },
+      { label: "Warehouse", href: "/inventory/" },
+      { label: "POS", href: "#products" },
       { label: "AI", href: "/ai/" },
       { label: "ESG", href: "/esg/" },
     ],
   },
   {
-    title: "ทรัพยากร",
+    title: "Solutions",
     links: [
-      { label: "ราคา", href: "/pricing/" },
-      { label: "คู่มือการใช้งาน", href: "#" },
-      { label: "API Documentation", href: "#api" },
-      { label: "System Status", href: "#" },
+      { label: "Retail", href: "#case-studies" },
+      { label: "Wholesale", href: "#case-studies" },
+      { label: "Factory", href: "#case-studies" },
+      { label: "SME", href: "#case-studies" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Documentation", href: "#api" },
+      { label: "API", href: "#api" },
+      { label: "Blog", href: "/rss.xml" },
       { label: "Roadmap", href: "#" },
-      { label: "Release Notes", href: "#" },
+      { label: "Changelog", href: "#" },
+      { label: "Status", href: "#" },
+      { label: "Security", href: "#security" },
     ],
   },
   {
     title: "บริษัท",
     links: [
       { label: "เกี่ยวกับเรา", href: "#" },
-      { label: "ร่วมงานกับเรา", href: "#" },
+      { label: "ราคา", href: "/pricing/" },
       { label: "ติดต่อเรา", href: "/contact/" },
-      { label: "GitHub", href: "#" },
-    ],
-  },
-  {
-    title: "กฎหมาย",
-    links: [
-      { label: "นโยบายความเป็นส่วนตัว", href: "#" },
-      { label: "เงื่อนไขการใช้งาน", href: "#" },
-      { label: "Security", href: "#security" },
-      { label: "PDPA Compliance", href: "#security" },
+      { label: "ร่วมงานกับเรา", href: "#" },
     ],
   },
 ];
@@ -57,7 +60,7 @@ const year = new Date().getFullYear();
         </a>
         <p class="mt-4 text-sm font-medium text-primary">Business Automation Platform</p>
         <p class="mt-2 max-w-xs text-sm leading-relaxed text-ink/60 dark:text-white/60">
-          แพลตฟอร์มบริหารธุรกิจอัตโนมัติครบวงจร รวม CRM มาร์เก็ตเพลส สต๊อก AI และ ESG ไว้ในที่เดียว
+          One Platform. Unlimited Possibilities. บริหารธุรกิจของคุณได้จากระบบเดียว
         </p>
         <div class="mt-6 flex items-center gap-3">
           <a href="#" aria-label="Twitter" class="flex h-9 w-9 items-center justify-center rounded-full border border-border text-ink/60 transition-colors hover:border-primary/40 hover:text-primary dark:border-white/10 dark:text-white/60">

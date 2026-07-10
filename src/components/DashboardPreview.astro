@@ -16,10 +16,10 @@ import {
 } from "@lucide/astro";
 
 const topStats = [
-  { label: "ยอดขายวันนี้", value: "฿128,450", change: "+18.2%", up: true, icon: DollarSign, id: "stat-revenue" },
+  { label: "Today's Revenue", value: "฿128,450", change: "+18.2%", up: true, icon: DollarSign, id: "stat-revenue" },
   { label: "GMV", value: "฿2.4M", change: "+22%", up: true, icon: TrendingUp, id: "stat-gmv" },
-  { label: "ออเดอร์วันนี้", value: "342", change: "+9.4%", up: true, icon: ShoppingCart, id: "stat-orders" },
-  { label: "กำไร", value: "฿38,200", change: "+12%", up: true, icon: DollarSign, id: "stat-profit" },
+  { label: "Orders", value: "342", change: "+9.4%", up: true, icon: ShoppingCart, id: "stat-orders" },
+  { label: "Customers", value: "87", change: "+15%", up: true, icon: Users, id: "stat-customers" },
 ];
 
 const channelStats = [
@@ -105,7 +105,7 @@ const activity = [
     <!-- Sales Chart -->
     <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
       <div class="flex items-center justify-between">
-        <p class="text-sm font-semibold">ยอดขาย 12 วัน</p>
+        <p class="text-sm font-semibold">Sales — 12 Days</p>
         <span class="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
           <Sparkles class="h-3 w-3" /> AI Forecast
         </span>
@@ -129,7 +129,7 @@ const activity = [
 
     <!-- Channel Orders: Shopee / TikTok / Lazada -->
     <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-      <p class="mb-3 text-sm font-semibold">ออเดอร์แยกตามช่องทาง</p>
+      <p class="mb-3 text-sm font-semibold">Orders by Channel</p>
       <div class="space-y-3">
         {
           channelStats.map((ch) => (
@@ -150,8 +150,8 @@ const activity = [
       </div>
     </div>
 
-    <!-- Pipeline + Inventory -->
-    <div class="mx-5 mb-5 grid grid-cols-2 gap-3">
+    <!-- Pipeline + Inventory + POS -->
+    <div class="mx-5 mb-5 grid grid-cols-3 gap-3">
       <div class="rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
         <div class="flex items-center gap-2">
           <Target class="h-4 w-4 text-primary" />
@@ -171,7 +171,7 @@ const activity = [
       <div class="rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
         <div class="flex items-center gap-2">
           <Boxes class="h-4 w-4 text-primary" />
-          <p class="text-xs font-semibold">สต๊อกสินค้า</p>
+          <p class="text-xs font-semibold">Warehouse</p>
         </div>
         <div class="mt-2 space-y-1.5">
           {
@@ -184,22 +184,42 @@ const activity = [
           }
         </div>
       </div>
+      <div class="rounded-2xl border border-amber-500/30 bg-amber-50 p-4 dark:bg-amber-500/5">
+        <div class="flex items-center gap-2">
+          <Package class="h-4 w-4 text-amber-500" />
+          <p class="text-xs font-semibold text-amber-600 dark:text-amber-400">Stock Alert</p>
+        </div>
+        <div class="mt-2 space-y-1.5">
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="text-ink/60 dark:text-white/60">SKU-1101</span>
+            <span class="font-semibold text-amber-500">8 left</span>
+          </div>
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="text-ink/60 dark:text-white/60">SKU-4478</span>
+            <span class="font-semibold text-amber-500">3 left</span>
+          </div>
+          <div class="flex items-center justify-between text-[10px]">
+            <span class="text-ink/60 dark:text-white/60">SKU-5520</span>
+            <span class="font-semibold text-red-500">Out</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- AI Insight -->
     <div class="mx-5 mb-5 rounded-2xl border border-primary/30 bg-primary/5 p-4">
       <div class="flex items-center gap-2">
         <Brain class="h-4 w-4 text-primary" />
-        <p class="text-xs font-semibold text-primary">AI Insight</p>
+        <p class="text-xs font-semibold text-primary">AI Insight & Forecast</p>
       </div>
       <p class="mt-2 text-xs leading-relaxed text-ink/70 dark:text-white/70">
-        ยอดขายคาดว่าจะเพิ่ม 22% ในสัปดาห์หน้า แนะนำเติมสต๊อกสินค้า 5 รายการ
+        Sales forecast: +22% next week. Recommend restocking 5 items before Friday.
       </p>
     </div>
 
     <!-- Activity Feed -->
     <div class="mx-5 mb-5 rounded-2xl border border-border/60 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
-      <p class="mb-3 text-sm font-semibold">กิจกรรมล่าสุด</p>
+      <p class="mb-3 text-sm font-semibold">Recent Orders</p>
       <ul class="space-y-2.5" data-activity>
         {
           activity.map((item) => (

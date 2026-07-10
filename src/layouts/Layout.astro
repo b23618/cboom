@@ -13,27 +13,37 @@ interface Props {
 }
 
 const {
-  title = "CBoom — แพลตฟอร์มบริหารธุรกิจอัตโนมัติ",
-  description = "CBoom คือแพลตฟอร์มบริหารธุรกิจแบบครบวงจร ที่รวม CRM, Marketplace, AI, Dashboard และระบบอัตโนมัติ ไว้ในระบบเดียว เชื่อมต่อทุกช่องทางการขาย ลดงาน Manual และช่วยให้ทีมทำงานได้เร็วขึ้น",
+  title = "CBoom — Business Automation Platform | แพลตฟอร์มบริหารธุรกิจครบวงจร",
+  description = "CBoom คือ Business Automation Platform ที่รวม CRM Marketplace Warehouse POS AI ESG Dashboard และ Automation ไว้ในระบบเดียว ช่วยลดงาน Manual เชื่อมต่อทุกช่องทางการขาย และช่วยให้ธุรกิจเติบโตได้เร็วขึ้น",
   image,
   keywords,
   noindex = false,
   breadcrumb = [],
   faq = [
     {
+      question: "CBoom คืออะไร",
+      answer:
+        "CBoom คือ Business Automation Platform ที่รวม CRM Marketplace Warehouse POS AI ESG Dashboard และ Automation ไว้ในระบบเดียว ช่วยลดงาน Manual และเชื่อมต่อทุกช่องทางการขาย",
+    },
+    {
       question: "CBoom รองรับ Marketplace ช่องไหนบ้าง",
       answer:
-        "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
+        "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ และกำลังพัฒนารองรับ WooCommerce, Shopify และ Magento",
     },
     {
       question: "มีทดลองใช้งานฟรีไหม",
       answer:
-        "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
+        "มี ทดลองใช้งานฟรี ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที พร้อมทีมงานคนไทยดูแล",
     },
     {
       question: "ข้อมูลของฉันปลอดภัยไหม",
       answer:
         "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
+    },
+    {
+      question: "มี API สำหรับนักพัฒนาหรือไม่",
+      answer:
+        "CBoom มี REST API, Webhook, OAuth 2.0 และ SDK สำหรับ JavaScript, Python และ PHP พร้อม OpenAPI Specification",
     },
   ],
 } = Astro.props;

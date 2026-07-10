@@ -1,0 +1,83 @@
+---
+import {
+  ShoppingCart,
+  Store,
+  Boxes,
+  Warehouse,
+  Package,
+  ScanLine,
+  Users2,
+  Brain,
+  LayoutDashboard,
+  Calculator,
+} from "@lucide/astro";
+
+const steps = [
+  { icon: ShoppingCart, label: "Customer Orders", color: "bg-orange-500" },
+  { icon: Store, label: "Shopee / TikTok / Lazada", color: "bg-pink-500" },
+  { icon: Boxes, label: "CBoom Marketplace", color: "bg-primary" },
+  { icon: Warehouse, label: "Warehouse", color: "bg-blue-500" },
+  { icon: Package, label: "Inventory", color: "bg-cyan-500" },
+  { icon: ScanLine, label: "POS", color: "bg-purple-500" },
+  { icon: Users2, label: "CRM", color: "bg-teal-500" },
+  { icon: Brain, label: "AI", color: "bg-primary" },
+  { icon: LayoutDashboard, label: "Executive Dashboard", color: "bg-amber-500" },
+  { icon: Calculator, label: "Accounting Integration", color: "bg-emerald-500" },
+];
+---
+
+<section id="flow" class="py-24 sm:py-32">
+  <div class="container-page">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="section-eyebrow">Business Flow</span>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        จากออเดอร์ถึง Dashboard
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          อัตโนมัติ
+        </span>
+      </h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        CBoom ทำงานทุกขั้นตอนให้อัตโนมัติ ลดงาน Manual และช่วยให้ธุรกิจทำงานได้เร็วขึ้น
+      </p>
+    </div>
+
+    <div class="reveal mt-16 mx-auto max-w-2xl" data-flow>
+      <div class="relative">
+        <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent dark:from-primary/30 dark:via-primary/10"></div>
+        <div class="space-y-3">
+          {
+            steps.map((step, i) => (
+              <div
+                class="flow-step reveal relative flex items-center gap-4"
+                style={`transition-delay:${i * 60}ms`}
+              >
+                <div class={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${step.color} text-white shadow-lg`}>
+                  <step.icon class="h-5 w-5" />
+                </div>
+                <div class="flex-1 rounded-card border border-border/60 bg-white/60 px-5 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
+                  <span class="text-sm font-semibold">{step.label}</span>
+                </div>
+                {i < steps.length - 1 && (
+                  <span class="flow-arrow absolute left-6 -bottom-3 z-10 text-primary animate-pulse">↓</span>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const steps = document.querySelectorAll('.flow-step');
+    if (!steps.length) return;
+    let active = 0;
+    setInterval(() => {
+      steps.forEach((s) => s.classList.remove('ring-2', 'ring-primary/40'));
+      steps[active]?.classList.add('ring-2', 'ring-primary/40');
+      active = (active + 1) % steps.length;
+    }, 1500);
+  })();
+</script>

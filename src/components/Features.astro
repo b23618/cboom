@@ -1,24 +1,32 @@
 ---
 import {
-  LayoutDashboard,
   Users2,
   Store,
-  Workflow,
-  BarChart3,
-  Package,
+  Warehouse,
+  ScanLine,
   Bot,
   FileBarChart,
+  Workflow,
+  Code,
+  Webhook,
+  LayoutDashboard,
+  ShieldCheck,
+  ScrollText,
 } from "@lucide/astro";
 
 const features = [
-  { icon: LayoutDashboard, title: "Dashboard แบบ Real-time", description: "ดูยอดขาย ออเดอร์ และ KPI อัปเดตสดทุกช่วงเวลา" },
-  { icon: Users2, title: "จัดการลูกค้า", description: "บริหารข้อมูลลูกค้า ลีด และ Pipeline ในที่เดียว" },
-  { icon: Store, title: "เชื่อม Marketplace", description: "ขายบน Shopee, TikTok Shop และ Lazada จากหน้าจอเดียว" },
-  { icon: Workflow, title: "AI Automation", description: "ให้ระบบทำงานซ้ำซากแทนทีมของคุณโดยไม่ต้องเขียนโค้ด" },
-  { icon: BarChart3, title: "ติดตามยอดขาย", description: "แปลงข้อมูลดิบเป็นการตัดสินใจด้วยรายงานที่เข้าใจง่าย" },
-  { icon: Package, title: "Inventory", description: "ติดตามสต๊อกสินค้าทุกคลังและทุกช่องทางแบบเรียลไทม์" },
-  { icon: FileBarChart, title: "รายงาน", description: "สร้างรายงานธุรกิจและ ESG ได้ในคลิกเดียว" },
-  { icon: Bot, title: "API Integration", description: "เชื่อมต่อ CBoom กับระบบเดิมของธุรกิจคุณได้อย่างยืดหยุ่น" },
+  { icon: Users2, title: "CRM", description: "จัดการลูกค้า ลีด และ Pipeline ในที่เดียว" },
+  { icon: Store, title: "Marketplace", description: "ขายบน Shopee, TikTok Shop และ Lazada จากหน้าจอเดียว" },
+  { icon: Warehouse, title: "Warehouse", description: "ติดตามสต๊อกทุกคลังและทุกช่องทางแบบเรียลไทม์" },
+  { icon: ScanLine, title: "POS", description: "จุดขายหน้าร้านเชื่อมต่อสต๊อกและ CRM ได้ทันที" },
+  { icon: Bot, title: "AI", description: "AI สรุปยอดขาย พยากรณ์ และแนะนำการตัดสินใจ" },
+  { icon: FileBarChart, title: "Reports", description: "สร้างรายงานธุรกิจและ ESG ได้ในคลิกเดียว" },
+  { icon: Workflow, title: "Automation", description: "ให้ระบบทำงานซ้ำซากแทนทีมของคุณโดยไม่ต้องเขียนโค้ด" },
+  { icon: Code, title: "REST API", description: "API แบบ RESTful ครบทุก Endpoint สำหรับจัดการทุกอย่าง" },
+  { icon: Webhook, title: "Webhook", description: "รับ Event แบบเรียลไทม์เมื่อมีออเดอร์ใหม่หรือสต๊อกเปลี่ยน" },
+  { icon: LayoutDashboard, title: "Dashboard", description: "ดูยอดขาย ออเดอร์ และ KPI อัปเดตสดทุกช่วงเวลา" },
+  { icon: ShieldCheck, title: "Role Permission", description: "กำหนดสิทธิ์ผู้ใช้งานระดับละเอียด ปลอดภัยระดับองค์กร" },
+  { icon: ScrollText, title: "Audit Log", description: "บันทึกทุกการกระทำในระบบ ตรวจสอบย้อนหลังได้" },
 ];
 ---
 
@@ -27,6 +35,9 @@ const features = [
     <div class="reveal mx-auto max-w-2xl text-center">
       <span class="section-eyebrow">ฟีเจอร์</span>
       <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">ทุกเครื่องมือที่ธุรกิจต้องการ</h2>
+      <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+        ครบทุกฟังก์ชันในแพลตฟอร์มเดียว ไม่ต้องเสียเงินซื้อหลายระบบ
+      </p>
     </div>
 
     <div class="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

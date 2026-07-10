@@ -1,26 +1,28 @@
 ---
-import { ShoppingBag, Video, Box, Truck, CreditCard, Phone, Mail, Database, Cloud, Plug, Code, Webhook } from "@lucide/astro";
+import { ShoppingBag, Video, Phone, Code, Webhook, Table, Share2, Store, Plug } from "@lucide/astro";
 
 const supported = [
   { name: "Shopee", icon: ShoppingBag },
   { name: "TikTok Shop", icon: Video },
   { name: "Lazada", icon: ShoppingBag },
   { name: "LINE OA", icon: Phone },
-  { name: "TRACKING INTEGRATION", icon: Truck },
-  { name: "SUPPORT", icon: Code },
+  { name: "REST API", icon: Code },
+  { name: "Webhook", icon: Webhook },
 ];
 
 const comingSoon = [
+  { name: "WooCommerce", icon: Store },
   { name: "Shopify", icon: ShoppingBag },
-  { name: "WooCommerce", icon: ShoppingBag },
-  { name: "Magento", icon: ShoppingBag },
+  { name: "Magento", icon: Store },
+  { name: "Google Sheets", icon: Table },
+  { name: "Facebook", icon: Share2 },
 ];
 
 const connections = [
-  { name: "ERP", icon: Database },
-  { name: "Accounting", icon: Box },
-  { name: "Email", icon: Mail },
-  { name: "Cloud Storage", icon: Cloud },
+  { name: "ERP", icon: Code },
+  { name: "Accounting", icon: Table },
+  { name: "Warehouse", icon: ShoppingBag },
+  { name: "CRM", icon: Phone },
 ];
 ---
 
@@ -54,7 +56,7 @@ const connections = [
     <!-- Coming soon -->
     <div class="reveal mt-8">
       <p class="mb-4 text-center text-sm font-semibold text-ink/50 dark:text-white/50">เร็ว ๆ นี้</p>
-      <div class="grid grid-cols-3 gap-4 mx-auto max-w-xl">
+      <div class="grid grid-cols-3 gap-4 mx-auto max-w-2xl sm:grid-cols-5">
         {
           comingSoon.map((item) => (
             <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border/60 bg-white/30 px-3 py-5 text-center dark:border-white/10 dark:bg-white/[0.02]">

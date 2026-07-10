@@ -1,5 +1,5 @@
 ---
-import { Code, Terminal, Webhook, BookOpen, GitBranch, Zap, KeyRound, FileJson, FileCode } from "@lucide/astro";
+import { Code, Terminal, Webhook, BookOpen, GitBranch, Zap, KeyRound, FileJson, FileCode, Package } from "@lucide/astro";
 
 const features = [
   { icon: Code, title: "REST API", description: "API แบบ RESTful ครบทุก Endpoint สำหรับจัดการออเดอร์ ลูกค้า และสต๊อก" },
@@ -7,7 +7,7 @@ const features = [
   { icon: KeyRound, title: "OAuth 2.0", description: "รองรับ OAuth 2.0 สำหรับ Authentication ปลอดภัย พร้อม Token Refresh อัตโนมัติ" },
   { icon: FileJson, title: "JSON Response", description: "Response และ Request ในรูปแบบ JSON มาตรฐาน ใช้งานง่ายกับทุกภาษา" },
   { icon: FileCode, title: "OpenAPI Spec", description: "พร้อม OpenAPI / Swagger Specification สำหรับ Generate SDK และ Test ได้ทันที" },
-  { icon: Zap, title: "Rate Limit สูง", description: "รองรับการเรียก API สูงสุด 10,000 ครั้ง/นาที เหมาะกับธุรกิจขนาดใหญ่" },
+  { icon: Package, title: "SDK", description: "SDK สำหรับ JavaScript, Python และ PHP เรียกใช้งาน CBoom API ได้ทันที" },
 ];
 ---
 
@@ -18,7 +18,7 @@ const features = [
       <div class="reveal">
         <span class="section-eyebrow">
           <Code class="h-3.5 w-3.5" />
-          Developer API
+          Developer
         </span>
         <h2 class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
           สร้างและเชื่อมต่อได้ด้วย API
