@@ -22,28 +22,42 @@ const {
   faq = [
     {
       question: "CBoom รองรับ Marketplace ช่องไหนบ้าง",
-      answer: "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
+      answer:
+        "CBoom เชื่อมต่อ Shopee, TikTok Shop และ Lazada โดยดึงออเดอร์และซิงค์สต๊อกอัตโนมัติ",
     },
     {
       question: "มีทดลองใช้งานฟรีไหม",
-      answer: "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
+      answer:
+        "มี ทดลองใช้งานฟรี 14 วัน ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที",
     },
     {
       question: "ข้อมูลของฉันปลอดภัยไหม",
-      answer: "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
+      answer:
+        "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
     },
   ],
 } = Astro.props;
 
-const fullBreadcrumb = [
-  { name: "หน้าแรก", path: "/" },
-  ...breadcrumb,
-];
+const fullBreadcrumb = [{ name: "หน้าแรก", path: "/" }, ...breadcrumb];
 ---
 
 <!doctype html>
 <html lang="th" class="scroll-smooth">
   <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WJ6QFVBB");
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/logo.png" />
@@ -62,24 +76,47 @@ const fullBreadcrumb = [
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title="CBoom Blog" href="/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="CBoom Blog"
+      href="/rss.xml"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
+    />
+    <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
     />
 
     <script is:inline>
       const stored = localStorage.getItem("cboom-theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
       if (stored === "dark" || (!stored && prefersDark)) {
         document.documentElement.classList.add("dark");
       }
     </script>
   </head>
-  <body class="bg-background text-ink antialiased dark:bg-[#0a0f0d] dark:text-white">
+  <body
+    class="bg-background text-ink antialiased dark:bg-[#0a0f0d] dark:text-white"
+  >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WJ6QFVBB"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <slot />
 
     <script is:inline>
@@ -93,7 +130,7 @@ const fullBreadcrumb = [
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.15 },
       );
       revealEls.forEach((el) => observer.observe(el));
 
@@ -106,10 +143,16 @@ const fullBreadcrumb = [
             const el = entry.target;
             const text = el.textContent || "";
             const match = text.match(/[\d,.]+/);
-            if (!match) { counterObserver.unobserve(el); return; }
+            if (!match) {
+              counterObserver.unobserve(el);
+              return;
+            }
             const rawNum = match[0].replace(/,/g, "");
             const target = parseFloat(rawNum);
-            if (isNaN(target)) { counterObserver.unobserve(el); return; }
+            if (isNaN(target)) {
+              counterObserver.unobserve(el);
+              return;
+            }
             const suffix = text.slice(match.index + match[0].length);
             const prefix = text.slice(0, match.index);
             const duration = 1500;
@@ -130,7 +173,7 @@ const fullBreadcrumb = [
             counterObserver.unobserve(el);
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
       counters.forEach((el) => counterObserver.observe(el));
     </script>

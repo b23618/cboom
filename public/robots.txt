@@ -4,4 +4,13 @@ Allow: /
 # Block demo from being indexed to avoid duplicate content
 Disallow: /demo/
 
+# Block pages without real content yet
+Disallow: /accounting/
+Disallow: /hr/
+Disallow: /inventory/
+
+Disallow: /api/
+
+Disallow: /app/
+
 Sitemap: https://cboom.in.th/sitemap-index.xml

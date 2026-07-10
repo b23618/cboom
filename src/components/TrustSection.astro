@@ -1,9 +1,12 @@
 ---
 import { TrendingUp, Users, Clock, Zap } from "@lucide/astro";
+import { Image } from "astro:assets";
+import rukruay from "../assets/customer/rukruay.png";
+import tntautoshop from "../assets/customer/tntautoshop.png";
 
 const logos = [
-  { name: "บริษัท รักรวย จำกัด", image: "/customer/rukruay.png" },
-  { name: "ห้างหุ้นส่วนจำกัด ทีเอ็นที ออโต้พาร์ท", image: "/customer/tntautoshop.png" },
+  { name: "บริษัท รักรวย จำกัด", image: rukruay },
+  { name: "ห้างหุ้นส่วนจำกัด ทีเอ็นที ออโต้พาร์ท", image: tntautoshop },
 ];
 
 const stats = [
@@ -31,7 +34,7 @@ const stats = [
       {
         logos.map((logo) => (
           <div class="flex flex-col items-center justify-center gap-3 rounded-2xl border border-border/60 bg-white/60 px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-white/10 dark:bg-white/5">
-            <img src={logo.image} alt={logo.name} class="h-12 w-auto object-contain" width="120" height="48" />
+            <Image src={logo.image} alt={logo.name} class="h-12 w-auto object-contain" width={120} height={48} loading="lazy" />
             <span class="text-xs font-medium text-ink/60 dark:text-white/60">{logo.name}</span>
           </div>
         ))
