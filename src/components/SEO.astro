@@ -21,7 +21,7 @@ const {
   faq = [],
 } = Astro.props;
 
-const site = Astro.site ?? new URL("https://cboom.up.railway.app");
+const site = Astro.site ?? new URL("https://cboom.in.th");
 const canonicalURL = new URL(Astro.url.pathname, site);
 const ogImageURL = image ? new URL(image, site) : new URL(`/og/${Astro.url.pathname === "/" ? "home" : Astro.url.pathname.split("/").filter(Boolean)[0] ?? "home"}`, site);
 
@@ -38,7 +38,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: "hello@cboom.io",
+    email: "hello@cboom.in.th",
     availableLanguage: ["Thai", "English"],
   },
 };

@@ -4,4 +4,4 @@ Allow: /
 # Block demo from being indexed to avoid duplicate content
 Disallow: /demo/
 
-Sitemap: https://cboom.up.railway.app/sitemap-index.xml
+Sitemap: https://cboom.in.th/sitemap-index.xml

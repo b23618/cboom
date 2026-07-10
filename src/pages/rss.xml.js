@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 
-const site = "https://cboom.up.railway.app";
+const site = "https://cboom.in.th";
 
 const posts = [
   {

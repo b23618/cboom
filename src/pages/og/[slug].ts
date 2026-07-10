@@ -1,6 +1,6 @@
 export async function GET({ params, site }) {
   const { slug } = params;
-  const baseUrl = site?.href ?? "https://cboom.up.railway.app";
+  const baseUrl = site?.href ?? "https://cboom.in.th";
 
   const titles = {
     home: { title: "CBoom", subtitle: "Business Automation Platform" },

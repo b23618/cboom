@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://cboom.up.railway.app",
+  site: "https://cboom.in.th",
   base: "/",
   trailingSlash: "always",
   integrations: [react(), sitemap()],
