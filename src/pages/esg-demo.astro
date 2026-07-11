@@ -1,0 +1,15 @@
+---
+import ESGApp from "../react/ESGApp.tsx";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout
+  title="CBoom ESG Demo — Carbon Management Platform"
+  description="ทดลองใช้งาน CBoom ESG ระบบจัดการคาร์บอนและ ESG สำหรับธุรกิจไทย — วัด วิเคราะห์ และลดการปล่อย CO₂"
+  keywords="CBoom ESG, Carbon Management, ESG Demo, Carbon Footprint, Net Zero, การปล่อย CO₂"
+  noindex={true}
+  breadcrumb={[{ name: "ESG Demo", path: "/esg-demo/" }]}
+>
+  <ESGApp client:only="react" />
+</Layout>
