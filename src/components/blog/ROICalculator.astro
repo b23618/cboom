@@ -1,0 +1,115 @@
+---
+import { Calculator, TrendingDown, Clock, CheckCircle } from "@lucide/astro";
+---
+
+<section class="py-16">
+  <div class="container-page">
+    <div class="mx-auto max-w-4xl">
+      <div class="rounded-card border border-border/70 bg-white p-8 dark:border-white/10 dark:bg-white/5">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-primary/25">
+            <Calculator class="h-5 w-5" />
+          </span>
+          <div>
+            <h2 class="text-2xl font-extrabold tracking-tight">คำนวณผลตอบแทนจากการใช้ระบบ</h2>
+            <p class="text-sm text-ink/60 dark:text-white/60">ประเมินความคุ้มค่าของการใช้ Business Automation Platform</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div class="space-y-5">
+            <div>
+              <label for="calc-orders" class="block text-sm font-medium text-ink/70 dark:text-white/70">ออเดอร์ต่อวัน</label>
+              <input id="calc-orders" type="number" value="50" min="1" class="mt-1.5 w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-medium text-ink outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5 dark:text-white" />
+            </div>
+            <div>
+              <label for="calc-time" class="block text-sm font-medium text-ink/70 dark:text-white/70">เวลาจัดการต่อออเดอร์ (นาที)</label>
+              <input id="calc-time" type="number" value="5" min="1" class="mt-1.5 w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-medium text-ink outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5 dark:text-white" />
+            </div>
+            <div>
+              <label for="calc-wage" class="block text-sm font-medium text-ink/70 dark:text-white/70">ค่าแรง/ชั่วโมง (บาท)</label>
+              <input id="calc-wage" type="number" value="50" min="1" class="mt-1.5 w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-medium text-ink outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5 dark:text-white" />
+            </div>
+            <div>
+              <label for="calc-error" class="block text-sm font-medium text-ink/70 dark:text-white/70">อัตราความผิดพลาดปัจจุบัน (%)</label>
+              <input id="calc-error" type="number" value="5" min="0" max="100" class="mt-1.5 w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm font-medium text-ink outline-none transition-colors focus:border-primary dark:border-white/10 dark:bg-white/5 dark:text-white" />
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 p-6 dark:from-primary/10 dark:to-secondary/10">
+            <h3 class="text-sm font-bold text-ink/70 dark:text-white/70">ผลการคำนวณ</h3>
+            <div class="mt-4 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-2 text-sm text-ink/60 dark:text-white/60">
+                  <Clock class="h-4 w-4 text-primary" />
+                  เวลาที่ประหยัด/เดือน
+                </span>
+                <span id="result-hours" class="text-lg font-bold text-primary">— ชม.</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-2 text-sm text-ink/60 dark:text-white/60">
+                  <TrendingDown class="h-4 w-4 text-primary" />
+                  ค่าใช้จ่ายที่ลดลง/เดือน
+                </span>
+                <span id="result-cost" class="text-lg font-bold text-primary">— บาท</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-2 text-sm text-ink/60 dark:text-white/60">
+                  <CheckCircle class="h-4 w-4 text-primary" />
+                  ออเดอร์ที่ไม่ผิดพลาด/เดือน
+                </span>
+                <span id="result-orders" class="text-lg font-bold text-primary">— ออเดอร์</span>
+              </div>
+              <div class="border-t border-primary/20 pt-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-bold text-ink dark:text-white">ประหยัด/ปี</span>
+                  <span id="result-yearly" class="text-2xl font-extrabold text-primary">— บาท</span>
+                </div>
+              </div>
+            </div>
+            <a href="/demo/" class="btn-primary mt-6 w-full justify-center text-sm">
+              เริ่มต้นใช้งานฟรี
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const orders = document.getElementById('calc-orders');
+    const time = document.getElementById('calc-time');
+    const wage = document.getElementById('calc-wage');
+    const errorRate = document.getElementById('calc-error');
+    const resultHours = document.getElementById('result-hours');
+    const resultCost = document.getElementById('result-cost');
+    const resultOrders = document.getElementById('result-orders');
+    const resultYearly = document.getElementById('result-yearly');
+
+    function calculate() {
+      const o = parseFloat(orders?.value || '0');
+      const t = parseFloat(time?.value || '0');
+      const w = parseFloat(wage?.value || '0');
+      const e = parseFloat(errorRate?.value || '0');
+
+      const dailyOrders = o * 30;
+      const savedMinutes = dailyOrders * t * 0.85;
+      const savedHours = savedMinutes / 60;
+      const savedCost = savedHours * w;
+      const savedOrders = Math.round(dailyOrders * (e / 100) * 0.95);
+      const yearlySavings = savedCost * 12;
+
+      const fmt = (n) => Math.round(n).toLocaleString('en-US');
+
+      if (resultHours) resultHours.textContent = fmt(savedHours) + ' ชม.';
+      if (resultCost) resultCost.textContent = fmt(savedCost) + ' บาท';
+      if (resultOrders) resultOrders.textContent = fmt(savedOrders) + ' ออเดอร์';
+      if (resultYearly) resultYearly.textContent = fmt(yearlySavings) + ' บาท';
+    }
+
+    [orders, time, wage, errorRate].forEach(el => el?.addEventListener('input', calculate));
+    calculate();
+  })();
+</script>

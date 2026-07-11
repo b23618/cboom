@@ -1,0 +1,44 @@
+---
+interface Props {
+  author: string;
+  publishDate: Date;
+}
+
+const { author, publishDate } = Astro.props;
+
+const authors: Record<string, { name: string; role: string; bio: string; initials: string }> = {
+  "CBoom Team": {
+    name: "CBoom Team",
+    role: "Content & Research Team",
+    bio: "ทีมงานวิจัยและเขียนเนื้อหาของ CBoom ผู้เชี่ยวชาญด้าน Business Automation, ERP, CRM และ Marketplace Integration สำหรับธุรกิจไทย",
+    initials: "CT",
+  },
+};
+
+const data = authors[author] || {
+  name: author,
+  role: "Contributor",
+  bio: "ผู้เขียนบทความและผู้เชี่ยวชาญด้านเทคโนโลยีเพื่อธุรกิจ",
+  initials: author.slice(0, 2).toUpperCase(),
+};
+
+const year = publishDate.getFullYear();
+---
+
+<div class="rounded-card border border-border/70 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+  <div class="flex items-start gap-4">
+    <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-lg font-bold text-white shadow-md shadow-primary/25">
+      {data.initials}
+    </div>
+    <div class="flex-1">
+      <h3 class="text-base font-bold text-ink dark:text-white">{data.name}</h3>
+      <p class="text-sm text-primary">{data.role}</p>
+      <p class="mt-2 text-sm leading-relaxed text-ink/60 dark:text-white/60">{data.bio}</p>
+    </div>
+  </div>
+  <div class="mt-4 flex items-center gap-3 border-t border-border/60 pt-4 dark:border-white/10">
+    <a href="/contact/" class="text-sm font-medium text-primary hover:underline">ติดต่อทีมงาน</a>
+    <span class="text-ink/30 dark:text-white/30">·</span>
+    <a href="/blog/" class="text-sm font-medium text-ink/60 hover:text-primary dark:text-white/60">บทความทั้งหมด</a>
+  </div>
+</div>

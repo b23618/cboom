@@ -1,0 +1,69 @@
+---
+import { ChevronDown } from "@lucide/astro";
+
+interface Props {
+  faqs: { question: string; answer: string }[];
+}
+
+const { faqs } = Astro.props;
+---
+
+{faqs.length > 0 && (
+  <section class="py-16">
+    <div class="container-page">
+      <div class="mx-auto max-w-4xl">
+        <h2 class="text-2xl font-extrabold tracking-tight">คำถามที่พบบ่อย</h2>
+        <div class="mt-8 space-y-3">
+          {faqs.map((faq, i) => (
+            <div class="rounded-2xl border border-border/70 bg-white dark:border-white/10 dark:bg-white/5 overflow-hidden">
+              <button
+                class="faq-toggle flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${i}`}
+              >
+                <span class="text-sm font-bold text-ink dark:text-white">{faq.question}</span>
+                <ChevronDown class="faq-chevron h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300" />
+              </button>
+              <div id={`faq-answer-${i}`} class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="px-5 pb-4 text-sm leading-relaxed text-ink/60 dark:text-white/60">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  (function () {
+    const toggles = document.querySelectorAll('.faq-toggle');
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const answer = toggle.nextElementSibling;
+        const chevron = toggle.querySelector('.faq-chevron');
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+        toggles.forEach((t) => {
+          if (t !== toggle) {
+            t.setAttribute('aria-expanded', 'false');
+            t.nextElementSibling.style.maxHeight = '0px';
+            t.querySelector('.faq-chevron')?.classList.remove('rotate-180');
+          }
+        });
+
+        if (isOpen) {
+          toggle.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = '0px';
+          chevron?.classList.remove('rotate-180');
+        } else {
+          toggle.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          chevron?.classList.add('rotate-180');
+        }
+      });
+    });
+  })();
+</script>

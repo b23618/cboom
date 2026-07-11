@@ -1,0 +1,29 @@
+---
+import { Download, Printer } from "@lucide/astro";
+---
+
+<div class="flex flex-col gap-2">
+  <button
+    id="download-pdf-btn"
+    class="flex items-center gap-2 rounded-xl border border-border/70 bg-white px-4 py-2.5 text-sm font-medium text-ink/70 transition-all duration-200 hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-white/70"
+  >
+    <Download class="h-4 w-4" />
+    ดาวน์โหลด PDF
+  </button>
+  <button
+    id="print-article-btn"
+    class="flex items-center gap-2 rounded-xl border border-border/70 bg-white px-4 py-2.5 text-sm font-medium text-ink/70 transition-all duration-200 hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-white/70"
+  >
+    <Printer class="h-4 w-4" />
+    พิมพ์บทความ
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    const dl = document.getElementById('download-pdf-btn');
+    const pr = document.getElementById('print-article-btn');
+    dl?.addEventListener('click', () => window.print());
+    pr?.addEventListener('click', () => window.print());
+  })();
+</script>

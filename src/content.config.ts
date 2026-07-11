@@ -18,6 +18,7 @@ const blog = defineCollection({
     ogTitle: z.string().optional(),
     ogDescription: z.string().optional(),
     canonical: z.string().optional(),
+    updatedDate: z.coerce.date().optional(),
   }),
 });
 

@@ -4,7 +4,19 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import CTA from "../../components/CTA.astro";
-import { Calendar, User, ArrowRight, ChevronRight } from "@lucide/astro";
+import { Calendar, User, ChevronRight, Clock, RefreshCw } from "@lucide/astro";
+
+import ReadingProgress from "../../components/blog/ReadingProgress.astro";
+import ShareButtons from "../../components/blog/ShareButtons.astro";
+import TableOfContents from "../../components/blog/TableOfContents.astro";
+import AuthorCard from "../../components/blog/AuthorCard.astro";
+import RelatedPosts from "../../components/blog/RelatedPosts.astro";
+import RelatedProducts from "../../components/blog/RelatedProducts.astro";
+import ROICalculator from "../../components/blog/ROICalculator.astro";
+import Newsletter from "../../components/blog/Newsletter.astro";
+import PrevNextNav from "../../components/blog/PrevNextNav.astro";
+import BlogFAQ from "../../components/blog/BlogFAQ.astro";
+import DownloadPDF from "../../components/blog/DownloadPDF.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -19,6 +31,16 @@ const { Content } = await render(post);
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" });
+
+const formatDateShort = (date: Date) =>
+  date.toLocaleDateString("th-TH", { year: "numeric", month: "short", day: "numeric" });
+
+const body = post.body || "";
+const charCount = body.length;
+const readingTime = Math.max(1, Math.ceil(charCount / 500));
+
+const site = Astro.site ?? new URL("https://cboom.in.th");
+const canonicalURL = new URL(`/blog/${post.id}/`, site);
 
 const faqFromArticle = [
   {
@@ -52,16 +74,21 @@ const faqFromArticle = [
       "มี ทดลองใช้งานฟรี ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที พร้อมทีมงานคนไทยดูแลตลอดการใช้งาน",
   },
 ];
+
+const hasUpdated = post.data.updatedDate && post.data.updatedDate.valueOf() !== post.data.publishDate.valueOf();
 ---
 
 <Layout
   title={post.data.title}
   description={post.data.description}
   keywords={post.data.keywords}
+  image={post.data.image}
   breadcrumb={[{ name: "Blog", path: "/blog/" }, { name: post.data.category, path: `/blog/${post.id}/` }]}
   faq={faqFromArticle}
 >
+  <ReadingProgress />
   <Navbar />
+
   <main>
     <!-- Breadcrumb -->
     <div class="container-page pt-8">
@@ -74,9 +101,9 @@ const faqFromArticle = [
       </nav>
     </div>
 
-    <!-- Article Header -->
     <article>
-      <header class="container-page pt-8 pb-12">
+      <!-- Article Header -->
+      <header class="container-page pt-8 pb-10">
         <div class="mx-auto max-w-3xl">
           <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             {post.data.category}
@@ -87,7 +114,9 @@ const faqFromArticle = [
           <p class="mt-4 text-lg leading-relaxed text-ink/60 dark:text-white/60">
             {post.data.description}
           </p>
-          <div class="mt-6 flex items-center gap-4 text-sm text-ink/50 dark:text-white/50">
+
+          <!-- Meta Row -->
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-ink/50 dark:text-white/50">
             <span class="flex items-center gap-1.5">
               <User class="h-4 w-4" />
               {post.data.author}
@@ -96,19 +125,83 @@ const faqFromArticle = [
               <Calendar class="h-4 w-4" />
               {formatDate(post.data.publishDate)}
             </span>
+            <span class="flex items-center gap-1.5">
+              <Clock class="h-4 w-4" />
+              อ่าน {readingTime} นาที
+            </span>
+            {hasUpdated && (
+              <span class="flex items-center gap-1.5">
+                <RefreshCw class="h-4 w-4" />
+                อัปเดต {formatDateShort(post.data.updatedDate!)}
+              </span>
+            )}
+          </div>
+
+          <!-- Share Buttons (horizontal, below header) -->
+          <div class="mt-6 flex items-center gap-3 border-t border-border/60 pt-5 dark:border-white/10">
+            <span class="text-sm font-medium text-ink/50 dark:text-white/50">แชร์:</span>
+            <ShareButtons url={canonicalURL.href} title={post.data.title} variant="horizontal" />
           </div>
         </div>
       </header>
 
-      <!-- Article Body -->
+      <!-- Article Body + Sidebar -->
       <div class="container-page pb-16">
-        <div class="mx-auto max-w-3xl">
-          <div class="prose-article">
-            <Content />
+        <div class="mx-auto max-w-6xl lg:flex lg:gap-10">
+          <!-- Main Content -->
+          <div class="lg:flex-1 lg:max-w-3xl">
+            <div class="prose-article">
+              <Content />
+            </div>
+
+            <!-- Bottom Share -->
+            <div class="mt-10 flex items-center gap-3 border-t border-border/60 pt-6 dark:border-white/10">
+              <span class="text-sm font-medium text-ink/50 dark:text-white/50">แชร์บทความนี้:</span>
+              <ShareButtons url={canonicalURL.href} title={post.data.title} variant="horizontal" />
+            </div>
+
+            <!-- Author Card -->
+            <div class="mt-8">
+              <AuthorCard author={post.data.author} publishDate={post.data.publishDate} />
+            </div>
           </div>
+
+          <!-- Sidebar (TOC + Share + Download) -->
+          <aside class="hidden lg:block lg:w-60 lg:flex-shrink-0">
+            <div class="sticky top-24 space-y-6">
+              <TableOfContents />
+              <div class="rounded-card border border-border/70 bg-white/80 p-5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+                <h3 class="text-sm font-bold text-ink dark:text-white">แชร์ & ดาวน์โหลด</h3>
+                <div class="mt-3">
+                  <ShareButtons url={canonicalURL.href} title={post.data.title} variant="horizontal" />
+                </div>
+                <div class="mt-4 border-t border-border/60 pt-4 dark:border-white/10">
+                  <DownloadPDF />
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </article>
+
+    <!-- Related Products -->
+    <RelatedProducts category={post.data.category} tags={post.data.tags} />
+
+    <!-- ROI Calculator -->
+    <ROICalculator />
+
+    <!-- Related Articles -->
+    <RelatedPosts currentId={post.id} category={post.data.category} tags={post.data.tags} />
+
+    <!-- Prev / Next -->
+    <PrevNextNav currentId={post.id} />
+
+    <!-- Newsletter -->
+    <Newsletter />
+
+    <!-- FAQ Accordion -->
+    <BlogFAQ faqs={faqFromArticle} />
 
     <CTA />
   </main>
@@ -129,6 +222,7 @@ const faqFromArticle = [
     font-weight: 800;
     letter-spacing: -0.025em;
     color: #1e293b;
+    scroll-margin-top: 100px;
   }
   .dark .prose-article h2 {
     color: #fff;
@@ -139,6 +233,7 @@ const faqFromArticle = [
     font-size: 1.25rem;
     font-weight: 700;
     color: #1e293b;
+    scroll-margin-top: 100px;
   }
   .dark .prose-article h3 {
     color: #fff;
@@ -222,6 +317,23 @@ const faqFromArticle = [
     font-weight: 500;
     color: #16a34a;
   }
+  .prose-article pre {
+    margin: 1.5rem 0;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(226 232 240);
+    background: #1e293b;
+    padding: 1.25rem;
+    overflow-x: auto;
+  }
+  .dark .prose-article pre {
+    border-color: rgb(255 255 255 / 0.1);
+  }
+  .prose-article pre code {
+    background: transparent;
+    color: #e2e8f0;
+    padding: 0;
+    font-size: 0.875rem;
+  }
   .prose-article img {
     margin: 1.5rem 0;
     border-radius: 1rem;
@@ -246,5 +358,21 @@ const faqFromArticle = [
   }
   .prose-article h1 {
     display: none;
+  }
+
+  /* Print styles */
+  @media print {
+    #reading-progress-bar,
+    nav[aria-label="Breadcrumb"],
+    aside,
+    .faq-toggle,
+    #newsletter-form,
+    #download-pdf-btn,
+    #print-article-btn {
+      display: none !important;
+    }
+    .prose-article {
+      max-width: 100% !important;
+    }
   }
 </style>
