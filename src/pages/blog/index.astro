@@ -1,0 +1,71 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { ArrowRight, Calendar } from "@lucide/astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("th-TH", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Layout
+  title="CBoom Blog — บทความและคู่มือธุรกิจ | Business Automation Platform"
+  description="บทความและคู่มือเกี่ยวกับ Business Automation Platform, CRM, Marketplace, Warehouse, POS, AI และ ESG สำหรับธุรกิจไทย"
+  keywords="CBoom Blog, Business Automation, CRM, Marketplace, Warehouse, POS, AI, ESG, คู่มือธุรกิจ, บทความ SME"
+  breadcrumb={[{ name: "Blog", path: "/blog/" }]}
+>
+  <Navbar />
+  <main>
+    <section class="py-20 sm:py-28">
+      <div class="container-page">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <span class="section-eyebrow">CBoom Blog</span>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            บทความและคู่มือธุรกิจ
+          </h1>
+          <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
+            ความรู้ แนวทางปฏิบัติ และเคล็ดลับสำหรับธุรกิจไทยในยุคดิจิทัล
+          </p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            posts.map((post, i) => (
+              <a
+                href={`/blog/${post.id}/`}
+                class="reveal group flex flex-col rounded-card border border-border/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:border-white/10 dark:bg-white/5"
+                style={`transition-delay:${i * 80}ms`}
+              >
+                <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary w-fit">
+                  {post.data.category}
+                </span>
+                <h2 class="mt-4 text-lg font-bold leading-snug group-hover:text-primary">
+                  {post.data.title}
+                </h2>
+                <p class="mt-3 flex-1 text-sm leading-relaxed text-ink/60 dark:text-white/60">
+                  {post.data.description}
+                </p>
+                <div class="mt-6 flex items-center justify-between border-t border-border/60 pt-4 dark:border-white/10">
+                  <span class="flex items-center gap-1.5 text-xs text-ink/50 dark:text-white/50">
+                    <Calendar class="h-3.5 w-3.5" />
+                    {formatDate(post.data.publishDate)}
+                  </span>
+                  <span class="flex items-center gap-1 text-sm font-semibold text-primary transition-all group-hover:gap-2">
+                    อ่านต่อ
+                    <ArrowRight class="h-4 w-4" />
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
