@@ -1,7 +1,7 @@
 ---
 title: "POS คืออะไร? ระบบขายหน้าร้านยุคใหม่เชื่อม CRM และ Warehouse ได้อย่างไร 2026"
 description: "POS คืออะไร ระบบขายหน้าร้านยุคใหม่ทำงานอย่างไร เชื่อมกับ CRM Warehouse ERP ได้อย่างไร พร้อม QR Payment ใบเสร็จ Realtime Dashboard และตัวอย่างจริง"
-publishDate: 2025-08-20
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/pos-guide.png"
 category: "POS"

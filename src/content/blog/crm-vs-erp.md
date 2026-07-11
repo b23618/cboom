@@ -1,7 +1,7 @@
 ---
 title: "CRM กับ ERP ต่างกันอย่างไร? ควรเลือกใช้ระบบไหนสำหรับธุรกิจของคุณ 2026"
 description: "เปรียบเทียบ CRM กับ ERP แบบเจาะลึก ข้อดี ข้อเสีย Use Cases ตัวอย่างจริง และเมื่อไรควรใช้ทั้งสองระบบพร้อมกัน พร้อมคำแนะนำสำหรับธุรกิจไทย"
-publishDate: 2025-08-05
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/crm-vs-erp.png"
 category: "Comparison"

@@ -1,7 +1,7 @@
 ---
 title: "ระบบจัดการ Marketplace หลายช่องทาง: คู่มือครบจบสำหรับขายออนไลน์ Shopee TikTok Lazada 2026"
 description: "ระบบจัดการ Marketplace หลายช่องทางคืออะไร ทำไมสำคัญ ปัญหาและวิธีแก้ พร้อมเปรียบเทียบตัวเลือกและแนวทางปฏิบัติที่ดีที่สุดสำหรับร้านค้าออนไลน์ไทย"
-publishDate: 2025-07-20
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/marketplace-multi-channel.png"
 category: "Marketplace"

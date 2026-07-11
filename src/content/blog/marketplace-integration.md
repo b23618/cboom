@@ -1,7 +1,7 @@
 ---
 title: "Marketplace Integration คืออะไร? วิธีเชื่อม Shopee TikTok Lazada เข้ากับ ERP 2026"
 description: "Marketplace Integration คือการเชื่อมต่อ Shopee TikTok Shop Lazada เข้ากับ ERP ดึงออเดอร์ ซิงค์สต๊อก อัปเดตขนส่ง และซิงค์ลูกค้าอัตโนมัติ พร้อมภาพประกอบและตัวอย่างจริง"
-publishDate: 2025-08-10
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/marketplace-integration.png"
 category: "Marketplace"

@@ -1,7 +1,7 @@
 ---
 title: "Warehouse Management System (WMS) คืออะไร? คู่มือสำหรับธุรกิจไทย 2026"
 description: "WMS คืออะไร Receiving Picking Packing Barcode Stock Movement FIFO Multi Warehouse ทำงานอย่างไร พร้อมตัวอย่างจริง ตารางเปรียบเทียบ และคำแนะนำสำหรับธุรกิจไทย"
-publishDate: 2025-08-15
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/wms-guide.png"
 category: "Warehouse"

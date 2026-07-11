@@ -1,7 +1,7 @@
 ---
 title: "Inventory Management คืออะไร? วิธีจัดการสต๊อกให้มีประสิทธิภาพ 2026"
 description: "Inventory Management คืออะไร FIFO LIFO Safety Stock Barcode Warehouse POS Marketplace วิธีจัดการสต๊อกให้มีประสิทธิภาพ พร้อมตัวอย่างจริงจากธุรกิจไทย"
-publishDate: 2025-09-10
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/inventory-management-guide.png"
 category: "Inventory"

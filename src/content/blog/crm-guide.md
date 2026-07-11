@@ -1,7 +1,7 @@
 ---
 title: "CRM คืออะไร? คู่มือฉบับสมบูรณ์สำหรับธุรกิจไทย ปี 2026"
 description: "CRM คืออะไร ทำไมธุรกิจไทยต้องมี ต่างจาก Excel และ ERP อย่างไร พร้อมคู่มือ Lead Management Pipeline Customer Journey และ Best Practices สำหรับทีมขายและ SME ไทย"
-publishDate: 2025-07-25
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/crm-guide.png"
 category: "CRM"

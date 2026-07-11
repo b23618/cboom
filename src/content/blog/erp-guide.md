@@ -1,7 +1,7 @@
 ---
 title: "ERP คืออะไร? ระบบ ERP ช่วยธุรกิจได้อย่างไร พร้อมตัวอย่างการใช้งานจริง 2026"
 description: "ERP คืออะไร ต่างจาก CRM POS Warehouse Marketplace อย่างไร ทำไมธุรกิจไทยต้องมี Integration Automation และ Business Flow พร้อมตัวอย่างการใช้งานจริง"
-publishDate: 2025-07-30
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/erp-guide.png"
 category: "ERP"

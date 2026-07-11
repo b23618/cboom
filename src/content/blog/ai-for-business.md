@@ -1,7 +1,7 @@
 ---
 title: "AI สำหรับธุรกิจคืออะไร? วิธีใช้ AI เพิ่มยอดขายและลดต้นทุนในปี 2026"
 description: "AI สำหรับธุรกิจคืออะไร AI Assistant AI CRM AI Dashboard AI Forecast และ AI Automation ช่วยเพิ่มยอดขายและลดต้นทุนอย่างไร พร้อมตัวอย่างจริงจากธุรกิจไทย"
-publishDate: 2025-08-25
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/ai-business-guide.png"
 category: "AI"

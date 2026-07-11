@@ -1,7 +1,7 @@
 ---
 title: "TikTok Shop API คืออะไร? วิธีเชื่อมต่อกับระบบ ERP และ CRM 2026"
 description: "TikTok Shop API คืออะไร วิธีเชื่อมต่อ OAuth Orders Products Shipping Webhook Automation พร้อมตัวอย่างโค้ด Common Errors และ Best Practices สำหรับนักพัฒนาและธุรกิจไทย"
-publishDate: 2025-09-05
+publishDate: 2026-07-11
 author: "CBoom Team"
 image: "/og/tiktok-shop-api-guide.png"
 category: "Developer"
