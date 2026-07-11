@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Zap, Fuel, Droplets, Recycle, Plane, Truck, Package, FileText, Eye } from "lucide-react";
-import { KpiCard, Card, DataTable, StatusBadge, SubTabs, SectionHeader, ActionMenu, ProgressBar } from "../../ui";
-import { scopeBreakdown, emissionFactors, formatCO2 } from "../../esgData";
+import { KpiCard, Card, DataTable, StatusBadge, SubTabs, SectionHeader, ActionMenu, ProgressBar } from "../ui";
+import { scopeBreakdown, emissionFactors, formatCO2 } from "../esgData";
 
 export default function EmissionSourcesView() {
   const [tab, setTab] = useState("overview");

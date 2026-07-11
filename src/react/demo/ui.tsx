@@ -393,8 +393,9 @@ export function LineChart({ data, dataKey = "revenue", height = 200, color = "#1
 // ─── Recharts Donut/Pie Chart ────────────────────────────────
 export function DonutChart({ segments, size = 160 }: { segments: { label: string; value: number; color: string }[]; size?: number }) {
   const total = segments.reduce((s, seg) => s + seg.value, 0);
-  const colorMap: Record<string, string> = { orange: "#f97316", pink: "#ec4899", blue: "#3b82f6", green: "#16a34a", purple: "#8b5cf6", cyan: "#06b6d4", amber: "#f59e0b", red: "#ef4444" };
-  const chartData = segments.map(s => ({ name: s.label, value: s.value, fill: colorMap[s.color.replace("bg-", "").replace("-500", "")] || "#6b7280" }));
+  const colorMap: Record<string, string> = { orange: "#f97316", pink: "#ec4899", blue: "#3b82f6", green: "#16a34a", purple: "#8b5cf6", cyan: "#06b6d4", amber: "#f59e0b", red: "#ef4444", indigo: "#6366f1", rose: "#f43f5e", yellow: "#eab308" };
+  const resolveColor = (c: string) => c.startsWith("#") ? c : (colorMap[c.replace("bg-", "").replace("-500", "")] || "#6b7280");
+  const chartData = segments.map(s => ({ name: s.label, value: s.value, fill: resolveColor(s.color) }));
   return (
     <div className="flex items-center gap-5">
       <ResponsiveContainer width={size} height={size}>
@@ -408,7 +409,7 @@ export function DonutChart({ segments, size = 160 }: { segments: { label: string
       <div className="space-y-2">
         {segments.map((seg) => (
           <div key={seg.label} className="flex items-center gap-2 text-xs">
-            <span className={`h-2.5 w-2.5 rounded-full ${seg.color}`} />
+            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: resolveColor(seg.color) }} />
             <span className="text-gray-600 dark:text-white/60">{seg.label}</span>
             <span className="font-semibold">{seg.value}</span>
           </div>

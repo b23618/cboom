@@ -3,8 +3,8 @@ import { FileText, Upload, Eye, Download, Trash2, Plus } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, FilterBar,
   SectionHeader, ActionMenu,
-} from "../../ui";
-import { esgDocuments } from "../../esgData";
+} from "../ui";
+import { esgDocuments } from "../esgData";
 
 export default function DocumentsView() {
   const [search, setSearch] = useState("");

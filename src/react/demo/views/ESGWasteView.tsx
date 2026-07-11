@@ -2,9 +2,9 @@ import { Recycle, TrendingDown, DollarSign, Eye } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, SubTabs,
   SectionHeader, ActionMenu, DonutChart, MultiLineChart, ProgressBar,
-} from "../../ui";
+} from "../ui";
 import { useState } from "react";
-import { wasteTypes, wasteTrendData, formatTHB } from "../../esgData";
+import { wasteTypes, wasteTrendData, formatTHB } from "../esgData";
 
 export default function WasteView() {
   const [tab, setTab] = useState("records");

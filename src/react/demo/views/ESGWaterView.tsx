@@ -2,9 +2,9 @@ import { Droplets, TrendingDown, DollarSign, Eye, Plus } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, FilterBar,
   SectionHeader, ActionMenu, MultiLineChart, BarChart,
-} from "../../ui";
+} from "../ui";
 import { useState } from "react";
-import { waterRecords, waterTrendData, esgBranches, formatTHB } from "../../esgData";
+import { waterRecords, waterTrendData, esgBranches, formatTHB } from "../esgData";
 
 export default function WaterView() {
   const [search, setSearch] = useState("");

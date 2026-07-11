@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Target, TrendingDown, Sun, Leaf } from "lucide-react";
 import {
   KpiCard, Card, SectionHeader, ProgressBar, RadialProgress,
-} from "../../ui";
-import { esgTargets, carbonKPIs } from "../../esgData";
+} from "../ui";
+import { esgTargets, carbonKPIs } from "../esgData";
 
 export default function TargetsView() {
   const kpis = [

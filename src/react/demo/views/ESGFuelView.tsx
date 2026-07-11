@@ -4,8 +4,8 @@ import { Fuel, TrendingDown, DollarSign, Eye, Plus } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, SubTabs, FilterBar,
   SectionHeader, ActionMenu, BarChart, DonutChart,
-} from "../../ui";
-import { fuelTypes, fuelRecords, formatTHB } from "../../esgData";
+} from "../ui";
+import { fuelTypes, fuelRecords, formatTHB } from "../esgData";
 
 export default function FuelView() {
   const [tab, setTab] = useState("records");

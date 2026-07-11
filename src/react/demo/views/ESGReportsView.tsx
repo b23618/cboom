@@ -4,11 +4,11 @@ import { FileText, Download, FileSpreadsheet, Eye, Plus } from "lucide-react";
 import {
   Card, DataTable, StatusBadge, SubTabs, SectionHeader,
   ActionMenu, MultiLineChart, DonutChart, BarChart,
-} from "../../ui";
+} from "../ui";
 import {
   monthlyCarbonData, yearlyCarbonData, scopeBreakdown,
   carbonByBranch, carbonKPIs,
-} from "../../esgData";
+} from "../esgData";
 
 export default function ReportsView() {
   const [tab, setTab] = useState("monthly");

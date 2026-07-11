@@ -2,9 +2,9 @@ import { Truck, TrendingDown, Eye, Plus, Zap, Fuel } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, FilterBar,
   SectionHeader, ActionMenu, ProgressBar,
-} from "../../ui";
+} from "../ui";
 import { useState } from "react";
-import { fleetVehicles, formatTHB } from "../../esgData";
+import { fleetVehicles, formatTHB } from "../esgData";
 
 export default function FleetView() {
   const [search, setSearch] = useState("");

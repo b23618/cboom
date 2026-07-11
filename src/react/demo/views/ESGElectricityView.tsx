@@ -4,8 +4,8 @@ import { Zap, TrendingDown, DollarSign, Eye, Plus, Download } from "lucide-react
 import {
   KpiCard, Card, DataTable, StatusBadge, SubTabs, FilterBar,
   SectionHeader, ActionMenu, BarChart, MultiLineChart, ProgressBar,
-} from "../../ui";
-import { electricityRecords, energyTrendData, esgBranches, formatTHB } from "../../esgData";
+} from "../ui";
+import { electricityRecords, energyTrendData, esgBranches, formatTHB } from "../esgData";
 
 export default function ElectricityView() {
   const [tab, setTab] = useState("records");

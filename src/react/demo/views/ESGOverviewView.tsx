@@ -6,11 +6,11 @@ import {
 import {
   AnimatedCounter, KpiCard, Card, SectionHeader, MultiLineChart,
   DonutChart, ProgressBar, RadialProgress,
-} from "../../ui";
+} from "../ui";
 import {
   carbonKPIs, monthlyCarbonData, scopeBreakdown, esgAIInsights,
   carbonByBranch, energyTrendData, formatCO2, formatTHB,
-} from "../../esgData";
+} from "../esgData";
 
 export default function OverviewView() {
   const kpis = [

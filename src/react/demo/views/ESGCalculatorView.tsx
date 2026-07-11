@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Calculator, Zap, Fuel, Plane, Recycle, Droplets, Package, Truck, Leaf } from "lucide-react";
-import { Card, SectionHeader, KpiCard } from "../../ui";
-import { emissionFactors } from "../../esgData";
+import { Card, SectionHeader, KpiCard } from "../ui";
+import { emissionFactors } from "../esgData";
 
 interface CalcInput {
   electricity: number;

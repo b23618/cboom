@@ -6,6 +6,8 @@ import {
   Zap, Plug, Settings as SettingsIcon,
   Bell, Search, Menu, X, Sun, Moon, ChevronRight,
   ShoppingCart as CartIcon, Brain as BrainIcon, AlertCircle, CheckCircle2,
+  Leaf, Droplets, Recycle, Plane, Truck, Package, Calculator, Target, TrendingDown,
+  FileText, Building2, Radio, Fuel,
 } from "lucide-react";
 
 import DashboardView from "./demo/views/DashboardView";
@@ -22,12 +24,31 @@ import AutomationView from "./demo/views/AutomationView";
 import IntegrationsView from "./demo/views/IntegrationsView";
 import SettingsView from "./demo/views/SettingsView";
 
+import ESGOverviewView from "./demo/views/ESGOverviewView";
+import ESGCarbonDashboardView from "./demo/views/ESGCarbonDashboardView";
+import ESGEmissionSourcesView from "./demo/views/ESGEmissionSourcesView";
+import ESGElectricityView from "./demo/views/ESGElectricityView";
+import ESGFuelView from "./demo/views/ESGFuelView";
+import ESGWaterView from "./demo/views/ESGWaterView";
+import ESGWasteView from "./demo/views/ESGWasteView";
+import ESGTravelView from "./demo/views/ESGTravelView";
+import ESGFleetView from "./demo/views/ESGFleetView";
+import ESGSuppliersView from "./demo/views/ESGSuppliersView";
+import ESGCalculatorView from "./demo/views/ESGCalculatorView";
+import ESGReportsView from "./demo/views/ESGReportsView";
+import ESGTargetsView from "./demo/views/ESGTargetsView";
+import ESGReductionPlanView from "./demo/views/ESGReductionPlanView";
+import ESGAIAssistantView from "./demo/views/ESGAIAssistantView";
+import ESGDocumentsView from "./demo/views/ESGDocumentsView";
+import ESGSettingsView from "./demo/views/ESGSettingsView";
+import { esgNotifications } from "./demo/esgData";
+
 import { notifications } from "./demo/data";
 import { useRealtimeSimulation } from "./demo/useRealtime";
 import { ToastContainer } from "./demo/ui";
 
 // ─── Menu Items ──────────────────────────────────────────────
-const menuItems = [
+const businessMenuItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, group: "หลัก" },
   { id: "crm", label: "CRM", icon: Users, group: "ธุรกิจ" },
   { id: "marketplace", label: "Marketplace", icon: ShoppingBag, group: "ธุรกิจ" },
@@ -41,6 +62,26 @@ const menuItems = [
   { id: "automation", label: "Automation", icon: Zap, group: "ระบบ" },
   { id: "integrations", label: "Integrations", icon: Plug, group: "ระบบ" },
   { id: "settings", label: "Settings", icon: SettingsIcon, group: "ระบบ" },
+];
+
+const esgMenuItems = [
+  { id: "esg-overview", label: "Overview", icon: LayoutDashboard, group: "หลัก" },
+  { id: "esg-carbon", label: "Carbon Dashboard", icon: Leaf, group: "หลัก" },
+  { id: "esg-emission", label: "Emission Sources", icon: Zap, group: "การปล่อย CO₂" },
+  { id: "esg-electricity", label: "Electricity", icon: Zap, group: "การปล่อย CO₂" },
+  { id: "esg-fuel", label: "Fuel", icon: Fuel, group: "การปล่อย CO₂" },
+  { id: "esg-water", label: "Water", icon: Droplets, group: "การปล่อย CO₂" },
+  { id: "esg-waste", label: "Waste", icon: Recycle, group: "การปล่อย CO₂" },
+  { id: "esg-travel", label: "Business Travel", icon: Plane, group: "การปล่อย CO₂" },
+  { id: "esg-fleet", label: "Fleet", icon: Truck, group: "การปล่อย CO₂" },
+  { id: "esg-suppliers", label: "Suppliers", icon: Package, group: "การปล่อย CO₂" },
+  { id: "esg-calculator", label: "Carbon Calculator", icon: Calculator, group: "เครื่องมือ" },
+  { id: "esg-reports", label: "Reports", icon: FileBarChart, group: "เครื่องมือ" },
+  { id: "esg-targets", label: "Targets", icon: Target, group: "เครื่องมือ" },
+  { id: "esg-reduction", label: "Reduction Plan", icon: TrendingDown, group: "เครื่องมือ" },
+  { id: "esg-ai", label: "AI ESG Assistant", icon: Brain, group: "อัจฉริยะ" },
+  { id: "esg-documents", label: "Documents", icon: FileText, group: "ระบบ" },
+  { id: "esg-settings", label: "Settings", icon: SettingsIcon, group: "ระบบ" },
 ];
 
 const viewDescriptions: Record<string, string> = {
@@ -57,6 +98,23 @@ const viewDescriptions: Record<string, string> = {
   automation: "สร้างและจัดการ Automation",
   integrations: "เชื่อมต่อแอพภายนอก",
   settings: "ตั้งค่าระบบ",
+  "esg-overview": "ภาพรวม ESG และ Carbon Management",
+  "esg-carbon": "แดชบอร์ดการปล่อย CO₂ แบบเรียลไทม์",
+  "esg-emission": "แหล่งปล่อยก๊าซเรือนกระจกทั้งหมด",
+  "esg-electricity": "การใช้ไฟฟ้าและ CO₂ จากไฟฟ้า",
+  "esg-fuel": "การใช้เชื้อเพลิงและ CO₂ จากเชื้อเพลิง",
+  "esg-water": "การใช้น้ำและ CO₂ จากน้ำ",
+  "esg-waste": "การจัดการขยะและการรีไซเคิล",
+  "esg-travel": "การเดินทางเพื่อธุรกิจ",
+  "esg-fleet": "ยานพาหนะและการปล่อย CO₂",
+  "esg-suppliers": "ซัพพลายเออร์และ ESG Score",
+  "esg-calculator": "เครื่องคำนวณการปล่อย CO₂",
+  "esg-reports": "รายงาน ESG และ Carbon Footprint",
+  "esg-targets": "เป้าหมายการลด CO₂",
+  "esg-reduction": "แผนการลดการปล่อย CO₂",
+  "esg-ai": "ผู้ช่วย AI สำหรับ ESG",
+  "esg-documents": "เอกสารและใบรับรอง",
+  "esg-settings": "ตั้งค่าระบบ ESG",
 };
 
 // ─── Notification Item ────────────────────────────────────────
@@ -97,6 +155,7 @@ function NotificationItem({ notif, index }: { notif: { id: string | number; titl
 // ─── Main Dashboard App ───────────────────────────────────────
 export default function DashboardApp() {
   const [activeView, setActiveView] = useState("dashboard");
+  const [platform, setPlatform] = useState<"business" | "esg">("business");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -132,8 +191,26 @@ export default function DashboardApp() {
     automation: <AutomationView />,
     integrations: <IntegrationsView />,
     settings: <SettingsView />,
+    "esg-overview": <ESGOverviewView />,
+    "esg-carbon": <ESGCarbonDashboardView />,
+    "esg-emission": <ESGEmissionSourcesView />,
+    "esg-electricity": <ESGElectricityView />,
+    "esg-fuel": <ESGFuelView />,
+    "esg-water": <ESGWaterView />,
+    "esg-waste": <ESGWasteView />,
+    "esg-travel": <ESGTravelView />,
+    "esg-fleet": <ESGFleetView />,
+    "esg-suppliers": <ESGSuppliersView />,
+    "esg-calculator": <ESGCalculatorView />,
+    "esg-reports": <ESGReportsView />,
+    "esg-targets": <ESGTargetsView />,
+    "esg-reduction": <ESGReductionPlanView />,
+    "esg-ai": <ESGAIAssistantView />,
+    "esg-documents": <ESGDocumentsView />,
+    "esg-settings": <ESGSettingsView />,
   };
 
+  const menuItems = platform === "business" ? businessMenuItems : esgMenuItems;
   const groups = [...new Set(menuItems.map(m => m.group))];
 
   return (
@@ -159,10 +236,31 @@ export default function DashboardApp() {
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-green-600 text-white font-bold text-sm">C</div>
             <span className="font-extrabold tracking-tight">CBoom</span>
-            <span className="rounded-md bg-green-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-green-500">Demo</span>
+            <span className={`rounded-md px-1.5 py-0.5 text-[10px] font-semibold ${platform === "esg" ? "bg-green-500/10 text-green-500" : "bg-blue-500/10 text-blue-500"}`}>
+              {platform === "esg" ? "ESG" : "Demo"}
+            </span>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden">
             <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div className="flex gap-1 border-b border-gray-200/60 p-2 dark:border-white/10">
+          <button
+            onClick={() => { setPlatform("business"); setActiveView("dashboard"); }}
+            className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-medium transition-all ${
+              platform === "business" ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "text-gray-500 hover:bg-gray-100 dark:text-white/40 dark:hover:bg-white/5"
+            }`}
+          >
+            <Building2 className="h-3.5 w-3.5" /> Business
+          </button>
+          <button
+            onClick={() => { setPlatform("esg"); setActiveView("esg-overview"); }}
+            className={`flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-medium transition-all ${
+              platform === "esg" ? "bg-green-500/10 text-green-600 dark:text-green-400" : "text-gray-500 hover:bg-gray-100 dark:text-white/40 dark:hover:bg-white/5"
+            }`}
+          >
+            <Leaf className="h-3.5 w-3.5" /> ESG
           </button>
         </div>
 
@@ -204,6 +302,22 @@ export default function DashboardApp() {
         </nav>
 
         <div className="border-t border-gray-200/60 p-4 dark:border-white/10">
+          {platform === "esg" && (
+            <div className="mb-3 rounded-xl bg-green-500/5 p-3">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-medium text-gray-400">Net Zero Progress</span>
+                <span className="text-xs font-bold text-green-500">24%</span>
+              </div>
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "24%" }}
+                  transition={{ duration: 1 }}
+                  className="h-full rounded-full bg-green-500"
+                />
+              </div>
+            </div>
+          )}
           <a
             href="https://lin.ee/QVWxues"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-green-700"
@@ -296,9 +410,17 @@ export default function DashboardApp() {
                   {viewDescriptions[activeView]}
                 </p>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1.5 text-xs font-medium text-green-500">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-                Live Demo
+              <span className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${platform === "esg" ? "bg-green-500/10 text-green-500" : "bg-green-500/10 text-green-500"}`}>
+                {platform === "esg" ? (
+                  <>
+                    <Leaf className="h-3 w-3" /> Carbon Neutral
+                  </>
+                ) : (
+                  <>
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                    Live Demo
+                  </>
+                )}
               </span>
             </motion.div>
 

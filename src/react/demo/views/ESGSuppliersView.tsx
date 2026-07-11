@@ -2,9 +2,9 @@ import { Package, Eye, Plus, Star } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, FilterBar,
   SectionHeader, ActionMenu, ProgressBar,
-} from "../../ui";
+} from "../ui";
 import { useState } from "react";
-import { supplierESG } from "../../esgData";
+import { supplierESG } from "../esgData";
 
 export default function SuppliersView() {
   const [search, setSearch] = useState("");

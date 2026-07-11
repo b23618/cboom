@@ -2,9 +2,9 @@ import { Plane, TrendingDown, DollarSign, Eye, Plus } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, FilterBar,
   SectionHeader, ActionMenu,
-} from "../../ui";
+} from "../ui";
 import { useState } from "react";
-import { travelRecords, formatTHB } from "../../esgData";
+import { travelRecords, formatTHB } from "../esgData";
 
 export default function TravelView() {
   const [search, setSearch] = useState("");

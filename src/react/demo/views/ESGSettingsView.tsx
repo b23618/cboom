@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Building2, Bell, Shield, FileText, ChevronRight } from "lucide-react";
-import { Card, SectionHeader, SubTabs, StatusBadge } from "../../ui";
-import { esgCompany, esgBranches, emissionFactors } from "../../esgData";
+import { Card, SectionHeader, SubTabs, StatusBadge } from "../ui";
+import { esgCompany, esgBranches, emissionFactors } from "../esgData";
 
 export default function SettingsView() {
   const [tab, setTab] = useState("company");

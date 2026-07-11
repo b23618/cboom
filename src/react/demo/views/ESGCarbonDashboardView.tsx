@@ -3,11 +3,11 @@ import { Leaf, TrendingDown, Factory, Building2, Truck, Radio } from "lucide-rea
 import {
   KpiCard, Card, SectionHeader, MultiLineChart, DonutChart,
   ProgressBar, BarChart, StatusBadge,
-} from "../../ui";
+} from "../ui";
 import {
   carbonKPIs, monthlyCarbonData, yearlyCarbonData, scopeBreakdown,
   carbonByDepartment, carbonByBranch, energyTrendData,
-} from "../../esgData";
+} from "../esgData";
 
 export default function CarbonDashboardView() {
   const scopeKPIs = [

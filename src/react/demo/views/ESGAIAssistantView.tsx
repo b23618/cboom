@@ -4,7 +4,7 @@ import {
   Brain, Send, Sparkles, Leaf, Factory, TrendingDown,
   Bot, User, Copy, ThumbsUp, FileText,
 } from "lucide-react";
-import { Card, SectionHeader } from "../../ui";
+import { Card, SectionHeader } from "../ui";
 
 interface Message {
   role: "user" | "ai";

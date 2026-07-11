@@ -3,8 +3,8 @@ import { Sun, Lightbulb, Zap, Recycle, Leaf, TrendingDown, Eye, Plus } from "luc
 import {
   KpiCard, Card, DataTable, StatusBadge, SectionHeader,
   ActionMenu, ProgressBar,
-} from "../../ui";
-import { reductionProjects, carbonKPIs, formatTHB } from "../../esgData";
+} from "../ui";
+import { reductionProjects, carbonKPIs, formatTHB } from "../esgData";
 
 export default function ReductionPlanView() {
   const totalTarget = reductionProjects.reduce((s, p) => s + p.targetReduction, 0);
