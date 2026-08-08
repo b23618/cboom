@@ -1,5 +1,5 @@
 ---
-title: "Shopee API คืออะไร? คู่มือสำหรับนักพัฒนาและเจ้าของธุรกิจ 2026"
+title: "Shopee API คืออะไร? คู่มือสำหรับธุรกิจที่ต้องการเชื่อมระบบ 2026"
 description: "Shopee API คืออะไร Authentication OAuth Orders API Products API Webhook Integration พร้อมตัวอย่างโค้ด Common Errors และ Best Practices สำหรับนักพัฒนาและธุรกิจไทย"
 publishDate: 2026-07-11
 author: "CBoom Team"

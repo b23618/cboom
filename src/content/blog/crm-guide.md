@@ -1,5 +1,5 @@
 ---
-title: "CRM คืออะไร? คู่มือฉบับสมบูรณ์สำหรับธุรกิจไทย ปี 2026"
+title: "ระบบ CRM คืออะไร? คู่มือฉบับสมบูรณ์สำหรับธุรกิจ 2026"
 description: "CRM คืออะไร ทำไมธุรกิจไทยต้องมี ต่างจาก Excel และ ERP อย่างไร พร้อมคู่มือ Lead Management Pipeline Customer Journey และ Best Practices สำหรับทีมขายและ SME ไทย"
 publishDate: 2026-07-11
 author: "CBoom Team"
@@ -18,7 +18,7 @@ tags:
   - ธุรกิจไทย
 draft: false
 keywords: "CRM คืออะไร, ระบบ CRM, ระบบจัดการลูกค้า, Lead Management, Sales Pipeline, Customer Journey, CRM สำหรับ SME, CRM ไทย, ซอฟต์แวร์ CRM, เปรียบเทียบ CRM Excel ERP"
-focusKeyword: "CRM"
+focusKeyword: "ระบบ CRM"
 secondaryKeywords:
   - "ระบบ CRM คืออะไร"
   - "ระบบจัดการลูกค้า"

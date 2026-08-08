@@ -1,5 +1,5 @@
 ---
-title: "CRM กับ ERP ต่างกันอย่างไร? ควรเลือกใช้ระบบไหนสำหรับธุรกิจของคุณ 2026"
+title: "CRM กับ ERP ต่างกันอย่างไร? ธุรกิจควรเลือกอะไร 2026"
 description: "เปรียบเทียบ CRM กับ ERP แบบเจาะลึก ข้อดี ข้อเสีย Use Cases ตัวอย่างจริง และเมื่อไรควรใช้ทั้งสองระบบพร้อมกัน พร้อมคำแนะนำสำหรับธุรกิจไทย"
 publishDate: 2026-07-11
 author: "CBoom Team"
@@ -17,7 +17,7 @@ tags:
   - Integration
 draft: false
 keywords: "CRM กับ ERP ต่างกันอย่างไร, CRM vs ERP, เปรียบเทียบ CRM ERP, ควรเลือก CRM หรือ ERP, CRM คืออะไร, ERP คืออะไร, ระบบจัดการธุรกิจ, CRM สำหรับ SME, ERP สำหรับ SME, ใช้ CRM และ ERP พร้อมกัน"
-focusKeyword: "CRM กับ ERP ต่างกันอย่างไร"
+focusKeyword: "CRM กับ ERP"
 secondaryKeywords:
   - "CRM vs ERP"
   - "เปรียบเทียบ CRM กับ ERP"
