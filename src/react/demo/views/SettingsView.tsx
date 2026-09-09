@@ -6,6 +6,9 @@ import {
 } from "lucide-react";
 import { Card, DataTable, StatusBadge, SubTabs, FilterBar, AnimatedCounter } from "../ui";
 import { settingsUsers, auditLogs } from "../data";
+import { CS_PERMISSION_LABELS, CS_ROLE_PERMISSIONS } from "../customerService/provider";
+import { csAuditSeed } from "../customerService/data";
+import { channelLabel } from "../customerService/types";
 
 const formatTHB = (n: number) => "฿" + n.toLocaleString("en-US");
 
@@ -124,37 +127,85 @@ export default function SettingsView() {
       )}
 
       {tab === "roles" && (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { role: "Admin", users: 1, color: "bg-red-500", permissions: ["ทั้งหมด"] },
-            { role: "Manager", users: 2, color: "bg-amber-500", permissions: ["ดูได้ทุกโมดูล", "แก้ไขได้", "ไม่ลบบริษัท"] },
-            { role: "Sales", users: 12, color: "bg-blue-500", permissions: ["CRM", "Marketplace", "POS"] },
-            { role: "Accountant", users: 3, color: "bg-purple-500", permissions: ["Accounting", "Reports"] },
-            { role: "Staff", users: 8, color: "bg-gray-500", permissions: ["Warehouse", "POS"] },
-            { role: "Viewer", users: 6, color: "bg-cyan-500", permissions: ["ดูได้ทุกโมดูล"] },
-          ].map((role, i) => (
-            <motion.div
-              key={role.role}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-2xl border border-gray-200/60 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5"
-            >
-              <div className="flex items-center justify-between">
-                <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${role.color} text-white`}>
-                  <Shield className="h-5 w-5" />
-                </span>
-                <span className="text-lg font-bold">{role.users}</span>
-              </div>
-              <h3 className="mt-3 text-sm font-bold">{role.role}</h3>
-              <p className="mt-1 text-[10px] text-gray-500 dark:text-white/50">{role.users} ผู้ใช้</p>
-              <div className="mt-3 space-y-1">
-                {role.permissions.map(p => (
-                  <p key={p} className="text-[10px] text-gray-600 dark:text-white/60">• {p}</p>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+        <div className="space-y-5">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { role: "Admin", users: 1, color: "bg-red-500", permissions: ["ทั้งหมด"] },
+              { role: "Manager", users: 2, color: "bg-amber-500", permissions: ["ดูได้ทุกโมดูล", "แก้ไขได้", "ไม่ลบบริษัท"] },
+              { role: "Customer Service Agent", users: 4, color: "bg-pink-500", permissions: ["Customer Service", "ดูออเดอร์ที่เกี่ยวข้อง"] },
+              { role: "Sales", users: 12, color: "bg-blue-500", permissions: ["CRM", "Marketplace", "POS"] },
+              { role: "Accountant", users: 3, color: "bg-purple-500", permissions: ["Accounting", "Reports"] },
+              { role: "Staff", users: 8, color: "bg-gray-500", permissions: ["Warehouse", "POS"] },
+              { role: "Viewer", users: 6, color: "bg-cyan-500", permissions: ["ดูได้ทุกโมดูล"] },
+            ].map((role, i) => (
+              <motion.div
+                key={role.role}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="rounded-2xl border border-gray-200/60 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5"
+              >
+                <div className="flex items-center justify-between">
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${role.color} text-white`}>
+                    <Shield className="h-5 w-5" />
+                  </span>
+                  <span className="text-lg font-bold">{role.users}</span>
+                </div>
+                <h3 className="mt-3 text-sm font-bold">{role.role}</h3>
+                <p className="mt-1 text-[10px] text-gray-500 dark:text-white/50">{role.users} ผู้ใช้</p>
+                <div className="mt-3 space-y-1">
+                  {role.permissions.map(p => (
+                    <p key={p} className="text-[10px] text-gray-600 dark:text-white/60">• {p}</p>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Customer Service permission group */}
+          <Card delay={0.2}>
+            <div className="mb-1 flex items-center gap-2">
+              <Shield className="h-4 w-4 text-green-500" />
+              <p className="text-sm font-semibold">กลุ่มสิทธิ์: Customer Service</p>
+            </div>
+            <p className="mb-4 text-xs text-gray-500 dark:text-white/50">
+              ควบคุมการเข้าถึงกล่องข้อความลูกค้า (Customer Service Inbox) — ผู้ใช้ที่ไม่ได้รับสิทธิ์ใด ๆ ในกลุ่มนี้จะไม่เห็นการสนทนาของลูกค้า
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-gray-200/60 dark:border-white/10">
+                    <th className="pb-3 pr-4 font-semibold text-gray-500 dark:text-white/50">สิทธิ์</th>
+                    <th className="pb-3 pr-4 font-semibold text-gray-500 dark:text-white/50">คำอธิบาย</th>
+                    {["Admin", "Manager", "Customer Service Agent"].map(r => (
+                      <th key={r} className="pb-3 pr-4 text-center font-semibold text-gray-500 dark:text-white/50">{r}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(Object.keys(CS_PERMISSION_LABELS) as (keyof typeof CS_PERMISSION_LABELS)[]).map((perm) => (
+                    <tr key={perm} className="border-b border-gray-100/60 dark:border-white/5">
+                      <td className="py-3 pr-4 font-mono text-[11px]">{perm}</td>
+                      <td className="py-3 pr-4 text-gray-500 dark:text-white/50">{CS_PERMISSION_LABELS[perm]}</td>
+                      {["Admin", "Manager", "Customer Service Agent"].map((r) => {
+                        const has = (CS_ROLE_PERMISSIONS[r] ?? []).includes(perm);
+                        return (
+                          <td key={r} className="py-3 pr-4 text-center">
+                            {has
+                              ? <span className="text-green-500">✓</span>
+                              : <span className="text-gray-300 dark:text-white/20">—</span>}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 rounded-xl bg-gray-50 px-3 py-2 text-[10px] text-gray-500 dark:bg-white/5 dark:text-white/50">
+              บทบาท Sales, Accountant, Staff และ Viewer ไม่ได้รับสิทธิ์ Customer Service โดยอัตโนมัติ
+            </p>
+          </Card>
         </div>
       )}
 
@@ -167,11 +218,25 @@ export default function SettingsView() {
               { key: "user", label: "ผู้ใช้" },
               { key: "action", label: "การกระทำ" },
               { key: "module", label: "โมดูล" },
-              { key: "ip", label: "IP Address", render: (r) => <span className="font-mono text-gray-400">{r.ip}</span> },
+              { key: "ref", label: "IP / ช่องทาง", render: (r) => <span className="font-mono text-gray-400">{r.ref}</span> },
               { key: "time", label: "เวลา" },
             ]}
-            data={auditLogs}
+            data={[
+              ...csAuditSeed.map((e) => ({
+                id: e.id,
+                user: e.user,
+                action: e.action,
+                module: "Customer Service",
+                // Audit shows the channel, never message contents.
+                ref: channelLabel(e.channel),
+                time: e.time,
+              })),
+              ...auditLogs.map((r) => ({ ...r, ref: r.ip })),
+            ].sort((a, b) => b.time.localeCompare(a.time))}
           />
+          <p className="mt-3 text-[10px] text-gray-400 dark:text-white/40">
+            บันทึกการใช้งาน Customer Service จะไม่เก็บเนื้อหาข้อความของลูกค้า
+          </p>
         </Card>
       )}
 

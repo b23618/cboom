@@ -7,7 +7,7 @@ import {
   Bell, Search, Menu, X, Sun, Moon, ChevronRight,
   ShoppingCart as CartIcon, Brain as BrainIcon, AlertCircle, CheckCircle2,
   Leaf, Droplets, Recycle, Plane, Truck, Package, Calculator, Target, TrendingDown,
-  FileText, Building2, Radio, Fuel,
+  FileText, Building2, Radio, Fuel, Headset, MessageSquare,
 } from "lucide-react";
 
 import DashboardView from "./demo/views/DashboardView";
@@ -23,6 +23,8 @@ import ReportsView from "./demo/views/ReportsView";
 import AutomationView from "./demo/views/AutomationView";
 import IntegrationsView from "./demo/views/IntegrationsView";
 import SettingsView from "./demo/views/SettingsView";
+import CustomerServiceOverviewView from "./demo/views/CustomerServiceOverviewView";
+import CustomerServiceInboxView from "./demo/views/CustomerServiceInboxView";
 
 import ESGOverviewView from "./demo/views/ESGOverviewView";
 import ESGCarbonDashboardView from "./demo/views/ESGCarbonDashboardView";
@@ -51,6 +53,8 @@ import { ToastContainer } from "./demo/ui";
 const businessMenuItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, group: "หลัก" },
   { id: "crm", label: "CRM", icon: Users, group: "ธุรกิจ" },
+  { id: "customer-service", label: "Customer Service", icon: Headset, group: "ธุรกิจ" },
+  { id: "customer-service-inbox", label: "CS Inbox", icon: MessageSquare, group: "ธุรกิจ" },
   { id: "marketplace", label: "Marketplace", icon: ShoppingBag, group: "ธุรกิจ" },
   { id: "warehouse", label: "Warehouse", icon: Warehouse, group: "ธุรกิจ" },
   { id: "pos", label: "POS", icon: ShoppingCart, group: "ธุรกิจ" },
@@ -87,6 +91,8 @@ const esgMenuItems = [
 const viewDescriptions: Record<string, string> = {
   dashboard: "ภาพรวมธุรกิจของคุณวันนี้",
   crm: "จัดการลูกค้าและงานขาย",
+  "customer-service": "จัดการข้อความและบริการลูกค้าจากทุกช่องทาง",
+  "customer-service-inbox": "จัดการข้อความและบริการลูกค้าจากทุกช่องทาง",
   marketplace: "สต๊อกสินค้าและช่องทางการขาย",
   warehouse: "จัดการคลังสินค้าและสต๊อก",
   pos: "ระบบขายหน้าร้าน",
@@ -156,6 +162,7 @@ function NotificationItem({ notif, index }: { notif: { id: string | number; titl
 export default function DashboardApp() {
   const [activeView, setActiveView] = useState("dashboard");
   const [platform, setPlatform] = useState<"business" | "esg">("business");
+  const [pendingOrderId, setPendingOrderId] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -177,10 +184,18 @@ export default function DashboardApp() {
     }
   }, [isDark]);
 
+  const openOrderInMarketplace = (orderId: string) => {
+    setPendingOrderId(orderId);
+    setActiveView("marketplace");
+    setSidebarOpen(false);
+  };
+
   const views: Record<string, React.ReactNode> = {
     dashboard: <DashboardView />,
     crm: <CRMView />,
-    marketplace: <MarketplaceView />,
+    "customer-service": <CustomerServiceOverviewView />,
+    "customer-service-inbox": <CustomerServiceInboxView onOpenOrder={openOrderInMarketplace} />,
+    marketplace: <MarketplaceView focusOrderId={pendingOrderId} />,
     warehouse: <WarehouseView />,
     pos: <POSView />,
     accounting: <AccountingView />,
@@ -278,6 +293,7 @@ export default function DashboardApp() {
                       onClick={() => {
                         setActiveView(item.id);
                         setSidebarOpen(false);
+                        if (item.id !== "marketplace") setPendingOrderId(null);
                       }}
                       className={`flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
                         active

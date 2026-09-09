@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ShoppingBag, Music, ShoppingCart, MessageCircle, FileSpreadsheet,
-  Webhook, Code, Key, Plus, CheckCircle2, Store, Globe,
+  Webhook, Code, Key, Plus, CheckCircle2, Store, Globe, Headset, ShieldCheck,
 } from "lucide-react";
 import { Card, StatusBadge, SubTabs, FilterBar } from "../ui";
 import { integrationsConnected, integrationsAvailable } from "../data";
@@ -32,6 +32,7 @@ export default function IntegrationsView() {
       <SubTabs tabs={tabs} active={tab} onChange={setTab} />
 
       {tab === "connected" && (
+        <div className="space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {integrationsConnected.map((integration, i) => {
             const Icon = iconMap[integration.icon] || ShoppingBag;
@@ -61,6 +62,60 @@ export default function IntegrationsView() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* TikTok Shop → Settings → Customer Service */}
+        <Card delay={0.3}>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-pink-500 text-white">
+                <Music className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-bold">TikTok Shop · การตั้งค่า</p>
+                <p className="text-[10px] text-gray-500 dark:text-white/50">Marketplace Integration</p>
+              </div>
+            </div>
+            <StatusBadge status="เชื่อมต่อแล้ว" />
+          </div>
+
+          <div className="mt-4 rounded-xl border border-gray-200/60 p-4 dark:border-white/10">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Headset className="h-4 w-4 text-green-500" />
+                <p className="text-xs font-semibold">Customer Service</p>
+              </div>
+              <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-medium text-amber-700 dark:bg-amber-500/15 dark:text-amber-400">
+                Connected · Demo
+              </span>
+            </div>
+            <p className="mt-2 text-[11px] text-gray-500 dark:text-white/50">
+              จัดการข้อความบริการลูกค้า TikTok Shop ผ่าน Customer Service Inbox ของ CBoom
+            </p>
+            <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+              {[
+                { label: "สถานะการอนุญาต (Authorization)", value: "อนุญาตแล้ว (ขอบเขต: ข้อความบริการลูกค้า)" },
+                { label: "ซิงค์ล่าสุด", value: "วันนี้ 10:41" },
+                { label: "สถานะการเชื่อมต่อ", value: "พร้อมใช้งาน (โหมดสาธิต)" },
+              ].map((row) => (
+                <div key={row.label} className="rounded-lg bg-gray-50 p-2.5 dark:bg-white/5">
+                  <p className="text-[10px] text-gray-400">{row.label}</p>
+                  <p className="mt-0.5 text-[11px] font-medium">{row.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 flex items-start gap-2 rounded-lg bg-gray-50 px-3 py-2 text-[10px] text-gray-500 dark:bg-white/5 dark:text-white/50">
+              <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+              <p>
+                ระบบไม่แสดง App Secret, Access Token หรือ Refresh Token ในหน้านี้ — ข้อมูลการยืนยันตัวตนถูกจัดเก็บอย่างปลอดภัยฝั่งเซิร์ฟเวอร์
+                ข้อมูลการสนทนาถูกจำกัดขอบเขตเฉพาะร้าน/องค์กรที่เชื่อมต่อ ปัจจุบันเป็นข้อมูลสาธิต ยังไม่ได้ดึงข้อความจริงจาก TikTok Shop API
+              </p>
+            </div>
+            <button className="mt-3 w-full rounded-xl border border-gray-200/60 py-2 text-xs font-medium text-gray-600 transition-colors hover:border-green-500/40 hover:text-green-500 dark:border-white/10 dark:text-white/60">
+              เปิด Customer Service Inbox
+            </button>
+          </div>
+        </Card>
         </div>
       )}
 

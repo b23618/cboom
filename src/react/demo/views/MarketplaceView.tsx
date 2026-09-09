@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Package, CheckCircle2, AlertCircle, X, ShoppingBag, Truck,
   RefreshCw, DollarSign, Webhook, Download, Plus, Eye, Edit, Trash2,
-  TrendingUp, Store, Zap,
+  TrendingUp, Store, Zap, Headset,
 } from "lucide-react";
 import {
   KpiCard, Card, DataTable, StatusBadge, SubTabs, FilterBar,
@@ -14,9 +14,18 @@ import {
   webhookLogs, channelData, formatTHB,
 } from "../data";
 
-export default function MarketplaceView() {
+export default function MarketplaceView({ focusOrderId }: { focusOrderId?: string | null } = {}) {
   const [tab, setTab] = useState("orders");
   const [search, setSearch] = useState("");
+
+  // When opened from the Customer Service inbox ("ดูรายละเอียดออเดอร์"),
+  // jump to the orders tab and pre-filter to the referenced order.
+  useEffect(() => {
+    if (focusOrderId) {
+      setTab("orders");
+      setSearch(focusOrderId);
+    }
+  }, [focusOrderId]);
 
   const tabs = [
     { id: "orders", label: "ออเดอร์" },
@@ -70,6 +79,14 @@ export default function MarketplaceView() {
       </div>
 
       <SubTabs tabs={tabs} active={tab} onChange={setTab} />
+
+      {focusOrderId && (
+        <div className="flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/5 px-3 py-2 text-xs text-green-700 dark:text-green-400">
+          <Headset className="h-3.5 w-3.5 flex-shrink-0" />
+          <span>เปิดจาก Customer Service — กำลังแสดงออเดอร์ <span className="font-mono font-semibold">{focusOrderId}</span></span>
+        </div>
+      )}
+
       <FilterBar placeholder="ค้นหา..." onSearch={setSearch} />
 
       {tab === "orders" && (
