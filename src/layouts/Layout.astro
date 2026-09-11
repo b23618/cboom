@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 import SEO from "../components/SEO.astro";
+import { metaPixelBootstrapScript } from "../lib/metaPixelBootstrap";
+
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID;
 
 interface Props {
   title?: string;
@@ -68,6 +71,13 @@ const fullBreadcrumb = [{ name: "หน้าแรก", path: "/" }, ...breadcr
       })(window, document, "script", "dataLayer", "GTM-WJ6QFVBB");
     </script>
     <!-- End Google Tag Manager -->
+
+    {
+      metaPixelId && (
+        <script is:inline set:html={metaPixelBootstrapScript(metaPixelId)} />
+      )
+    }
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/logo.png" />
@@ -127,6 +137,18 @@ const fullBreadcrumb = [{ name: "หน้าแรก", path: "/" }, ...breadcr
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
+    {
+      metaPixelId && (
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style="display:none"
+            src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
+          />
+        </noscript>
+      )
+    }
     <slot />
 
     <script is:inline>

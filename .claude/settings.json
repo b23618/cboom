@@ -4,7 +4,13 @@
       "Bash(git stash *)",
       "Bash(npm run *)",
       "Bash(npx astro *)",
-      "Bash(curl -s -o /dev/null -w \"demo: %{http_code}\\\\n\" http://localhost:4321/demo/)"
+      "Bash(curl -s -o /dev/null -w \"demo: %{http_code}\\\\n\" http://localhost:4321/demo/)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"console.log\\(process.version\\)\")",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(node -e ' *)",
+      "Bash(npx vitest *)"
     ]
   }
 }

@@ -45,6 +45,13 @@ A self-contained interactive product demo, mounted only on `/demo/` (`src/pages/
 - `src/react/demo/customerService/` — the Customer Service (omnichannel inbox) module: `types.ts` defines the channel-agnostic `CustomerServiceProvider` contract + RBAC types; `provider.ts` has `DemoCustomerServiceProvider` (backed by demo data) plus stubbed per-channel adapters (`TikTokShopCustomerServiceProvider`, etc.) that all delegate to the demo store — no external API calls; `data.ts` holds the fictional conversations. Views: `CustomerServiceInboxView` (3-column inbox, responsive drill-down) and `CustomerServiceOverviewView` (analytics), plus `customerServiceShared.tsx`. Conversations are org-scoped in the provider. CS also extends `SettingsView` (roles + audit log) and `IntegrationsView` (TikTok Shop CS section).
 - This subtree is demo theater — no real API calls, no persistence. Keep it isolated from the marketing pages.
 
+### Analytics
+
+- Meta Pixel ("CBoom Web", ID `1652154163003052`) is bootstrapped once in `src/layouts/Layout.astro`, gated on the `PUBLIC_META_PIXEL_ID` env var (see `.env.example`) — unset it to disable the pixel (e.g. local dev without a `.env`). It's client-only browser tracking; there is no server-side Conversions API here and none should be added to this repo.
+- The site has no client-side router (every navigation, including into `/demo/`, is a full page load), so the inline bootstrap script's `fbq("track", "PageView")` covers every page exactly once — there's no SPA route-change case to wire up.
+- Use `trackMetaEvent` / `trackMetaCustomEvent` from `src/lib/metaPixel.ts` for any event beyond the automatic PageView, instead of calling `window.fbq` directly. Never pass email/phone/first name/last name in the `parameters` object — Advanced Matching is intentionally off, and the helper strips those keys defensively anyway.
+- No cookie-consent/CMP exists in this project yet, so the pixel currently fires unconditionally like the existing GTM snippet above it. If a consent system is added later, gate the Meta Pixel script on it the same way GTM would be gated.
+
 ## Styling
 
 - Tailwind v4, configured only via `@tailwindcss/vite` in `astro.config.mjs` — there is no `tailwind.config`. All theme tokens live in `@theme` in `src/styles/global.css` (`--color-primary` green ramp, `--color-background`, `--color-ink`, `--radius-card`, `--container-page`, custom keyframes).
