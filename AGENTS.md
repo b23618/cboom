@@ -14,7 +14,8 @@ Run from the project root.
 
 - Install: `npm install` (Node >= 22.12)
 - Dev server: `astro dev --background`; manage with `astro dev stop`, `astro dev status`, `astro dev logs`
-- Production build: `npm run build` — the primary regression check; there are no tests
+- Production build: `npm run build` — the primary regression check for pages/content
+- Tests: `npm test` (vitest + jsdom, `src/**/*.test.ts` only — currently just `src/lib/metaPixel*.test.ts`). Single file: `npx vitest run src/lib/metaPixel.test.ts`; by name: `npx vitest run -t "<name>"`
 - Local preview: `npm run preview`
 
 ## Architecture
@@ -24,6 +25,7 @@ Run from the project root.
 - `src/pages/` — one file per route. Home (`index.astro`) and each product page (`crm`, `marketplace`, `inventory`, `accounting`, `hr`, `ai`, `esg`), plus `pricing`, `contact`, `demo`.
 - A page is a thin composition: import `Layout` + section components from `src/components/`, render them inside `<Layout>`. Product pages follow a tighter pattern — `Navbar` / `ProductHero` / `FeatureList` / `CTA` / `Footer` with a local `features` array. Copy `esg.astro` as the template for a new product page.
 - `src/layouts/Layout.astro` — the site shell for every page. Owns: Google Tag Manager (`GTM-WJ6QFVBB`), the `<SEO>` component wiring, Google Fonts (Inter + Noto Sans Thai), an inline pre-paint theme script reading `localStorage["cboom-theme"]`, and two inline IntersectionObserver scripts that drive `.reveal` animations and `[data-counter]` number count-ups. Props: `title`, `description`, `image`, `keywords`, `noindex`, `breadcrumb`, `faq` — all have sensible CBoom defaults, so pass only what differs. The default `faq` array is injected as FAQ structured data on every page that doesn't override it.
+- Layout also inlines Microsoft Clarity (project ID hardcoded in the `<script is:inline>`) next to GTM. Both load unconditionally.
 - `src/components/SEO.astro` — canonical URL, OpenGraph/Twitter tags, and JSON-LD (`Organization`, `SoftwareApplication`, `BreadcrumbList`, `FAQPage`). Never hand-roll meta tags in a page; add props to `Layout`/`SEO` instead.
 - `src/pages/og/[slug].ts` — generates OG images as raw SVG at build time. To give a new page a custom OG image, add its slug to both the `titles` map and `getStaticPaths()`. `SEO.astro` auto-points `og:image` at `/og/<first-path-segment>` (falling back to `home`).
 
@@ -49,6 +51,7 @@ A self-contained interactive product demo, mounted only on `/demo/` (`src/pages/
 
 - Meta Pixel ("CBoom Web", ID `1652154163003052`) is bootstrapped once in `src/layouts/Layout.astro`, gated on the `PUBLIC_META_PIXEL_ID` env var (see `.env.example`) — unset it to disable the pixel (e.g. local dev without a `.env`). It's client-only browser tracking; there is no server-side Conversions API here and none should be added to this repo.
 - The site has no client-side router (every navigation, including into `/demo/`, is a full page load), so the inline bootstrap script's `fbq("track", "PageView")` covers every page exactly once — there's no SPA route-change case to wire up.
+- The pixel bootstrap string comes from `metaPixelBootstrapScript()` in `src/lib/metaPixelBootstrap.ts`; tests run it via `new Function` against jsdom. Keep it free-global style (`window`/`document`) so it stays inline-able.
 - Use `trackMetaEvent` / `trackMetaCustomEvent` from `src/lib/metaPixel.ts` for any event beyond the automatic PageView, instead of calling `window.fbq` directly. Never pass email/phone/first name/last name in the `parameters` object — Advanced Matching is intentionally off, and the helper strips those keys defensively anyway.
 - No cookie-consent/CMP exists in this project yet, so the pixel currently fires unconditionally like the existing GTM snippet above it. If a consent system is added later, gate the Meta Pixel script on it the same way GTM would be gated.
 
