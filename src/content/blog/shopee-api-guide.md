@@ -32,6 +32,15 @@ secondaryKeywords:
 ogTitle: "Shopee API คืออะไร? คู่มือสำหรับนักพัฒนาและเจ้าของธุรกิจ 2026"
 ogDescription: "เรียนรู้ทุกอย่างเกี่ยวกับ Shopee API Authentication OAuth Orders API Products API Webhook Integration พร้อมตัวอย่างโค้ดและ Best Practices"
 canonical: "https://cboom.in.th/blog/shopee-api-guide/"
+faq:
+  - question: "Shopee API คืออะไร"
+    answer: "Shopee API คือชุดคำสั่งที่ Shopee เปิดให้นักพัฒนาเข้าถึงข้อมูลและฟังก์ชันของ Shopee ผ่านโปรแกรม ผ่าน Shopee Open Platform ที่เป็นทางการ ใช้ดึงออเดอร์ อัปเดตสต๊อก พิมพ์ใบปะหน้า และอัปเดต Tracking อัตโนมัติ"
+  - question: "ต้องสมัครอะไรก่อนใช้ Shopee API"
+    answer: "ต้องสมัคร Shopee Open Platform Developer Account สร้างแอปพลิเคชัน แล้วได้ Partner ID, Partner Key และ Partner Secret จากนั้นร้านค้าต้องให้สิทธิ์ผ่าน OAuth 2.0"
+  - question: "Shopee API ฟรีไหม"
+    answer: "Shopee API ฟรีสำหรับนักพัฒนาและธุรกิจ แต่มี Rate Limit 2,000 requests/ชม. ต่อร้านค้า ถ้าต้องการเพิ่ม ติดต่อ Shopee แยก"
+  - question: "OAuth 2.0 คืออะไร"
+    answer: "OAuth 2.0 คือกระบวนการที่ร้านค้าให้สิทธิ์แอปพลิเคชันเข้าถึงข้อมูลร้าน โดยไม่ต้องบอกรหัสผ่าน Shopee ร้านค้าคลิก Authorize แล้ว Shopee ส่ง Code กลับมา แล้วแลกเป็น Access Token"
 ---
 
 # Shopee API คืออะไร? คู่มือสำหรับนักพัฒนาและเจ้าของธุรกิจ
@@ -155,7 +164,7 @@ canonical: "https://cboom.in.th/blog/shopee-api-guide/"
 | Format | JSON |
 | Encoding | UTF-8 |
 | Rate Limit | 2,000 requests/ชม. (แต่ละ Shop) |
-| Token อายุ | Access Token 14 วัน, Refresh Token 30 วัน |
+| Token อายุ | Access Token 4 ชั่วโมง, Refresh Token 30 วัน |
 | Sandbox | มีสภาพแวดล้อมทดสอบ |
 | เอกสาร | Shopee Open Platform Developer Guide |
 
@@ -188,7 +197,7 @@ canonical: "https://cboom.in.th/blog/shopee-api-guide/"
         ▼
 5. แลก Code เป็น Access Token
         │
-        ├── Access Token (อายุ 14 วัน)
+        ├── Access Token (อายุ 4 ชั่วโมง)
         └── Refresh Token (อายุ 30 วัน)
         │
         ▼
@@ -236,7 +245,7 @@ token_data = response.json()
 #   "message": "success",
 #   "response": {
 #     "access_token": "xxx-yyy-zzz",
-#     "expire_in": 1209600,  # 14 วัน
+#     "expire_in": 14400,  # 4 ชั่วโมง
 #     "refresh_token": "aaa-bbb-ccc",
 #     "expire_in_refresh": 2592000  # 30 วัน
 #   }
@@ -245,7 +254,7 @@ token_data = response.json()
 
 ### การ Refresh Token
 
-Access Token หมดอายุใน 14 วัน ต้อง Refresh ก่อนหมด:
+Access Token หมดอายุใน 4 ชั่วโมง ต้อง Refresh ก่อนหมด:
 
 ```python
 # Refresh Token
@@ -279,7 +288,7 @@ new_token = response.json()
 | Partner ID | ระบุแอปพลิเคชัน |
 | Partner Key | ใช้สร้าง Signature |
 | Shop ID | ระบุร้านค้าที่ให้สิทธิ์ |
-| Access Token | ใช้เรียก API (14 วัน) |
+| Access Token | ใช้เรียก API (4 ชั่วโมง) |
 | Refresh Token | ใช้ขอ Access Token ใหม่ (30 วัน) |
 | Signature | HMAC-SHA256 ของทุก Request |
 
@@ -830,7 +839,7 @@ if __name__ == '__main__':
 |-----------|-----------|--------|--------|
 | `invalid_sign` | Signature ไม่ถูกต้อง | สร้าง Signature ผิด | เช็ค base_string และ hash |
 | `invalid_param` | Parameter ไม่ถูกต้อง | ส่งค่าผิด/ขาด | อ่าน API Docs ตรวจ param |
-| `access_token_expired` | Token หมดอายุ | Token 14 วัน | Refresh Token ก่อนหมด |
+| `access_token_expired` | Token หมดอายุ | Token 4 ชั่วโมง | Refresh Token ก่อนหมด |
 | `rate_limit_exceeded` | เกิน Rate Limit | เรียกเกิน 2,000/ชม. | ลดความถี่ ใช้ Queue |
 | `shop_not_authorized` | ร้านยังไม่ให้สิทธิ์ | ยังไม่ OAuth | ร้านค้าต้อง Authorize ก่อน |
 | `network_error` | เครือข่ายผิดพลาด | Internet ไม่เสถียร | Retry พร้อม Backoff |
@@ -1010,7 +1019,7 @@ OAuth 2.0 คือกระบวนการที่ร้านค้าใ�
 
 ### 5. Access Token อยู่ได้นานเท่าไร
 
-Access Token อยู่ได้ 14 วัน ต้อง Refresh ก่อนหมดอายุ Refresh Token อยู่ได้ 30 วัน ระบบที่ดีต้อง Refresh อัตโนมัติ
+Access Token อยู่ได้ 4 ชั่วโมง ต้อง Refresh ก่อนหมดอายุ Refresh Token อยู่ได้ 30 วัน ระบบที่ดีต้อง Refresh อัตโนมัติ
 
 ### 6. Webhook ต่างจาก Polling อย่างไร
 

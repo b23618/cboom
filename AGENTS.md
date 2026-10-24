@@ -24,15 +24,16 @@ Run from the project root.
 
 - `src/pages/` — one file per route. Home (`index.astro`) and each product page (`crm`, `marketplace`, `inventory`, `accounting`, `hr`, `ai`, `esg`), plus `pricing`, `contact`, `demo`.
 - A page is a thin composition: import `Layout` + section components from `src/components/`, render them inside `<Layout>`. Product pages follow a tighter pattern — `Navbar` / `ProductHero` / `FeatureList` / `CTA` / `Footer` with a local `features` array. Copy `esg.astro` as the template for a new product page.
-- `src/layouts/Layout.astro` — the site shell for every page. Owns: Google Tag Manager (`GTM-WJ6QFVBB`), the `<SEO>` component wiring, Google Fonts (Inter + Noto Sans Thai), an inline pre-paint theme script reading `localStorage["cboom-theme"]`, and two inline IntersectionObserver scripts that drive `.reveal` animations and `[data-counter]` number count-ups. Props: `title`, `description`, `image`, `keywords`, `noindex`, `breadcrumb`, `faq` — all have sensible CBoom defaults, so pass only what differs. The default `faq` array is injected as FAQ structured data on every page that doesn't override it.
+- `src/layouts/Layout.astro` — the site shell for every page. Owns: Google Tag Manager (`GTM-WJ6QFVBB`), the `<SEO>` component wiring, Google Fonts (Inter + Noto Sans Thai), an inline pre-paint theme script reading `localStorage["cboom-theme"]`, and two inline IntersectionObserver scripts that drive `.reveal` animations and `[data-counter]` number count-ups. Props: `title`, `description`, `image`, `keywords`, `type`, `noindex`, `breadcrumb`, `faq`, `jsonLd` (extra schema objects, e.g. `BlogPosting`) — all have sensible CBoom defaults, so pass only what differs. The default `faq` array is injected as FAQ structured data on every page that doesn't override it.
 - Layout also inlines Microsoft Clarity (project ID hardcoded in the `<script is:inline>`) next to GTM. Both load unconditionally.
 - `src/components/SEO.astro` — canonical URL, OpenGraph/Twitter tags, and JSON-LD (`Organization`, `SoftwareApplication`, `BreadcrumbList`, `FAQPage`). Never hand-roll meta tags in a page; add props to `Layout`/`SEO` instead.
 - `src/pages/og/[slug].ts` — generates OG images as raw SVG at build time. To give a new page a custom OG image, add its slug to both the `titles` map and `getStaticPaths()`. `SEO.astro` auto-points `og:image` at `/og/<first-path-segment>` (falling back to `home`).
 
 ### Blog (content collection)
 
-- `src/content/blog/*.md` — posts. Schema in `src/content.config.ts` (glob loader). It carries many SEO fields (`focusKeyword`, `secondaryKeywords`, `ogTitle`, `canonical`, `updatedDate`, …). **Add a field to the schema before using it in frontmatter** or the build breaks.
+- `src/content/blog/*.md` — posts. Schema in `src/content.config.ts` (glob loader). It carries many SEO fields (`focusKeyword`, `secondaryKeywords`, `ogTitle`, `canonical`, `updatedDate`, per-post `faq` → FAQPage schema + accordion, …). **Add a field to the schema before using it in frontmatter** or the build breaks.
 - `src/pages/blog/[slug].astro` — renders a post from a heavy stack of `src/components/blog/*` widgets (TOC, reading progress, share, related posts/products, ROI calculator, newsletter, PDF download). `getStaticPaths` filters out `draft: true`. Reading time = `ceil(charCount / 500)`.
+- `src/pages/llms.txt.ts` builds `/llms.txt` from product pages + blog collection (product list is hardcoded; keep in sync).
 - `src/pages/rss.xml.js` and `@astrojs/sitemap` produce the feed and sitemap.
 
 ### React demo dashboard (`src/react/`)

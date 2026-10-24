@@ -31,6 +31,15 @@ secondaryKeywords:
 ogTitle: "Inventory Management คืออะไร? วิธีจัดการสต๊อกให้มีประสิทธิภาพ 2026"
 ogDescription: "เรียนรู้ทุกอย่างเกี่ยวกับ Inventory Management FIFO LIFO Safety Stock Barcode Warehouse POS Marketplace พร้อมตัวอย่างจริง"
 canonical: "https://cboom.in.th/blog/inventory-management-guide/"
+faq:
+  - question: "Inventory Management คืออะไร"
+    answer: "Inventory Management คือกระบวนการจัดการสินค้าคงคลัง ตั้งแต่สั่งซื้อ รับเข้า จัดเก็บ ติดตาม จนถึงจ่ายออก เพื่อให้มีสินค้าพอต่อความต้องการ โดยไม่มีสต๊อกเกินหรือขาด"
+  - question: "FIFO ต่างจาก LIFO อย่างไร"
+    answer: "FIFO (First In First Out) สินค้าเข้าก่อนออกก่อน เหมาะสำหรับสินค้ามีอายุ LIFO (Last In First Out) สินค้าเข้าหลังออกก่อน เหมาะสำหรับสินค้าไม่มีอายุ เช่น วัสดุก่อสร้าง"
+  - question: "Safety Stock คืออะไร"
+    answer: "Safety Stock คือสต๊อกสำรองที่เก็บไว้ป้องกันสินค้าหมดสต๊อก เมื่อความต้องการสูงกว่าคาด หรือขนส่งมาช้า คำนวณจาก (ขายสูงสุด × รอส่งนานสุด) - (ขายเฉลี่ย × รอส่งเฉลี่ย)"
+  - question: "Barcode ช่วยจัดการสต๊อกอย่างไร"
+    answer: "Barcode ช่วยสแกนสินค้าแทนคีย์มือ ลดความผิดพลาด 95% เร็วกว่า 10 เท่า และทำให้สต๊อกตรง 99%+ เพราะทุกการเคลื่อนไหวบันทึกผ่าน Barcode"
 ---
 
 # Inventory Management คืออะไร? วิธีจัดการสต๊อกให้มีประสิทธิภาพ

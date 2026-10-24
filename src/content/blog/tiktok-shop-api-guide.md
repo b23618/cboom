@@ -32,6 +32,15 @@ secondaryKeywords:
 ogTitle: "TikTok Shop API คืออะไร? วิธีเชื่อมต่อกับระบบ ERP และ CRM 2026"
 ogDescription: "เรียนรู้ทุกอย่างเกี่ยวกับ TikTok Shop API OAuth Orders Products Shipping Webhook Automation พร้อมตัวอย่างโค้ดและ Best Practices"
 canonical: "https://cboom.in.th/blog/tiktok-shop-api-guide/"
+faq:
+  - question: "TikTok Shop API คืออะไร"
+    answer: "TikTok Shop API คือชุดคำสั่งที่ TikTok Shop เปิดให้นักพัฒนาเข้าถึงข้อมูลและฟังก์ชันของ TikTok Shop ผ่านโปรแกรม ผ่าน TikTok Shop Open API ที่เป็นทางการ ใช้ดึงออเดอร์ อัปเดตสต๊อก พิมพ์ใบปะหน้า และอัปเดต Tracking อัตโนมัติ"
+  - question: "TikTok Shop API ต่างจาก Shopee API อย่างไร"
+    answer: "โครงสร้างคล้ายกัน แต่ต่างในรายละเอียด เช่น Base URL, Signature Method, Rate Limit, และ Endpoint ถ้าเคยพัฒนา Shopee API ปรับใช้กับ TikTok Shop API ได้เร็ว แต่ต้องอ่าน Docs แยก"
+  - question: "ต้องสมัครอะไรก่อนใช้ TikTok Shop API"
+    answer: "ต้องสมัคร TikTok Shop Developer Center สร้างแอปพลิเคชัน (Shop App หรือ Multi-Shop App) แล้วได้ App Key และ App Secret จากนั้นร้านค้าต้องให้สิทธิ์ผ่าน OAuth 2.0"
+  - question: "TikTok Shop API ฟรีไหม"
+    answer: "TikTok Shop API ฟรีสำหรับนักพัฒนา แต่มี Rate Limit ตาม Plan (1,000-10,000 req/ชม.) ถ้าต้องการเพิ่ม ติดต่อ TikTok Shop แยก"
 ---
 
 # TikTok Shop API คืออะไร? วิธีเชื่อมต่อกับระบบ ERP และ CRM
@@ -80,7 +89,7 @@ TikTok Shop เติบโตเร็วที่สุดในไทย ย�
 | Protocol | HTTPS, JSON | HTTPS, JSON |
 | Auth | OAuth 2.0 | OAuth 2.0 |
 | Rate Limit | 1,000-10,000 req/ชม. (ตาม Plan) | 2,000 req/ชม. |
-| Token อายุ | Access Token 14 วัน | Access Token 14 วัน |
+| Token อายุ | Access Token 7 วัน (ค่าเริ่มต้น) | Access Token 4 ชั่วโมง |
 | Sandbox | มี | มี |
 | Webhook | รองรับ | รองรับ |
 | เอกสาร | TikTok Shop Developer Docs | Shopee Open Platform Docs |
@@ -168,7 +177,7 @@ TikTok Shop เติบโตเร็วที่สุดในไทย ย�
 | Encoding | UTF-8 |
 | Base URL | `https://open-api.tiktokglobalshop.com` |
 | Rate Limit | ขึ้นอยู่กับ Plan (1,000-10,000 req/ชม.) |
-| Token อายุ | Access Token 14 วัน, Refresh Token 30 วัน |
+| Token อายุ | Access Token 7 วัน (ค่าเริ่มต้น) ตรวจค่าจริงจาก response, Refresh Token ออกใหม่ทุกครั้งที่ Refresh |
 | Signature | HMAC-SHA256 |
 | Sandbox | มีสภาพแวดล้อมทดสอบ |
 | App Type | Shop App หรือ Multi-Shop App |
@@ -266,7 +275,7 @@ sign = hashlib.sha256(
 ).hexdigest()
 
 # เรียก API ขอ Token
-url = "https://open-api.tiktokglobalshop.com/api/v2/token/get"
+url = "https://auth.tiktok-shops.com/api/v2/token/get"
 params = {
     "app_key": APP_KEY,
     "timestamp": timestamp,
@@ -282,7 +291,7 @@ token_data = response.json()
 #   "data": {
 #     "access_token": "xxx-yyy-zzz",
 #     "token_type": "Bearer",
-#     "expires_in": 1209600,  # 14 วัน
+#     "expires_in": 604800,  # 7 วัน (ค่าเริ่มต้น ตรวจค่าจริงจาก response)
 #     "refresh_token": "aaa-bbb-ccc",
 #     "refresh_expires_in": 2592000,  # 30 วัน
 #     "open_id": "shop_open_id_here"
@@ -301,7 +310,7 @@ sign = hashlib.sha256(
     (sign_string + APP_SECRET).encode()
 ).hexdigest()
 
-url = "https://open-api.tiktokglobalshop.com/api/v2/token/refresh"
+url = "https://auth.tiktok-shops.com/api/v2/token/refresh"
 params = {
     "app_key": APP_KEY,
     "timestamp": timestamp,
@@ -344,6 +353,8 @@ new_token = response.json()
 | `/order/package` | ดึงข้อมูลพัสดุ | ดูพัสดุแต่ละชิ้น |
 
 ### ตัวอย่างโค้ด: ค้นหาออเดอร์
+
+> ⚠️ **Callout:** Path และวิธีสร้าง Signature ในตัวอย่างนี้เป็นรูปแบบแบบย่อ TikTok Shop Partner Center API เวอร์ชันปัจจุบันใช้ path ที่มีเลขเวอร์ชัน เช่น `/order/202309/orders` ต้องใส่ `shop_cipher` และคำนวณ Signature ตามเอกสารทางการ ตรวจสอบกับ Partner Center ก่อนนำไปใช้งานจริง
 
 ```python
 import hashlib
@@ -1076,7 +1087,7 @@ worker.start()
 |-----------|-----------|--------|--------|
 | `invalid_sign` | Signature ไม่ถูกต้อง | สร้าง Signature ผิด | เช็ค sign_string และ hash |
 | `invalid_param` | Parameter ไม่ถูกต้อง | ส่งค่าผิด/ขาด | อ่าน API Docs ตรวจ param |
-| `access_token_expired` | Token หมดอายุ | Token 14 วัน | Refresh Token ก่อนหมด |
+| `access_token_expired` | Token หมดอายุ | Token 7 วัน (ค่าเริ่มต้น) | Refresh Token ก่อนหมด |
 | `rate_limit_exceeded` | เกิน Rate Limit | เรียกเกิน Limit | ลดความถี่ ใช้ Queue |
 | `shop_not_authorized` | ร้านยังไม่ให้สิทธิ์ | ยังไม่ OAuth | ร้านค้าต้อง Authorize ก่อน |
 | `network_error` | เครือข่ายผิดพลาด | Internet ไม่เสถียร | Retry พร้อม Backoff |
@@ -1159,7 +1170,7 @@ def call_tiktok_api(url, headers, params, payload=None, max_retries=3):
 
 **2. จัดการ Token อัตโนมัติ**
 - เก็บ Token ใน Database ไม่ใช่ในโค้ด
-- Refresh Token อัตโนมัติก่อนหมดอายุ (14 วัน)
+- Refresh Token อัตโนมัติก่อนหมดอายุ (ค่าเริ่มต้น 7 วัน)
 - เก็บ Timestamp ของ Token เพื่อรู้ว่าเมื่อไรหมด
 
 **3. ใช้ Queue สำหรับ Webhook**
@@ -1263,7 +1274,7 @@ TikTok Shop API ฟรีสำหรับนักพัฒนา แต่ม
 
 ### 5. Access Token อยู่ได้นานเท่าไร
 
-Access Token อยู่ได้ 14 วัน ต้อง Refresh ก่อนหมดอายุ Refresh Token อยู่ได้ 30 วัน ระบบที่ดีต้อง Refresh อัตโนมัติ
+Access Token มีอายุค่าเริ่มต้น 7 วัน ต้อง Refresh ก่อนหมดอายุ และ Refresh Token จะถูกออกใหม่ทุกครั้งที่ Refresh ต้องเก็บค่าใหม่ทุกครั้ง ระบบที่ดีต้อง Refresh อัตโนมัติ
 
 ### 6. Webhook ต่างจาก Polling อย่างไร
 

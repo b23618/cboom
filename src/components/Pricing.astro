@@ -9,11 +9,9 @@ const saasPlans = [
     description: "เริ่มต้นสำหรับร้านค้าขนาดเล็ก",
     popular: false,
     features: [
-      "CRM สำหรับ 3 ผู้ใช้",
-      "เชื่อมต่อ 1 ช่องทาง Marketplace",
-      "Dashboard พื้นฐาน",
-      "รายงานยอดขายรายเดือน",
-      "ซัพพอร์ตทาง LINE OA",
+      "จัดการข้อมูลลูกค้าและโอกาสใหม่",
+      "Pipeline งานขาย",
+      "บันทึกประวัติการติดต่อ",
     ],
   },
   {
@@ -23,12 +21,9 @@ const saasPlans = [
     description: "สำหรับธุรกิจที่กำลังเติบโต",
     popular: true,
     features: [
-      "CRM + Marketplace + Warehouse + POS",
-      "เชื่อมต่อ Shopee / TikTok Shop / Lazada",
-      "AI Insights & Sales Forecast",
-      "ซิงค์สต๊อกและออเดอร์อัตโนมัติ",
-      "รายงานแบบกำหนดเอง",
-      "ซัพพอร์ต Priority",
+      "ทุกฟีเจอร์ในแพ็กเกจ Starter",
+      "ติดตามลูกค้าและเตือนการติดต่อ",
+      "Sales Dashboard ติดตามเป้าขายและผลงานทีมขาย",
     ],
   },
   {
@@ -38,108 +33,8 @@ const saasPlans = [
     description: "สำหรับองค์กรขนาดใหญ่",
     popular: false,
     features: [
-      "ผู้ใช้ไม่จำกัด",
-      "CRM + Marketplace + Warehouse + POS + AI + ESG",
-      "เชื่อมต่อทุกช่องทาง + REST API + Webhook",
-      "ทีมดูแลลูกค้าเฉพาะองค์กร",
-      "SLA 99.9% Uptime",
-      "On-premise / Private Cloud",
-    ],
-  },
-];
-
-const proServices = [
-  {
-    name: "CRM Implementation",
-    price: "25,000",
-    period: "บาท / โปรเจกต์",
-    description: "เริ่มต้นใช้งาน CBoom CRM สำหรับทีมขายและบริหารลูกค้า",
-    popular: false,
-    features: [
-      "ติดตั้งและตั้งค่า CBoom CRM",
-      "นำเข้าข้อมูลลูกค้า (CSV/Excel)",
-      "ตั้งค่า Pipeline และ Workflow",
-      "กำหนดสิทธิ์ผู้ใช้งาน",
-      "ปรับแต่ง Dashboard",
-      "อบรมออนไลน์ 2 ชั่วโมง",
-      "Support 30 วัน",
-    ],
-  },
-  {
-    name: "Marketplace Integration",
-    price: "39,000",
-    period: "บาท / โปรเจกต์",
-    description: "เชื่อม Shopee, TikTok Shop และ Lazada เข้ากับ CBoom",
-    popular: true,
-    features: [
-      "เชื่อมต่อ Shopee API",
-      "เชื่อมต่อ TikTok Shop API",
-      "เชื่อมต่อ Lazada API",
-      "Sync Orders",
-      "Sync Products",
-      "Sync Inventory",
-      "Shipping Label",
-      "Webhook Setup",
-      "Dashboard",
-      "Support 30 วัน",
-    ],
-  },
-  {
-    name: "ERP Integration",
-    price: "79,000",
-    period: "บาท / โปรเจกต์",
-    description: "เชื่อม CBoom เข้ากับ ERP หรือระบบเดิมขององค์กร",
-    popular: false,
-    features: [
-      "วิเคราะห์ระบบเดิม",
-      "ออกแบบ Integration",
-      "REST API",
-      "Webhook",
-      "Authentication",
-      "Order Sync",
-      "Customer Sync",
-      "Inventory Sync",
-      "Testing",
-      "Go-Live Support",
-      "Documentation",
-      "Support 60 วัน",
-    ],
-  },
-  {
-    name: "Enterprise Integration",
-    price: "150,000",
-    period: "บาท / โปรเจกต์",
-    description: "สำหรับองค์กรที่ต้องการเชื่อมหลายระบบ",
-    popular: false,
-    features: [
-      "ERP",
-      "Accounting",
-      "Warehouse",
-      "Marketplace",
-      "CRM",
-      "LINE OA",
-      "API Gateway",
-      "SSO",
-      "Automation",
-      "Training",
-      "Documentation",
-      "Dedicated PM",
-    ],
-  },
-  {
-    name: "Dedicated Support",
-    price: "12,000",
-    period: "บาท / เดือน",
-    description: "ทีมงานดูแลระบบและช่วยแก้ไขปัญหาอย่างต่อเนื่อง",
-    popular: false,
-    features: [
-      "Account Manager",
-      "ตอบกลับภายใน 2 ชั่วโมง",
-      "Health Check รายเดือน",
-      "Monitoring",
-      "Bug Fix",
-      "Minor Enhancement 4 ชั่วโมง/เดือน",
-      "Priority Support",
+      "ทุกฟีเจอร์ CRM ในแพ็กเกจ Growth",
+      "ออกแบบแพ็กเกจตามความต้องการของธุรกิจ",
     ],
   },
 ];
@@ -153,15 +48,15 @@ const proServices = [
         แพ็กเกจราคาที่เติบโตไปพร้อมธุรกิจคุณ
       </h2>
       <p class="mt-4 text-lg text-ink/60 dark:text-white/60">
-        เลือกแพ็กเกจ Cloud SaaS หรือเพิ่ม Professional Services ตามความต้องการ
+        เลือกแพ็กเกจ CBoom CRM ตามขนาดทีมและการเติบโตของธุรกิจ
       </p>
     </div>
 
-    <!-- Cloud SaaS -->
+    <!-- CRM plans -->
     <div class="reveal mt-12">
       <div class="flex items-center justify-center gap-2">
         <Cloud class="h-5 w-5 text-primary" />
-        <h3 class="text-xl font-bold">Cloud SaaS</h3>
+        <h3 class="text-xl font-bold">แพ็กเกจ CBoom CRM</h3>
       </div>
       <p class="mt-2 text-center text-sm text-ink/50 dark:text-white/50">
         สมัครใช้งานออนไลน์ เริ่มต้นภายใน 5 นาที
@@ -215,59 +110,19 @@ const proServices = [
       }
     </div>
 
-    <!-- Professional Services -->
+    <!-- Professional Services: coming soon -->
     <div class="reveal mt-20">
       <div class="flex items-center justify-center gap-2">
         <Wrench class="h-5 w-5 text-primary" />
         <h3 class="text-xl font-bold">Professional Services</h3>
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">เร็ว ๆ นี้</span>
       </div>
-      <p class="mt-2 text-center text-sm text-ink/50 dark:text-white/50">
-        บริการโดยทีมงานผู้เชี่ยวชาญของ CBoom
+      <p class="mx-auto mt-3 max-w-xl text-center text-sm text-ink/50 dark:text-white/50">
+        บริการติดตั้ง เชื่อมต่อระบบ และดูแลต่อเนื่องโดยทีมงานผู้เชี่ยวชาญของ CBoom กำลังจะเปิดให้บริการเร็ว ๆ นี้
       </p>
-    </div>
-
-    <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-      {
-        proServices.map((service, i) => (
-          <div
-            class={`reveal relative flex flex-col rounded-card border p-8 transition-all duration-300 hover:-translate-y-1.5 ${
-              service.popular
-                ? "border-primary/40 bg-gradient-to-b from-primary/5 to-transparent shadow-xl shadow-primary/15"
-                : "border-border/70 bg-white dark:border-white/10 dark:bg-white/5"
-            }`}
-            style={`transition-delay:${i * 100}ms`}
-          >
-            {service.popular && (
-              <span class="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-primary px-4 py-1 text-xs font-bold text-white shadow-md">
-                <Star class="h-3 w-3" /> ยอดนิยม
-              </span>
-            )}
-            <h4 class="text-lg font-bold">{service.name}</h4>
-            <p class="mt-2 text-sm text-ink/60 dark:text-white/60">
-              {service.description}
-            </p>
-            <div class="mt-6 flex items-baseline gap-1">
-              <span class="text-3xl font-extrabold">฿{service.price}</span>
-            </div>
-            <p class="text-sm text-ink/50 dark:text-white/50">
-              {service.period}
-            </p>
-
-            <ul class="mt-6 flex-1 space-y-3">
-              {service.features.map((feature) => (
-                <li class="flex items-start gap-2.5 text-sm text-ink/70 dark:text-white/70">
-                  <Check class="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            <a href="https://lin.ee/QVWxues" class={`mt-8 ${service.popular ? "btn-primary" : "btn-secondary"} w-full`}>
-              ขอใบเสนอราคา
-            </a>
-          </div>
-        ))
-      }
+      <div class="mt-6 text-center">
+        <a href="https://lin.ee/QVWxues" class="btn-secondary">สอบถามทาง LINE OA</a>
+      </div>
     </div>
   </div>
 </section>

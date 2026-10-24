@@ -31,6 +31,15 @@ secondaryKeywords:
 ogTitle: "Marketplace Integration คืออะไร? วิธีเชื่อม Shopee TikTok Lazada เข้ากับ ERP"
 ogDescription: "เรียนรู้การเชื่อมต่อ Marketplace เข้ากับ ERP ทุกขั้นตอน Order Sync Inventory Sync Webhook Shipping และ Customer Sync พร้อมภาพประกอบและตัวอย่างจริง"
 canonical: "https://cboom.in.th/blog/marketplace-integration/"
+faq:
+  - question: "Marketplace Integration คืออะไร"
+    answer: "Marketplace Integration คือการเชื่อมต่อ Marketplace (Shopee, TikTok Shop, Lazada) เข้ากับ ERP ผ่าน API เพื่อดึงออเดอร์ ซิงค์สต๊อก อัปเดต Tracking และซิงค์ข้อมูลลูกค้าอัตโนมัติ โดยไม่ต้องเข้า Seller Center แต่ละช่องทาง"
+  - question: "ต้องเข้า Seller Center อีกไหมหลังมี Integration"
+    answer: "ส่วนใหญ่ไม่ต้อง ระบบจัดการออเดอร์ สต๊อก ใบปะหน้า และ Tracking ได้จาก ERP แต่บางกรณี เช่น แชทกับลูกค้า จัดการคำสั่งซื้อที่มีปัญหา หรือตั้งค่าโปรโมชั่น อาจต้องเข้า Seller Center"
+  - question: "Order Sync แบบ Real-time ทำงานอย่างไร"
+    answer: "เมื่อลูกค้าสั่งซื้อบน Marketplace จะส่ง Webhook ไป ERP ทันที ERP ดึงรายละเอียดออเดอร์ผ่าน API ภายใน 2-5 วินาที ทีมคลังเห็นออเดอร์ใน ERP ทันที"
+  - question: "Inventory Sync ป้องกันการขายเกินสต๊อกอย่างไร"
+    answer: "เมื่อมีออเดอร์ในช่องทางหนึ่ง ERP ลดสต๊อกและส่ง API ไปอัปเดตสต๊อกในทุกช่องทางทันที ภายใน 2-5 วินาที ทุกช่องทางเห็นสต๊อกที่ลดลงแล้ว ป้องกันการขายเกิน"
 ---
 
 # Marketplace Integration คืออะไร? วิธีเชื่อม Shopee TikTok Lazada เข้ากับ ERP

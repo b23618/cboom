@@ -29,6 +29,15 @@ secondaryKeywords:
 ogTitle: "Sales Pipeline: วิธีสร้างและจัดการให้ปิดการขายได้มากขึ้น 2026"
 ogDescription: "Sales Pipeline คืออะไร วิธีสร้างและจัดการ Pipeline ขาย พร้อมตัวอย่างขั้นตอนสำหรับธุรกิจไทย B2B และ B2C"
 canonical: "https://cboom.in.th/blog/sales-pipeline/"
+faq:
+  - question: "Sales Pipeline คืออะไร"
+    answer: "Sales Pipeline คือแผนภาพที่แสดงขั้นตอนการขายตั้งแต่ได้ Lead จนถึงปิดการขาย แต่ละขั้นตอนแสดงสถานะของดีล"
+  - question: "Sales Pipeline ต่างจาก Sales Funnel อย่างไร"
+    answer: "Pipeline โฟกัสที่ขั้นตอนและดีลแต่ละรายการ ส่วน Funnel โฟกัสที่อัตราการแปลงจาก Lead เป็นการขาย ทั้งสองอย่างใช้คู่กันได้"
+  - question: "Pipeline ควรมีกี่ขั้นตอน"
+    answer: "ควรมี 5-7 ขั้นตอน ถ้าน้อยเกินไปจะไม่ละเอียดพอ ถ้ามากเกินไปจะสับสนและอัปเดตยาก"
+  - question: "ควรอัปเดต Pipeline บ่อยแค่ไหน"
+    answer: "ควรอัปเดตทุกวัน อย่างน้อยหลังติดตามลูกค้าแต่ละครั้ง ผู้จัดการควรตรวจ Pipeline ทุกสัปดาห์"
 ---
 
 # Sales Pipeline: วิธีสร้างและจัดการให้ปิดการขายได้มากขึ้น

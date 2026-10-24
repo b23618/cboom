@@ -10,9 +10,11 @@ interface Props {
   description?: string;
   image?: string;
   keywords?: string;
+  type?: "website" | "article";
   noindex?: boolean;
   breadcrumb?: { name: string; path: string }[];
   faq?: { question: string; answer: string }[];
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
@@ -20,8 +22,10 @@ const {
   description = "CBoom คือ Business Automation Platform ที่รวม CRM Marketplace Warehouse POS AI ESG Dashboard และ Automation ไว้ในระบบเดียว ช่วยลดงาน Manual เชื่อมต่อทุกช่องทางการขาย และช่วยให้ธุรกิจเติบโตได้เร็วขึ้น",
   image,
   keywords,
+  type = "website",
   noindex = false,
   breadcrumb = [],
+  jsonLd = [],
   faq = [
     {
       question: "CBoom คืออะไร",
@@ -41,7 +45,7 @@ const {
     {
       question: "ข้อมูลของฉันปลอดภัยไหม",
       answer:
-        "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001",
+        "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และพร้อมรองรับมาตรฐาน ISO 27001",
     },
     {
       question: "มี API สำหรับนักพัฒนาหรือไม่",
@@ -110,6 +114,8 @@ const fullBreadcrumb = [{ name: "หน้าแรก", path: "/" }, ...breadcr
       noindex={noindex}
       breadcrumb={fullBreadcrumb}
       faq={faq}
+      jsonLd={jsonLd}
+      type={type}
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />

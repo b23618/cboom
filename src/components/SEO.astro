@@ -8,6 +8,7 @@ export interface Props {
   noindex?: boolean;
   breadcrumb?: { name: string; path: string }[];
   faq?: { question: string; answer: string }[];
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   noindex = false,
   breadcrumb = [],
   faq = [],
+  jsonLd = [],
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://cboom.in.th");
@@ -50,17 +52,13 @@ const softwareSchema = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description,
+  // Starter ฿990/เดือน, Growth ฿2,900/เดือน, Enterprise = custom (see Pricing.astro).
+  // No aggregateRating: add only when backed by real, verifiable reviews.
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "0",
-    highPrice: "50000",
+    lowPrice: "990",
     priceCurrency: "THB",
-    offerCount: "6",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "500",
+    offerCount: "3",
   },
 };
 
@@ -127,3 +125,4 @@ const faqSchema =
 <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+{jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}

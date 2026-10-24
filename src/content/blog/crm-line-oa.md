@@ -29,6 +29,15 @@ secondaryKeywords:
 ogTitle: "CRM กับ LINE OA: เชื่อม LINE เข้าระบบจัดการลูกค้า 2026"
 ogDescription: "CRM กับ LINE OA เชื่อมต่อกันอย่างไร ทำไมต้องเชื่อม วิธีทำ และประโยชน์สำหรับธุรกิจไทย"
 canonical: "https://cboom.in.th/blog/crm-line-oa/"
+faq:
+  - question: "เชื่อม CRM กับ LINE OA ทำไม"
+    answer: "เพื่อให้ข้อมูลลูกค้าจาก LINE เข้า CRM อัตโนมัติ ประวัติการคุยเก็บในระบบ ตอบลูกค้าได้เร็ว ติดตามได้ และมีรายงานรวม"
+  - question: "เชื่อม CRM กับ LINE OA ยากไหม"
+    answer: "ไม่ยาก ถ้าใช้ CBoom CRM เพียงกรอก Channel Access Token และ Channel Secret จาก LINE Developers Console ก็เชื่อมได้"
+  - question: "ต้องเสียเงินเพิ่มไหม"
+    answer: "LINE Messaging API มีแพ็กเกจฟรีสำหรับเริ่มต้น (1,000 ข้อความ/เดือน) ถ้าส่งมากกว่านั้นต้องซื้อแพ็กเกจเพิ่มจาก LINE"
+  - question: "ใช้ LINE แทน CRM ได้ไหม"
+    answer: "ไม่ได้ LINE เป็นช่องทางสื่อสาร ไม่ใช่ระบบจัดการลูกค้า LINE ไม่มี Pipeline, Lead Scoring, Dashboard หรือรายงาน ต้องใช้คู่กับ CRM"
 ---
 
 # CRM กับ LINE OA: เชื่อม LINE เข้าระบบจัดการลูกค้า

@@ -32,6 +32,15 @@ secondaryKeywords:
 ogTitle: "Warehouse Management System (WMS) คืออะไร? คู่มือสำหรับธุรกิจไทย 2026"
 ogDescription: "เรียนรู้ทุกอย่างเกี่ยวกับ WMS ตั้งแต่ Receiving Picking Packing Barcode FIFO ไปจนถึง Multi Warehouse พร้อมตัวอย่างจริงและตารางเปรียบเทียบ"
 canonical: "https://cboom.in.th/blog/warehouse-management-system/"
+faq:
+  - question: "WMS คืออะไร"
+    answer: "WMS (Warehouse Management System) คือระบบที่จัดการคลังสินค้า ตั้งแต่รับเข้า จัดเก็บ หยิบ บรรจุ ย้าย ไปจนถึงส่งออก โดยติดตามสต๊อก Real-time และใช้ Barcode แทนการจดมือ"
+  - question: "ธุรกิจเล็กต้องมี WMS ไหม"
+    answer: "ถ้ามีสินค้า 500+ SKU หรือออเดอร์ 100+/วัน หรือมีสินค้าที่มีอายุการเก็บรักษา ควรมี WMS ถ้าเล็กกว่านั้น Excel อาจพอ แต่เมื่อโตขึ้นต้องอัปเกรด"
+  - question: "WMS ต่างจาก Excel อย่างไร"
+    answer: "Excel เก็บสต๊อกได้ แต่ไม่มี Barcode, Pick List, FIFO, Multi Warehouse, Audit Trail และ Real-time WMS ออกแบบมาสำหรับคลังสินค้าโดยเฉพาะ"
+  - question: "FIFO คืออะไร ทำไมสำคัญ"
+    answer: "FIFO (First In First Out) คือหลักการที่สินค้าเข้ามาก่อนต้องออกก่อน สำคัญเพราะป้องกันสินค้าหมดอายุ ถ้าไม่ใช้ FIFO สินค้าเก่าค้างในคลัง หมดอายุ ต้องทิ้ง เสียเงิน"
 ---
 
 # Warehouse Management System (WMS) คืออะไร? คู่มือสำหรับธุรกิจไทย

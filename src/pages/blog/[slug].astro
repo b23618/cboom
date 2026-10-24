@@ -15,7 +15,6 @@ import RelatedProducts from "../../components/blog/RelatedProducts.astro";
 import ROICalculator from "../../components/blog/ROICalculator.astro";
 import Newsletter from "../../components/blog/Newsletter.astro";
 import PrevNextNav from "../../components/blog/PrevNextNav.astro";
-import BlogFAQ from "../../components/blog/BlogFAQ.astro";
 import DownloadPDF from "../../components/blog/DownloadPDF.astro";
 
 export async function getStaticPaths() {
@@ -42,38 +41,31 @@ const readingTime = Math.max(1, Math.ceil(charCount / 500));
 const site = Astro.site ?? new URL("https://cboom.in.th");
 const canonicalURL = new URL(`/blog/${post.id}/`, site);
 
-const faqFromArticle = [
-  {
-    question: "Business Automation Platform ต่างจาก ERP อย่างไร",
-    answer:
-      "ERP แบบเดิมออกแบบมาสำหรับองค์กรขนาดใหญ่ ติดตั้งนาน ราคาสูง และไม่รองรับการขายบน Marketplace สมัยใหม่ Business Automation Platform ออกแบบมาสำหรับธุรกิจขนาดเล็กถึงกลาง ติดตั้งเร็ว ราคาสมเหตุสมผล และรองรับ Shopee, TikTok Shop และ Lazada โดยตรง",
+// Mirrors the "## FAQ" section already rendered in the post body (FAQPage schema must match visible content).
+const faqFromArticle = post.data.faq;
+
+const modified = post.data.updatedDate ?? post.data.publishDate;
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  image: new URL(post.data.image ?? "/og/blog", site).href,
+  datePublished: post.data.publishDate.toISOString(),
+  dateModified: modified.toISOString(),
+  inLanguage: "th",
+  articleSection: post.data.category,
+  keywords: post.data.tags.join(", "),
+  wordCount: charCount,
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL.href },
+  author: { "@type": "Organization", name: post.data.author === "CBoom Team" ? "CBoom" : post.data.author, url: site.href },
+  publisher: {
+    "@type": "Organization",
+    name: "CBoom",
+    url: site.href,
+    logo: { "@type": "ImageObject", url: new URL("/logo.png", site).href },
   },
-  {
-    question: "ต้องใช้ทุกโมดูลพร้อมกันไหม",
-    answer:
-      "ไม่จำเป็น สามารถเริ่มจากโมดูลที่แก้ปัญหาเร่งด่วนที่สุดก่อน เช่น Marketplace + Warehouse แล้วเปิด CRM หรือ AI ภายหลังได้ ทุกโมดูลทำงานร่วมกันได้ทันทีที่เปิดใช้งาน",
-  },
-  {
-    question: "ใช้เวลาติดตั้งนานเท่าไร",
-    answer:
-      "โดยเฉลี่ย 1-3 วันทำการ ขึ้นอยู่กับจำนวนช่องทางและความซับซ้อนของข้อมูล ทีมงาน CBoom พร้อมช่วยติดตั้งและฝึกทีมของคุณให้ใช้งานได้จริง",
-  },
-  {
-    question: "CBoom เชื่อมต่อกับระบบเดิมได้ไหม",
-    answer:
-      "ได้ CBoom มี REST API และ Webhook สำหรับเชื่อมต่อกับระบบ ERP โปรแกรมบัญชี หรือระบบเดิมของธุรกิจ ทีมงานของเราพร้อมช่วยวางแผนการเชื่อมต่อ",
-  },
-  {
-    question: "ข้อมูลปลอดภัยไหม",
-    answer:
-      "ข้อมูลเข้ารหัสด้วย AES-256 จัดเก็บใน Data Center ประเทศไทย ปฏิบัติตาม PDPA และมาตรฐาน ISO 27001 มีระบบ Role Permission และ Audit Log สำหรับความปลอดภัยระดับองค์กร",
-  },
-  {
-    question: "มีทดลองใช้งานฟรีไหม",
-    answer:
-      "มี ทดลองใช้งานฟรี ไม่ต้องใช้บัตรเครดิต สามารถเริ่มใช้งานได้ภายใน 5 นาที พร้อมทีมงานคนไทยดูแลตลอดการใช้งาน",
-  },
-];
+};
 
 const hasUpdated = post.data.updatedDate && post.data.updatedDate.valueOf() !== post.data.publishDate.valueOf();
 ---
@@ -85,6 +77,8 @@ const hasUpdated = post.data.updatedDate && post.data.updatedDate.valueOf() !== 
   image={post.data.image}
   breadcrumb={[{ name: "Blog", path: "/blog/" }, { name: post.data.category, path: `/blog/${post.id}/` }]}
   faq={faqFromArticle}
+  type="article"
+  jsonLd={[blogPostingSchema]}
 >
   <ReadingProgress />
   <Navbar />
@@ -199,9 +193,6 @@ const hasUpdated = post.data.updatedDate && post.data.updatedDate.valueOf() !== 
 
     <!-- Newsletter -->
     <Newsletter />
-
-    <!-- FAQ Accordion -->
-    <BlogFAQ faqs={faqFromArticle} />
 
     <CTA />
   </main>

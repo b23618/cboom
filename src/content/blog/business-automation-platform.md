@@ -31,6 +31,15 @@ secondaryKeywords:
 ogTitle: "Business Automation Platform คืออะไร? คู่มือฉบับสมบูรณ์สำหรับธุรกิจไทย"
 ogDescription: "เรียนรู้ว่า Business Automation Platform คืออะไร ทำไมธุรกิจไทยต้องมี และจะเลือกระบบที่เหมาะกับธุรกิจคุณได้อย่างไร พร้อมตัวอย่างจริงและแนวทางปฏิบัติ"
 canonical: "https://cboom.in.th/blog/business-automation-platform/"
+faq:
+  - question: "Business Automation Platform ต่างจาก ERP อย่างไร"
+    answer: "ERP แบบเดิมออกแบบมาสำหรับองค์กรขนาดใหญ่ ติดตั้งนาน ราคาสูง และไม่รองรับการขายบน Marketplace สมัยใหม่ Business Automation Platform ออกแบบมาสำหรับธุรกิจขนาดเล็กถึงกลาง ติดตั้งเร็ว ราคาสมเหตุสมผล และรองรับ Shopee, TikTok Shop และ Lazada โดยตรง"
+  - question: "ต้องใช้ทุกโมดูลพร้อมกันไหม"
+    answer: "ไม่จำเป็น สามารถเริ่มจากโมดูลที่แก้ปัญหาเร่งด่วนที่สุดก่อน เช่น Marketplace + Warehouse แล้วเปิด CRM หรือ AI ภายหลังได้ ทุกโมดูลทำงานร่วมกันได้ทันทีที่เปิดใช้งาน"
+  - question: "ใช้เวลาติดตั้งนานเท่าไร"
+    answer: "โดยเฉลี่ย 1-3 วันทำการ ขึ้นอยู่กับจำนวนช่องทางและความซับซ้อนของข้อมูล ทีมงาน CBoom พร้อมช่วยติดตั้งและฝึกทีมของคุณให้ใช้งานได้จริง"
+  - question: "CBoom เชื่อมต่อกับระบบเดิมได้ไหม"
+    answer: "ได้ CBoom มี REST API และ Webhook สำหรับเชื่อมต่อกับระบบ ERP โปรแกรมบัญชี หรือระบบเดิมของธุรกิจ ทีมงานของเราพร้อมช่วยวางแผนการเชื่อมต่อ"
 ---
 
 # Business Automation Platform คืออะไร? คู่มือฉบับสมบูรณ์สำหรับธุรกิจไทย

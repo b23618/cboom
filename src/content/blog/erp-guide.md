@@ -32,6 +32,15 @@ secondaryKeywords:
 ogTitle: "ERP คืออะไร? ระบบ ERP ช่วยธุรกิจได้อย่างไร พร้อมตัวอย่างจริง 2026"
 ogDescription: "เรียนรู้ทุกอย่างเกี่ยวกับ ERP การเปรียบเทียบกับ CRM POS Warehouse Marketplace พร้อมแนวคิด Integration Automation และ Business Flow สำหรับธุรกิจไทย"
 canonical: "https://cboom.in.th/blog/erp-guide/"
+faq:
+  - question: "ERP คืออะไร"
+    answer: "ERP ย่อมาจาก Enterprise Resource Planning คือระบบที่รวมกระบวนการทำงานทุกแผนกของธุรกิจไว้ในระบบเดียว ข้อมูลไหลระหว่างแผนกอัตโนมัติ ลดการคีย์ซ้ำและเพิ่มประสิทธิภาพ"
+  - question: "ERP ต่างจาก CRM อย่างไร"
+    answer: "CRM เน้นจัดการการขายและลูกค้า ERP รวม CRM ไว้ภายในและเชื่อมกับสต๊อก บัญชี การผลิต ด้วย CRM เป็นส่วนหนึ่งของ ERP"
+  - question: "ธุรกิจขนาดเล็กต้องมี ERP ไหม"
+    answer: "ถ้ามี 3 แผนกขึ้นไปที่ใช้ระบบแยกกัน และมีปัญหาข้อมูลไม่ตรงกัน ควรพิจารณา ERP หรือ Business Automation Platform ที่เหมาะสำหรับ SME ราคาถูกกว่า ERP แบบเดิม"
+  - question: "ERP ราคาเท่าไร"
+    answer: "ERP แบบเดิมเริ่มต้นหลายแสนบาท ส่วน Business Automation Platform แบบ Cloud เริ่มต้น 1,000-10,000 บาท/เดือน ขึ้นอยู่กับจำนวนโมดูลและผู้ใช้"
 ---
 
 # ERP คืออะไร? ระบบ ERP ช่วยธุรกิจได้อย่างไร พร้อมตัวอย่างการใช้งานจริง

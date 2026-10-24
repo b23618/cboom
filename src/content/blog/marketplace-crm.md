@@ -30,6 +30,15 @@ secondaryKeywords:
 ogTitle: "Marketplace CRM: จัดการลูกค้าข้ามช่องทาง 2026"
 ogDescription: "Marketplace CRM คืออะไร ทำไมต้องมี วิธีเชื่อม Shopee TikTok Lazada เข้าระบบ CRM พร้อมตัวอย่างสำหรับธุรกิจไทย"
 canonical: "https://cboom.in.th/blog/marketplace-crm/"
+faq:
+  - question: "Marketplace CRM คืออะไร"
+    answer: "Marketplace CRM คือระบบ CRM ที่เชื่อมต่อกับ Marketplace หลายแพลตฟอร์ม เช่น Shopee, TikTok Shop, Lazada ดึงข้อมูลลูกค้าและออเดอร์จากทุกช่องทางเข้าระบบเดียว"
+  - question: "ทำไมต้องเชื่อม Marketplace เข้า CRM"
+    answer: "เพื่อรวมออเดอร์ ซิงค์สต๊อก รวมข้อมูลลูกค้าข้ามช่องทาง ติดตามลูกค้าเก่า และเห็นภาพรวมยอดขายใน Dashboard เดียว"
+  - question: "Marketplace CRM เชื่อม Shopee ได้ไหม"
+    answer: "ได้ CBoom CRM เชื่อม Shopee ผ่าน Shopee Open Platform ดึงออเดอร์ ลูกค้า และสินค้าเข้าระบบอัตโนมัติ"
+  - question: "สต๊อกซิงค์ข้ามช่องทางได้ไหม"
+    answer: "ได้ เมื่อมีออเดอร์จากช่องทางใด ระบบลดสต๊อกและซิงค์ไปทุกช่องทาง ป้องกันขายเกินสต๊อก"
 ---
 
 # Marketplace CRM: จัดการลูกค้าข้ามช่องทาง Shopee TikTok Lazada
