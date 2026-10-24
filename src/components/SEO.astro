@@ -52,11 +52,12 @@ const softwareSchema = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description,
-  // Starter ฿990/เดือน, Growth ฿2,900/เดือน, Enterprise = custom (see Pricing.astro).
+  // Starter ฿990/เดือน, Growth ฿2,900/เดือน, Enterprise ฿9,900/เดือน เริ่มต้น (see Pricing.astro).
   // No aggregateRating: add only when backed by real, verifiable reviews.
   offers: {
     "@type": "AggregateOffer",
     lowPrice: "990",
+    highPrice: "9900",
     priceCurrency: "THB",
     offerCount: "3",
   },
